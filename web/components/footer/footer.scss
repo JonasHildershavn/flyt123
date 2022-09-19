@@ -1,0 +1,8 @@
+.footer {
+  background: red;
+  padding: 2rem 0;
+
+  @media screen and (min-width: $break-point--medium) {
+    padding: 4rem 0;
+  }
+}
