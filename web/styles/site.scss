@@ -28,5 +28,4 @@ p {
   background: $color--melon;
 }
 
-// Fikk ikke til å funke, hvis ikke er alternativ (mer tungvint) å bruke en .module.scss til hver komponent
 @import "../components/**/*.scss";
