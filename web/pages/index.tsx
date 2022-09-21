@@ -1,17 +1,13 @@
 import type { NextPage } from 'next'
 
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
+import PageLayout from '../components/page-layout/page-layout';
+import ProjectOverview from '../components/project-overview/project-overview';
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Header />
-      <main>
-        halo
-      </main>
-      <Footer />
-    </div>
+    <PageLayout>
+      <ProjectOverview />
+    </PageLayout>
   )
 }
 

@@ -13,7 +13,7 @@ body {
 
 h1,
 h2 {
-  color: red;
+  color: $color--digital-lollipop;
   font-family: knowit;
   font-weight: normal;
 }
@@ -29,4 +29,4 @@ p {
 }
 
 // Fikk ikke til å funke, hvis ikke er alternativ (mer tungvint) å bruke en .module.scss til hver komponent
-//@import "../components/**/*.scss";
+@import "../components/**/*.scss";
