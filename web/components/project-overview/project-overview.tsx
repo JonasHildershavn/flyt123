@@ -1,6 +1,4 @@
-import React, { FC } from "react";
-
-const ProjectOverview: FC = () => (
+const ProjectOverview: React.FC = () => (
     <main className="project">
         Prosjekter for alle sammen!
     </main>

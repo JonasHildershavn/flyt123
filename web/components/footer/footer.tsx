@@ -1,6 +1,4 @@
-import React, { FC } from "react";
-
-const Footer: FC = () => (
+const Footer: React.FC = () => (
     <footer className="footer">
         Copyright Knowit
     </footer>
