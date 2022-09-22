@@ -1,9 +1,7 @@
-import type { NextPage } from 'next'
-
-const Footer: NextPage = () => (
+const Footer: React.FC = () => (
     <footer className="footer">
-        <a>Footer</a>
+        Copyright Knowit
     </footer>
-);
+)
 
-export default Footer;
+export default Footer

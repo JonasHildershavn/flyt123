@@ -1,15 +1,19 @@
 import Project from '../../components/project/project'
+import PageLayout from '../../components/page-layout/page-layout'
 import client from '../../client'
 import groq from 'groq'
 
 const ProjectPage = ({project}) => {
   // const { title = 'Missing title', name = 'Missing name',} = post
   return (
-    <div>
-      <Project title={project.title}/>
-      <a>Forfatter: {project.name}</a>
-    </div>
-    
+    <PageLayout>
+      <Project 
+        title={project.title}
+        intro={project.intro}
+        description={project.description}
+        author={project.author}
+      />
+    </PageLayout>
   )
 }
 
@@ -36,7 +40,9 @@ export async function getStaticProps(context) {
 
 const query = groq`*[_type == "project" && slug.current == $slug][0]{
       title,
-      "name": author->name
+      intro,
+      description,
+      "author": author->name
 }`
 
 

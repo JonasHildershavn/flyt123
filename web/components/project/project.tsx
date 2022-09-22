@@ -1,16 +1,22 @@
-import type { NextPage } from 'next'
-
 interface ProjectProps {
     title: string;
+    intro: string;
+    description: string;
+    author: string;
 }
 
-const Project: NextPage<ProjectProps> = ({
+const Project: React.FC<ProjectProps> = ({
     title,
+    intro,
+    description,
+    author,
 }) => (
-    <header className="header">
-        <a>Project comes here </a>
-        <a>{title}</a>
-    </header>
+    <div>
+        <h1>{title}</h1>
+        <div>Intro: {intro}</div>
+        <div>Beskrivelse: {description}</div>
+        <div>Forfatter: {author}</div>
+    </div>
     
 );
 
