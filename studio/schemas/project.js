@@ -24,9 +24,10 @@ export default {
       to: {type: 'author'},
     },
     {
-      name: 'mainImage',
-      title: 'Prosjektbilde',
-      type: 'image',
+      name: "description",
+      title: "Beskrivelse",
+      type: "text",
     },
+
   ],
 }
