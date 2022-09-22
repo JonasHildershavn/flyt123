@@ -1,0 +1,11 @@
+.footer {
+  background-color: $color--forest;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: $break-point--medium) {
+    padding: 4rem 0;
+  }
+}
