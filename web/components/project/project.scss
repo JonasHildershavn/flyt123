@@ -1,0 +1,21 @@
+.project {
+    
+    &__onboarding {
+        padding: 50px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__meta {
+        width: 50%;
+        padding: 50px;
+        background-color:$color--mint;
+    }
+    
+    &__description {
+        margin-left: 10px;
+        width: 50%;
+        padding: 50px;
+        background-color:$color--mint;
+    }
+}
