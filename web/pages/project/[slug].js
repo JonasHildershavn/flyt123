@@ -7,9 +7,7 @@ const ProjectPage = ({project}) => {
   // const { title = 'Missing title', name = 'Missing name',} = post
   return (
     <PageLayout>
-      
       <Project {...project}/>
-      <h1>{project.length}</h1>
     </PageLayout>
   )
 }
