@@ -1,5 +1,5 @@
+import ProjectCard from "../project-card/project-card";
 import { ProjectProps } from "../project/project";
-import Link from 'next/link'
 
 interface ProjectOverviewProps {
    projects: ProjectProps[]
@@ -8,24 +8,13 @@ interface ProjectOverviewProps {
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({
    projects
 }) => (
-   <main className="overview">
-      <h1>Prosjekter for alle sammen!</h1>
-
-      {projects.length > 0 && projects.map(
-         ({ _id, title = '', intro = '', slug = '', publishedAt = '' }) =>
-            slug && (
-               <div key={_id} className="project">
-
-                  <Link href="/project/[slug]" as={`/project/${slug.current}`}>
-                     <h2>{title}</h2>
-                     
-                  </Link>{' '}
-                  <a>{intro}</a>
-               </div>
-            )
-      )}
-
-
+   <main className="projects">
+      <h2 className="projects__title">Prosjekter for alle sammen!</h2>
+      <div className="projects__grid">
+         {projects.length > 0 && projects.map(project => (
+            <ProjectCard {...project} />
+         ))}
+      </div>
    </main>
 )
 

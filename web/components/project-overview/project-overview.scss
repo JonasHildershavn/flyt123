@@ -1,5 +1,19 @@
-.project {
-  background-color: $color--pear;
-  min-height: 20vh;
-  max-width: 32vh;
+.projects {
+  
+  &__title {
+    margin-bottom: 4vh;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6vh;
+  }
+
+  
+  
+    
 }
+
+
+

@@ -8,7 +8,7 @@ import ProjectOverview from '../components/project-overview/project-overview';
 const Home = ({ projects }) => {
   return (
     <PageLayout>
-      <ProjectOverview projects={projects} />
+      <ProjectOverview projects={projects}/>
     </PageLayout>
   )
 }
