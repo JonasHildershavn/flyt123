@@ -36,6 +36,7 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       title,
       intro,
       description,
+      completed,
       "author": author->name
 }`
 
