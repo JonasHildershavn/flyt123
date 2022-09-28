@@ -11,12 +11,12 @@ const Project: React.FC<ProjectProps> = ({
     description,
     author,
 }) => (
-    <div>
+    <main>
         <h1>{title}</h1>
         <div>Intro: {intro}</div>
         <div>Beskrivelse: {description}</div>
         <div>Forfatter: {author}</div>
-    </div>
+    </main>
     
 );
 

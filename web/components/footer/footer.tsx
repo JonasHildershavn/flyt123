@@ -1,6 +1,6 @@
 const Footer: React.FC = () => (
     <footer className="footer">
-        Copyright Knowit
+        Copyright knowit
     </footer>
 )
 
