@@ -1,0 +1,47 @@
+// NOTE: This component styles some of the headings by tag name in order to avoid default styles that are hard to override
+
+.heading {
+  // NOTE: @at-root ensures that the heading tag selectors are output using just the tag name
+  @at-root {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    h1,
+    &--level-1 {
+      @include heading-level--1;
+    }
+
+    h2,
+    &--level-2 {
+      @include heading-level--2;
+    }
+
+    h3,
+    &--level-3 {
+      @include heading-level--3;
+    }
+  }
+
+  &--no-margins {
+    margin: 0;
+  }
+
+  &--thick-font {
+    font-weight: 700;
+  }
+
+  &--slim-font {
+    font-weight: 500;
+  }
+
+  &--center-aligned {
+    text-align: center;
+  }
+}

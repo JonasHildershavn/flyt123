@@ -2,6 +2,9 @@ export default {
   name: 'project',
   title: 'Prosjekt',
   type: 'document',
+  initialValue: {
+    completed: false,
+  },
   fields: [
     {
       name: 'title',
@@ -18,15 +21,27 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "intro",
+      title: "Intro",
+      type: "text",
+      validation: Rule => Rule.max(50)
+    },
+    {
+      name: "description",
+      title: "Beskrivelse",
+      type: "text",
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
     },
     {
-      name: 'mainImage',
-      title: 'Prosjektbilde',
-      type: 'image',
+      name: "completed",
+      title: "Ferdigstilt",
+      type: "boolean",
+      
     },
   ],
 }
