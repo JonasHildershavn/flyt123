@@ -8,6 +8,7 @@ interface ProjectProps {
     title: string;
     intro: string;
     description: string;
+    completed: boolean;
     author: string;
     resources: string[];
 }
@@ -16,6 +17,7 @@ const Project: React.FC<ProjectProps> = ({
     title,
     intro,
     description,
+    completed,
     author,
     resources
 }) => (

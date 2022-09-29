@@ -2,6 +2,9 @@ export default {
   name: 'project',
   title: 'Prosjekt',
   type: 'document',
+  initialValue: {
+    completed: false,
+  },
   fields: [
     {
       name: 'title',
@@ -33,6 +36,12 @@ export default {
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
+    },
+    {
+      name: "completed",
+      title: "Ferdigstilt",
+      type: "boolean",
+      
     },
   ],
 }
