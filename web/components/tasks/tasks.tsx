@@ -11,8 +11,8 @@ const Tasks: React.FC<TasksProps> = ({ tasks }) => (
     <div className='tasks__list'>
       {tasks && tasks.length > 0 && (
         <ul>
-          {tasks.map((index) => (
-            <li key={index}>heisann</li>
+          {tasks.map((task, index) => (
+            <li key={'task-' + index}>{task}</li>
           ))}
         </ul>
       )}
