@@ -27,3 +27,4 @@ Dette prosjektet krever at Node.js og npm er installert
 9. Kjør "npm run dev"
 10. Da er det bare å finne tasks i boardet på DevOps: https://dev.azure.com/knowitexperience/flyt/_boards/board/t/flyt%20Team/Backlog%20items
 
+**OBS: Husk å kjøre npm install i web etter en pull. Hender at man får feilmelding. **
