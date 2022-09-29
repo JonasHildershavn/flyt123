@@ -1,11 +1,17 @@
 .footer {
   background-color: $color--forest;
+  font-family: 'Knowit';
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 
   @media screen and (min-width: $break-point--medium) {
     padding: 4rem 0;
+    
   }
 }

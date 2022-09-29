@@ -1,6 +1,7 @@
 {
-  "name": "web-next",
+  "name": "web",
   "version": "0.1.0",
+  "main": "index.tsx",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,16 +1,21 @@
 .header {
-  font-size: 200%;
+  margin: 0 $gutter-sm;
   display: flex;
-  justify-content: center;
-  align-items: baseline;
-  max-width: 1350px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  top: 0;
+  width: 100%;
 
   &__tagline {
-    margin-left: 50px;
+    font-family: 'Knowit';
+    margin-right: 2rem;
   }
 
   &__logo {
       color: inherit;
       text-decoration: inherit;
+      margin-left: 2rem;
   }
 }

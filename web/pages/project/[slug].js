@@ -4,15 +4,9 @@ import client from '../../client'
 import groq from 'groq'
 
 const ProjectPage = ({project}) => {
-  // const { title = 'Missing title', name = 'Missing name',} = post
   return (
     <PageLayout>
-      <Project 
-        title={project.title}
-        intro={project.intro}
-        description={project.description}
-        author={project.author}
-      />
+      <Project {...project}/>
     </PageLayout>
   )
 }
