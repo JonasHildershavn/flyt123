@@ -19,7 +19,6 @@ const Project: React.FC<ProjectProps> = ({
     author,
     resources
 }) => (
-<<<<<<< HEAD
     <div className='project'>
         <Container className='project__container' theme='article'>
             <Heading headingLevel='h1' className='project__title'>{title}</Heading>
@@ -45,14 +44,6 @@ const Project: React.FC<ProjectProps> = ({
             <Contributions contributions={["1", "to", "drei"]} />
         </Container>
     </div>
-=======
-    <main>
-        <h1>{title}</h1>
-        <div>Intro: {intro}</div>
-        <div>Beskrivelse: {description}</div>
-        <div>Forfatter: {author}</div>
-    </main>
->>>>>>> fc77d3779c61a67285d4d5ea4c26717791cc6ca5
     
 );
 
