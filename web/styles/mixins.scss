@@ -1,0 +1,34 @@
+@mixin break-at($width) {
+    @media screen and (min-width: $width) {
+         @content;
+    }
+}
+
+@mixin heading-level--1 {
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 700;
+  
+    @include break-at($break-point--small) {
+        font-size: 32px;
+    }
+  
+    @include break-at($break-point--large) {
+        font-size: 44px;
+    }
+}
+  
+
+@mixin heading-level--2 {
+    font-size: 20px;
+    font-weight: 600;
+  
+    @include break-at($break-point--large) {
+        font-size: 24px;
+    }
+}
+  
+@mixin heading-level--3 {
+    font-size: 16px;
+    font-weight: 600;
+}
