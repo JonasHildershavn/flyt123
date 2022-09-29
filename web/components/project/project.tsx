@@ -50,7 +50,7 @@ const Project: React.FC<ProjectProps> = ({
             </div>
             
             <Interest />
-            <Tasks tasks={["1", "to", "drei"]}/>
+            <Tasks tasks={["1", "to", "drei", "svei"]}/>
             <Contributions contributions={["1", "to", "drei"]} />
         </Container>
     </div>
