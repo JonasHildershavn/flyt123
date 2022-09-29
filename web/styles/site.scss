@@ -11,7 +11,17 @@ body {
   font-size: 100%;
 }
 
-h1,
+main {
+  display: table;
+  min-width: 40%;
+  margin: 0 auto;
+
+}
+
+h1 {
+  font-family: knowit;
+  font-weight: Bold;
+}
 h2 {
   color: $color--deep-black;
   font-family: knowit;
