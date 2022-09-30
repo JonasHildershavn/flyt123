@@ -24,6 +24,7 @@ stages:
     
     - task: Npm@1
       inputs:
+        workingDir: '/web'
         command: 'install'
       displayName: Run npm install
     
