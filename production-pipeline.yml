@@ -37,7 +37,7 @@ stages:
     
     - task: CopyFiles@2
       inputs:
-        SourceFolder: './dist'
+        SourceFolder: './.next'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)/web'
       displayName: Package web
