@@ -5,11 +5,11 @@ import client from '../client'
 import PageLayout from '../components/page-layout/page-layout';
 import ProjectOverview from '../components/project-overview/project-overview';
 import Hero from '../components/hero/hero';
-import { Project } from '../types/project';
+import { SanityProject } from '../models/sanity-project';
 
 interface Props {
-  uncompleted: Project[]
-  completed: Project[]
+  uncompleted: SanityProject[]
+  completed: SanityProject[]
 }
 
 const Home = ({ uncompleted, completed }: Props) => {
@@ -23,10 +23,10 @@ const Home = ({ uncompleted, completed }: Props) => {
 }
 
 export async function getStaticProps() {
-  const uncompleted: Project[] = await client.fetch(groq`
+  const uncompleted: SanityProject[] = await client.fetch(groq`
       *[_type == "project" && completed == false]|order(publishedAt desc)
     `)
-  const completed: Project[] = await client.fetch(groq`
+  const completed: SanityProject[] = await client.fetch(groq`
       *[_type == "project" && completed == true]|order(publishedAt desc)
     `)
   return {

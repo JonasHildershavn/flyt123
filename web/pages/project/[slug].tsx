@@ -2,9 +2,9 @@ import Project from '../../components/project/project'
 import PageLayout from '../../components/page-layout/page-layout'
 import client from '../../client'
 import groq from 'groq'
-import { Project as ProjectType } from '../../types/project'
+import { SanityProject } from '../../models/sanity-project'
 
-const ProjectPage = ({project}: {project: ProjectType}) => {
+const ProjectPage = ({project}: {project: SanityProject}) => {
   return (
     <PageLayout>
       <Project {...project}/>

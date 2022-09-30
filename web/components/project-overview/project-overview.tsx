@@ -1,4 +1,4 @@
-import { Project } from "../../types/project";
+import { SanityProject } from "../../models/sanity-project";
 import ProjectCard from "../project-card/project-card";
 
 interface ProjectOverviewProps {

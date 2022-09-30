@@ -1,6 +1,6 @@
-import { Author } from "./author"
+import { SanityAuthor } from "./sanity-author"
 
-export interface Project {
+export interface SanityProject {
     title: string;
     intro: string;
     description: string;
