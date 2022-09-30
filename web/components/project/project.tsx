@@ -3,17 +3,18 @@ import Heading from '../heading/heading';
 import Interest from '../interest/interest';
 import Tasks from '../tasks/tasks';
 import Container from '../container/container';
+import { SanityProject } from '../../models/sanity-project';
 
-interface ProjectProps {
-    title: string;
-    intro: string;
-    description: string;
-    completed: boolean;
-    author: string;
-    resources: string[];
-}
+// interface ProjectProps {
+//     title: string;
+//     intro: string;
+//     description: string;
+//     completed: boolean;
+//     author: string;
+//     resources: string[];
+// }
 
-const Project: React.FC<ProjectProps> = ({
+const Project: React.FC<SanityProject> = ({
     title,
     intro,
     description,
@@ -33,7 +34,7 @@ const Project: React.FC<ProjectProps> = ({
                     <div className='project__resources'>
                         {resources && resources.length > 0 && (
                             <ul>
-                                {resources.map((resource, index) => (
+                                {resources.map((resource: any, index: number) => (
                                     <li key={'resource-'+index}>{resource}</li>
                                 ))}
                             </ul>
@@ -59,4 +60,13 @@ const Project: React.FC<ProjectProps> = ({
     
 );
 
+const test = (title: any, author: any) => {
+    console.log(author, title)
+    return (
+        <></>
+    )
+}
+
 export default Project;
+
+
