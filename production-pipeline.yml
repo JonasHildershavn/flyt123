@@ -24,14 +24,14 @@ stages:
     
     - task: Npm@1
       inputs:
-        workingDir: '/web'
+        workingDir: '$(Build.SourcesDirectory)/web'
         command: 'install'
       displayName: Run npm install
     
     - task: Npm@1
       inputs:
-        workingDir: '/web'
         command: 'custom'
+        workingDir: '$(Build.SourcesDirectory)/web'
         customCommand: 'run build'
       displayName: Build assets
     
