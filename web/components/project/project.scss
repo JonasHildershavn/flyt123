@@ -10,9 +10,7 @@
         flex-direction: column;
     }
 
-    &__pretext {
-        font-weight: bold;
-    }
+    
 
     &__intro {
         height: 100%;
@@ -22,13 +20,15 @@
         margin-bottom: 10px;
     }
 
-    &__project-leader {
+    &__contact-persons {
         height: 100%;
         margin: 0;
         background-color:$color--mint;
         padding: 50px;
     }
-
+    &__contact-person-pretext {
+        font-weight: bold;
+    }
     
     &__description {
         margin: 0 0 0 10px;

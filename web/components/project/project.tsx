@@ -11,6 +11,9 @@ interface ProjectProps {
     completed: boolean;
     author: string;
     resources: string[];
+    projectLeader: string;
+    techLead: string;
+    designLead: string;
 }
 
 const Project: React.FC<ProjectProps> = ({
@@ -19,15 +22,20 @@ const Project: React.FC<ProjectProps> = ({
     description,
     completed,
     author,
-    resources
-}) => (
+    resources,
+    projectLeader,
+    techLead,
+    designLead
+}) => {
+
+    return (
     <div className='project'>
         <Container className='project__container' theme='article'>
             <Heading headingLevel='h1' className='project__title'>{title}</Heading>
             <div className='project__onboarding'>
                 <div className='project__short-info'>
                     <div className='project__intro'>
-                        <span className='project__pretext'>Intro:</span>
+                        <Heading headingLevel='h2'>Intro:</Heading>
                         <p>{intro}</p>
                     </div>
                     <div className='project__resources'>
@@ -39,13 +47,34 @@ const Project: React.FC<ProjectProps> = ({
                             </ul>
                         )}
                     </div>
-                    <div className='project__project-leader'>
-                        <span className='project__pretext'>Prosjektleder:</span>
-                        <p>{author}</p>
+                    <div className='project__contact-persons'>
+                        <Heading headingLevel='h2'>Kontaktpersoner:</Heading>
+                        {projectLeader && (
+                            <ul className='project__contact-persons-list'>
+                                {projectLeader && (
+                                    <li className='project__contact-person'>
+                                        <span className='project__contact-person-pretext'>Prosjektleder:</span>
+                                        <p>{projectLeader}</p>
+                                    </li>
+                                )}
+                                {techLead && (
+                                    <li className='project__contact-person'>
+                                        <span className='project__contact-person-pretext'>Tech lead:</span>
+                                        <p>{techLead}</p>
+                                    </li>
+                                )}
+                                {designLead && (
+                                    <li className='project__contact-person'>
+                                        <span className='project__contact-person-pretext'>Design lead:</span>
+                                        <p>{designLead}</p>
+                                    </li>
+                                )}
+                            </ul>
+                        )}
                     </div>
                 </div>
                 <div className='project__description'>
-                    <span className='project__pretext'>Beskrivelse:</span>
+                    <Heading headingLevel='h2'>Beskrivelse:</Heading>
                     <p>{description}</p>
                 </div>
                 
@@ -57,6 +86,6 @@ const Project: React.FC<ProjectProps> = ({
         </Container>
     </div>
     
-);
+)};
 
 export default Project;

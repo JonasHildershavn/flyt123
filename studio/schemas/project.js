@@ -32,6 +32,24 @@ export default {
       type: "text",
     },
     {
+      name: 'projectLeader',
+      title: 'Prosjektleder',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
+      name: 'techLead',
+      title: 'Tech lead',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
+      name: 'designLead',
+      title: 'Design lead',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
