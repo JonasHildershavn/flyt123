@@ -3,17 +3,18 @@ import Heading from '../heading/heading';
 import Interest from '../interest/interest';
 import Tasks from '../tasks/tasks';
 import Container from '../container/container';
+import { Project } from '../../types/project';
 
-interface ProjectProps {
-    title: string;
-    intro: string;
-    description: string;
-    completed: boolean;
-    author: string;
-    resources: string[];
-}
+// interface ProjectProps {
+//     title: string;
+//     intro: string;
+//     description: string;
+//     completed: boolean;
+//     author: string;
+//     resources: string[];
+// }
 
-const Project: React.FC<ProjectProps> = ({
+const Project: React.FC<Project> = ({
     title,
     intro,
     description,
@@ -59,4 +60,13 @@ const Project: React.FC<ProjectProps> = ({
     
 );
 
+const test = (title: any, author: any) => {
+    console.log(author, title)
+    return (
+        <></>
+    )
+}
+
 export default Project;
+
+

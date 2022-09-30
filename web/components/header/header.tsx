@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 const Header: React.FC = () => (
   <header className="header">
-    <a href="/" className="header__logo">
+    <Link href="/" className="header__logo">
       <h1>Flyt</h1>
-    </a>
+    </Link>
     <span className="header__tagline">Plattformen for deg som flyter</span>
   </header>
 );

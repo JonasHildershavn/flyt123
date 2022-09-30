@@ -3,7 +3,7 @@ interface ProjectCardProps {
     _id: string
     title: string
     intro: string
-    slug: string
+    slug: any
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
