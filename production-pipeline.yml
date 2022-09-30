@@ -12,59 +12,71 @@ pool:
 
 stages:
 
-- stage: Build
+# - stage: Build
 
-  jobs:
-  - job: build
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '16.x'
-      displayName: 'Install Node.js'
+#   jobs:
+#   - job: build
+#     steps:
+#     - task: NodeTool@0
+#       inputs:
+#         versionSpec: '16.x'
+#       displayName: 'Install Node.js'
     
-    - task: Npm@1
-      inputs:
-        workingDir: '$(Build.SourcesDirectory)/web'
-        command: 'install'
-      displayName: Run npm install
+#     - task: Npm@1
+#       inputs:
+#         workingDir: '$(Build.SourcesDirectory)/web'
+#         command: 'install'
+#       displayName: Run npm install
     
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: '$(Build.SourcesDirectory)/web'
-        customCommand: 'run build'
-      displayName: Build assets
+#     - task: Npm@1
+#       inputs:
+#         command: 'custom'
+#         workingDir: '$(Build.SourcesDirectory)/web'
+#         customCommand: 'run build'
+#       displayName: Build assets
     
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: './web/.next'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/web'
-      displayName: Package web
+#     - task: CopyFiles@2
+#       inputs:
+#         SourceFolder: './web/.next'
+#         Contents: '**'
+#         TargetFolder: '$(Build.ArtifactStagingDirectory)/web'
+#       displayName: Package web
     
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)'
-        artifact: 'drop'
-        publishLocation: pipeline
-      displayName: Publish artifacts
+#     - task: PublishPipelineArtifact@1
+#       inputs:
+#         targetPath: '$(Build.ArtifactStagingDirectory)'
+#         artifact: 'drop'
+#         publishLocation: pipeline
+#       displayName: Publish artifacts
 
 
-- stage: deploy_production
-  displayName: Deploy to production
+# - stage: deploy_production
+#   displayName: Deploy to production
+#   jobs:
+#     - job: deploy
+#       steps:
+#       - download: none
+#       - checkout: none
+#       - task: DownloadPipelineArtifact@2
+#         inputs:
+#           artifact: drop
+      
+#       - task: AzureStaticWebApp@0
+#         displayName: Deploy to production enviroment
+#         inputs:
+#           app_location: web
+#           skip_app_build: true
+#           workingDirectory: $(Pipeline.Workspace)
+#           azure_static_web_apps_api_token: $(deployment_token)
+
+- stage: build_and_deploy_production
+  displayName: Build and Deploy to production
   jobs:
     - job: deploy
       steps:
-      - download: none
-      - checkout: none
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          artifact: drop
-      
       - task: AzureStaticWebApp@0
         displayName: Deploy to production enviroment
         inputs:
-          app_location: web
-          skip_app_build: true
-          workingDirectory: $(Pipeline.Workspace)
+          output_location: 'out'
+          app_location: '/web'
           azure_static_web_apps_api_token: $(deployment_token)
