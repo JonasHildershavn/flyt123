@@ -3,6 +3,7 @@ import Heading from '../heading/heading';
 import Interest from '../interest/interest';
 import Tasks from '../tasks/tasks';
 import Container from '../container/container';
+import ContactPersons from '../contact-persons/contact-persons';
 
 interface ProjectProps {
     title: string;
@@ -21,8 +22,7 @@ const Project: React.FC<ProjectProps> = ({
     intro,
     description,
     completed,
-    author,
-    resources,
+    resources = ["figma", "github", "jira"],
     projectLeader,
     techLead,
     designLead
@@ -30,14 +30,14 @@ const Project: React.FC<ProjectProps> = ({
 
     return (
     <div className='project'>
-        <Container className='project__container' theme='article'>
+        <Container className='project__container' theme='wide'>
             <Heading headingLevel='h1' className='project__title'>{title}</Heading>
             <div className='project__onboarding'>
+                <div className='project__description'>
+                    <Heading headingLevel='h2'>Beskrivelse:</Heading>
+                    <p>{description}</p>
+                </div>
                 <div className='project__short-info'>
-                    <div className='project__intro'>
-                        <Heading headingLevel='h2'>Intro:</Heading>
-                        <p>{intro}</p>
-                    </div>
                     <div className='project__resources'>
                         {resources && resources.length > 0 && (
                             <ul>
@@ -47,37 +47,13 @@ const Project: React.FC<ProjectProps> = ({
                             </ul>
                         )}
                     </div>
-                    <div className='project__contact-persons'>
-                        <Heading headingLevel='h2'>Kontaktpersoner:</Heading>
-                        {projectLeader && (
-                            <ul className='project__contact-persons-list'>
-                                {projectLeader && (
-                                    <li className='project__contact-person'>
-                                        <span className='project__contact-person-pretext'>Prosjektleder:</span>
-                                        <p>{projectLeader}</p>
-                                    </li>
-                                )}
-                                {techLead && (
-                                    <li className='project__contact-person'>
-                                        <span className='project__contact-person-pretext'>Tech lead:</span>
-                                        <p>{techLead}</p>
-                                    </li>
-                                )}
-                                {designLead && (
-                                    <li className='project__contact-person'>
-                                        <span className='project__contact-person-pretext'>Design lead:</span>
-                                        <p>{designLead}</p>
-                                    </li>
-                                )}
-                            </ul>
-                        )}
-                    </div>
+                    <ContactPersons projectLeader={projectLeader} techLead={techLead} designLead={designLead} />
                 </div>
-                <div className='project__description'>
-                    <Heading headingLevel='h2'>Beskrivelse:</Heading>
-                    <p>{description}</p>
+                                    
+                <div className='project__status'>
+                    Prosjektstatus
                 </div>
-                
+            
             </div>
             
             <Interest />

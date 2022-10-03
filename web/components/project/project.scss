@@ -1,39 +1,50 @@
 .project {
     
     &__onboarding {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        gap: 10px;
+        -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 10fr 10fr 7fr;
+		grid-template-areas:
+            'intro  intro status'
+            'info   info  status';
     }
 
-    &__short-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    
-
-    &__intro {
-        height: 100%;
-        margin: 0;
-        background-color:$color--mint;
-        padding: 50px;
-        margin-bottom: 10px;
-    }
-
-    &__contact-persons {
-        height: 100%;
-        margin: 0;
-        background-color:$color--mint;
-        padding: 50px;
-    }
-    &__contact-person-pretext {
-        font-weight: bold;
-    }
-    
     &__description {
-        margin: 0 0 0 10px;
-        width: 50%;
-        padding: 50px;
+        -ms-grid-row: 1; 
+        -ms-grid-column: 1; 
+        -ms-grid-column-span: 2;
+        grid-area: intro;
+
         background-color:$color--mint;
+        padding: 10px;
     }
+    &__short-info {
+        -ms-grid-row: 2; 
+        -ms-grid-column: 1; 
+        -ms-grid-column-span: 2;
+        grid-area: info;
+        
+        display: flex;
+        width: 100%;
+    }
+
+    &__resources {
+        width: 100%;
+        background-color:$color--mint;
+        padding: 10px;
+    }
+
+    &__status {
+        -ms-grid-row: 1; 
+        -ms-grid-column: 3; 
+        -ms-grid-column-span: 1;
+        grid-area: status;
+
+        background-color:$color--mint;
+        padding: 10px;
+
+    }
+    
+    
 }
