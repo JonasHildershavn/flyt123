@@ -5,21 +5,10 @@ import Tasks from '../tasks/tasks';
 import Container from '../container/container';
 import ContactPersons from '../contact-persons/contact-persons';
 
-interface ProjectProps {
-    title: string;
-    intro: string;
-    description: string;
-    completed: boolean;
-    author: string;
-    resources: string[];
-    projectLeader: string;
-    techLead: string;
-    designLead: string;
-}
+import { SanityProject } from '../../models/sanity-project';
 
-const Project: React.FC<ProjectProps> = ({
+const Project: React.FC<SanityProject> = ({
     title,
-    intro,
     description,
     completed,
     resources = ["figma", "github", "jira"],
@@ -41,7 +30,7 @@ const Project: React.FC<ProjectProps> = ({
                     <div className='project__resources'>
                         {resources && resources.length > 0 && (
                             <ul>
-                                {resources.map((resource, index) => (
+                                {resources.map((resource: any, index: number) => (
                                     <li key={'resource-'+index}>{resource}</li>
                                 ))}
                             </ul>
@@ -64,4 +53,13 @@ const Project: React.FC<ProjectProps> = ({
     
 )};
 
+const test = (title: any, author: any) => {
+    console.log(author, title)
+    return (
+        <></>
+    )
+}
+
 export default Project;
+
+
