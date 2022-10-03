@@ -42,6 +42,7 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       "projectLeader": projectLeader->name,
       "techLead": techLead->name,
       "designLead": designLead->name,
+      contributors[]->{name}
 }`
 
 

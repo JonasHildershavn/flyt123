@@ -1,4 +1,4 @@
-import Contributions from '../contributions/contributions';
+import Contributors from '../contributors/contributors';
 import Heading from '../heading/heading';
 import Interest from '../interest/interest';
 import Tasks from '../tasks/tasks';
@@ -14,7 +14,8 @@ const Project: React.FC<SanityProject> = ({
     resources = ["figma", "github", "jira"],
     projectLeader,
     techLead,
-    designLead
+    designLead,
+    contributors
 }) => {
 
     return (
@@ -47,7 +48,7 @@ const Project: React.FC<SanityProject> = ({
             
             <Interest />
             <Tasks tasks={["1", "to", "drei", "svei"]}/>
-            <Contributions contributions={["1", "to", "drei"]} />
+            <Contributors contributors={contributors} />
         </Container>
     </div>
     

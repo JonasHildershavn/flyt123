@@ -10,4 +10,5 @@ export interface SanityProject {
     projectLeader: string;
     techLead: string;
     designLead: string;
+    contributors: string[]
 }

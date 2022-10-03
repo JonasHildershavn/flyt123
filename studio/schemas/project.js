@@ -59,7 +59,14 @@ export default {
       name: "completed",
       title: "Ferdigstilt",
       type: "boolean",
-      
     },
+    {
+      title: 'Bidragsytere',
+      name: 'contributors',
+      type: 'array',
+      of: [{type: 'reference',
+        to: {type: 'author'}
+      }]
+    }
   ],
 }
