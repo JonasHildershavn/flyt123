@@ -7,4 +7,7 @@ export interface SanityProject {
     completed: boolean;
     author: string;
     resources: string[];
+    projectLeader: string;
+    techLead: string;
+    designLead: string;
 }
