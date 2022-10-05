@@ -36,6 +36,7 @@ stages:
         displayName: 'Install Node.js'
       - script: |
           cd studio
+          npm install -g @sanity/cli
           npm install
           sanity deploy
         displayName: 'npm install and sanity deploy'
