@@ -9,6 +9,8 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  SANITY_AUTH_TOKEN: $(sanity_deploy_token)
 
 stages:
 
@@ -24,6 +26,7 @@ stages:
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
+
 
 - stage:
   displayName: Deploy sanity
