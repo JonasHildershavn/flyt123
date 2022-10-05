@@ -1,10 +1,17 @@
 import Project from '../../components/project/project'
 import PageLayout from '../../components/page-layout/page-layout'
+import { NextPage } from 'next'
 import client from '../../client'
 import groq from 'groq'
 import { SanityProject } from '../../models/sanity-project'
 
-const ProjectPage = ({project}: {project: SanityProject}) => {
+interface ProjectPageProps {
+  project: SanityProject;
+}
+
+const ProjectPage: NextPage<ProjectPageProps> = ({
+  project,
+}) => {
   return (
     <PageLayout>
       <Project {...project}/>

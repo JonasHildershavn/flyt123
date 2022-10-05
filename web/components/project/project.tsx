@@ -5,15 +5,6 @@ import Tasks from '../tasks/tasks';
 import Container from '../container/container';
 import { SanityProject } from '../../models/sanity-project';
 
-// interface ProjectProps {
-//     title: string;
-//     intro: string;
-//     description: string;
-//     completed: boolean;
-//     author: string;
-//     resources: string[];
-// }
-
 const Project: React.FC<SanityProject> = ({
     title,
     intro,
@@ -59,13 +50,6 @@ const Project: React.FC<SanityProject> = ({
     </div>
     
 );
-
-const test = (title: any, author: any) => {
-    console.log(author, title)
-    return (
-        <></>
-    )
-}
 
 export default Project;
 

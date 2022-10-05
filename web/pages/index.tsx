@@ -12,7 +12,10 @@ interface Props {
   completed: SanityProject[]
 }
 
-const Home = ({ uncompleted, completed }: Props) => {
+const Index: NextPage<Props> = ({
+  uncompleted,
+  completed,
+}) => {
   return (
     <PageLayout>
       <Hero/>
@@ -37,4 +40,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Home
+export default Index
