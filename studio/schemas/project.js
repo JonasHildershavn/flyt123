@@ -41,7 +41,37 @@ export default {
       name: "completed",
       title: "Ferdigstilt",
       type: "boolean",
-      
     },
+
+    {
+      name: "completed123",
+      title: "Ferdigstilt123",
+      type: "boolean",
+    },
+    {
+      title: 'Ressurser',
+      name: 'recourses',
+      type: 'array',
+      of: [
+        {
+          title: 'Ressurs',
+          name: 'recource',
+          type: 'object',
+          fields: [
+            {
+              title: 'Tittel',
+              name: 'title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              title: 'Url',
+              name: 'url',
+              type: 'url',
+            }
+          ]
+        }
+      ]
+    }
   ],
 }

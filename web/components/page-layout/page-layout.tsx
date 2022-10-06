@@ -1,5 +1,6 @@
 import Header from '../header/header'
 import Footer from '../footer/footer'
+import Logo from '../logo/logo'
 
 interface PageLayoutProps {
     children?: React.ReactNode;

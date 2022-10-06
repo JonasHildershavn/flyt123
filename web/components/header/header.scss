@@ -5,16 +5,44 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  top: 0;
+  top: 1rem;
 
-  &__tagline {
-    font-family: 'Knowit';
-    margin-right: 2rem;
-  }
+  
 
   &__logo {
-      color: inherit;
-      text-decoration: inherit;
-      margin-left: 2rem;
+    font-size: 10rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: normal;
   }
+
+  span {
+    -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+  }
+    
+
+  &__logo:hover{
+    
+    .f {
+      }
+    
+      .l { 
+        padding-left: 8%;
+      }
+      .y {
+        padding-left: 25%;
+      }
+    
+      .t {
+        padding-left: 100%;
+      }
+  }
+
 }
+
+
+
+

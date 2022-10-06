@@ -2,10 +2,12 @@ import Link from "next/link";
 
 const Header: React.FC = () => (
   <header className="header">
-    <Link href="/" className="header__logo">
-      <h1>Flyt</h1>
-    </Link>
-    <span className="header__tagline">Plattformen for deg som flyter</span>
+    <a href="/" className="header__logo">
+      <span className="f">F</span>
+      <span className="l">L</span>
+      <span className="y">Y</span>
+      <span className="t">T</span>
+    </a>
   </header>
 );
 
