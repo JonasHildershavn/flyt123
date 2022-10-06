@@ -1,0 +1,16 @@
+.header {
+  font-size: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  max-width: 1350px;
+
+  &__tagline {
+    margin-left: 50px;
+  }
+
+  &__logo {
+      color: inherit;
+      text-decoration: inherit;
+  }
+}
