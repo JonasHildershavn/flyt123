@@ -16,7 +16,7 @@ const Contributors: React.FC<ContributionsProps> = ({ contributors }) => (
         {contributors.map((element, index) => (
           <li className="contributors__list-item" key={index}>
             {element.name}
-          </li> //TODO: fix redline
+          </li>
         ))}
       </ul>
     )}
