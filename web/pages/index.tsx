@@ -14,7 +14,7 @@ interface Props {
 
 const Home = ({ uncompleted, completed }: Props) => {
   return (
-    <PageLayout>
+    <PageLayout title="Flyt">
       <Hero/>
       <ProjectOverview title="Pågående Flyt-prosjekter" projects={uncompleted}/>
       <ProjectOverview title="Ferdigstilte Flyt-prosjekter" projects={completed} />
