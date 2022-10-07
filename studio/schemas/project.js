@@ -32,6 +32,24 @@ export default {
       type: "text",
     },
     {
+      name: 'projectLeader',
+      title: 'Prosjektleder',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
+      name: 'techLead',
+      title: 'Tech lead',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
+      name: 'designLead',
+      title: 'Design lead',
+      type: 'reference',
+      to: {type: 'author'},
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
@@ -42,36 +60,13 @@ export default {
       title: "Ferdigstilt",
       type: "boolean",
     },
-
     {
-      name: "completed123",
-      title: "Ferdigstilt123",
-      type: "boolean",
-    },
-    {
-      title: 'Ressurser',
-      name: 'recourses',
+      title: 'Bidragsytere',
+      name: 'contributors',
       type: 'array',
-      of: [
-        {
-          title: 'Ressurs',
-          name: 'recource',
-          type: 'object',
-          fields: [
-            {
-              title: 'Tittel',
-              name: 'title',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            },
-            {
-              title: 'Url',
-              name: 'url',
-              type: 'url',
-            }
-          ]
-        }
-      ]
+      of: [{type: 'reference',
+        to: {type: 'author'}
+      }]
     }
   ],
 }

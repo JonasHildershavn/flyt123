@@ -8,6 +8,8 @@
 #     include:
 #     -  feature/*
 
+# pool:
+#   vmImage: ubuntu-latest
 
 # pool:
 #   vmImage: ubuntu-latest
