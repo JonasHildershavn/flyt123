@@ -28,3 +28,12 @@ Dette prosjektet krever at Node.js og npm er installert
 10. Da er det bare å finne tasks i boardet på DevOps: https://dev.azure.com/knowitexperience/flyt/_boards/board/t/flyt%20Team/Backlog%20items
 
 **OBS: Husk å kjøre npm install i web etter en pull. Hender at man får feilmelding. **
+
+
+### Kjøring av Azure Static Web App lokalt
+Prosjektet er deployet til Azure Static Web App. For å teste at funskjonalitet som autorisasjon og autentisering fungerer, kan dette testes ved å kjøre lokalt. (https://learn.microsoft.com/en-us/azure/static-web-apps/local-development)
+
+1. Last ned Azure Static Web App CLI.
+2. Kjør "npm install -g @azure/static-web-apps-cli"
+3. Plasser deg i "web"-mappen.
+4. Kjøre "swa start"
