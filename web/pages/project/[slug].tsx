@@ -4,7 +4,7 @@ import client from "../../client";
 import groq from "groq";
 import { SanityProject } from "../../models/sanity-project";
 
-const ProjectPage = ({ project }: { project: SanityProject }) => {
+const ProjectPage = ({ project, slug }: { project: SanityProject, slug: string }) => {
   return (
     <PageLayout title={project.title}>
       <Project {...project} />
@@ -16,10 +16,9 @@ export async function getStaticPaths() {
   const paths: string[] = await client.fetch(
     `*[_type == "project" && defined(slug.current)][].slug.current`
   );
-
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -29,6 +28,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       project,
+      slug,
     },
   };
 }

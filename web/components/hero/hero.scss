@@ -3,4 +3,26 @@
   &__text {
     
   }
+
+  &__ledig-tid-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: black;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  &__ledig-tid-btn span {
+    bottom: -0.5rem;
+    right: -0.1rem;
+    padding: 0;
+    position: absolute;
+    text-decoration: none;
+    text-align: right;
+    color: $color--white;
+    font-size: $font-size--32;
+    font-weight: bold;
+    // line-height: 0.7;
+  }
 }

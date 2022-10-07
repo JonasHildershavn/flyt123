@@ -57,9 +57,4 @@ const Project: React.FC<SanityProject> = ({
   );
 };
 
-const test = (title: any, author: any) => {
-  console.log(author, title);
-  return <></>;
-};
-
 export default Project;
