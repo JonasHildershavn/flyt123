@@ -1,7 +1,8 @@
+import React from "react";
+import { Helmet } from "react-helmet";
+import Container from "../container/container";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { Helmet } from "react-helmet";
-import React from "react";
 
 interface PageLayoutProps {
   children?: React.ReactNode;
@@ -14,7 +15,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => (
       <title>{title}</title>
     </Helmet>
     <Header />
-    {children}
+    <Container className="page-layout__content" theme="wide">
+      {children}
+    </Container>
     <Footer />
   </div>
 );
