@@ -1,0 +1,64 @@
+.collabtool {
+    margin-top: 2rem;
+    border-left: 2px solid $color--sand;
+    padding-left: 1rem;
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    transition-timing-function: ease-in;
+    margin-left: 2px;
+    transition: all 100ms ease-in-out;
+  
+    &:hover {
+      border-left-width: 4px;
+      border-color: $color--digital-black;
+      margin-left: 0;
+      
+      .collabtool__icon {
+        opacity: 1;
+      }
+    }
+  
+    &__title {
+      font-family: knowit;
+      font-weight: $font-weight--normal;
+      font-size: $font-size--20;
+      margin: 0 0 0.5rem 0;
+      color: $color--digital-black;
+    }
+  
+    &__description {
+      font-size: 1rem;
+      margin: 0.5rem 0 1.5rem;
+      color: $color--light-digital-black;
+    }
+  
+    &__categories {
+      font-size: 1rem;
+      color: $color--lighter-digital-black;
+    }
+  
+    &__link {
+      display: flex;
+      justify-content: space-between;
+      text-decoration: none;
+    }
+  
+    &__icon {
+      transition: opacity 200ms ease-in-out;
+      opacity: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: block;
+      flex-shrink: 0;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

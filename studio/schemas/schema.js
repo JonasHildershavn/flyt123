@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // We import object and document schemas
 import author from './author'
 import project from './project'
+import collabtool from './collabtool'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -19,5 +20,6 @@ export default createSchema({
     // in the studio.
     project,
     author,
+    collabtool,
   ]),
 })

@@ -7,4 +7,10 @@ export interface SanityProject {
     completed: boolean;
     author: string;
     resources: string[];
+    collabtools?: SanityColabTool[];
+}
+
+export interface SanityColabTool {
+    title: string;
+    url: string;
 }

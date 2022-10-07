@@ -4,6 +4,7 @@ import Interest from '../interest/interest';
 import Tasks from '../tasks/tasks';
 import Container from '../container/container';
 import { SanityProject } from '../../models/sanity-project';
+import CollabtoolList from '../collabtool-list/collabtool-list';
 
 // interface ProjectProps {
 //     title: string;
@@ -20,7 +21,8 @@ const Project: React.FC<SanityProject> = ({
     description,
     completed,
     author,
-    resources
+    resources,
+    collabtools,
 }) => (
     <div className='project'>
         <Container className='project__container' theme='article'>
@@ -51,6 +53,14 @@ const Project: React.FC<SanityProject> = ({
                 </div>
                 
             </div>
+            <div>
+            {collabtools && collabtools.length > 0 && (
+            <div className="project_collabtools">
+              <h2>Samarbeidsverktøy</h2>
+            <CollabtoolList collabtools={collabtools}/>
+            </div>
+            )}
+            </div>
             
             <Interest />
             <Tasks tasks={["1", "to", "drei", "svei"]}/>
@@ -59,13 +69,6 @@ const Project: React.FC<SanityProject> = ({
     </div>
     
 );
-
-const test = (title: any, author: any) => {
-    console.log(author, title)
-    return (
-        <></>
-    )
-}
 
 export default Project;
 

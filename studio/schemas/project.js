@@ -43,5 +43,11 @@ export default {
       type: "boolean",
       
     },
+    {
+      name: "collabtool",
+      title: "Samhandlingsverktøy",
+      type: "array",
+      of: [{type: "reference", to: [{type: "collabtool"}]}]
+    }
   ],
 }
