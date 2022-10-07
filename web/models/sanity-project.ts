@@ -1,7 +1,7 @@
 import { SanityAuthor } from "./sanity-author";
 
 export interface SanityProject {
-  title: string;
+  title?: string;
   intro: string;
   description: string;
   completed: boolean;
