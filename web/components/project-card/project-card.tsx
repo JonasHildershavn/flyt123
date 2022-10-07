@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 interface ProjectCardProps {
     _id: string
@@ -12,10 +13,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     intro,
     slug,
 }) => (
-    <a key={_id} title={title} className="project__card" href={`project/${slug.current}`}>
-        <h2>{title}</h2>
-        <p>{intro}</p>
-    </a>
+    <Link key={_id} title={title}href={`project/${slug.current}`}>
+        <div className="project__card">
+            <h2>{title}</h2>
+            <p>{intro}</p>
+        </div>
+        
+    </Link>
 )
 
 export default ProjectCard
