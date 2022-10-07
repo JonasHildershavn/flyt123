@@ -1,3 +1,5 @@
+const status = ['Oppstartsfase', 'Pågående', 'Avsluttende fase'];
+
 export default {
   name: 'project',
   title: 'Prosjekt',
@@ -32,28 +34,38 @@ export default {
       type: "text",
     },
     {
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      description: 'Status på prosjektet',
+      options: {
+        list: status,
+        layout: 'radio'
+      }
+    },
+    {
       name: 'projectLeader',
       title: 'Prosjektleder',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: 'techLead',
       title: 'Tech lead',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: 'designLead',
       title: 'Design lead',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'author' },
     },
     {
       name: "completed",
@@ -64,8 +76,9 @@ export default {
       title: 'Bidragsytere',
       name: 'contributors',
       type: 'array',
-      of: [{type: 'reference',
-        to: {type: 'author'}
+      of: [{
+        type: 'reference',
+        to: { type: 'author' }
       }]
     }
   ],
