@@ -1,20 +1,30 @@
 .header {
-  margin: 0 $gutter-sm;
+  height: 9vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
   top: 0;
 
+  margin: 0 auto;
+  width: 95%;
+  max-width: $break-point--large;
+
+  @include break-at($break-point--large) {
+    width: 85%;
+  }
+
   &__tagline {
-    font-family: 'Knowit';
+    font-family: "Knowit";
     margin-right: 2rem;
   }
 
   &__logo {
-      color: inherit;
-      text-decoration: inherit;
-      margin-left: 2rem;
+    color: inherit;
+    text-decoration: inherit;
+    margin-left: 2rem;
+  }
+  &__logo-text {
+    cursor: pointer;
   }
 }
