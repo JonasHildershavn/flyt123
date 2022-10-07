@@ -3,7 +3,7 @@ import PageLayout from '../components/page-layout/page-layout';
 
 const AdminPage : NextPage = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Adminpanel">
             <p>Admin side</p>
         </PageLayout>
     )

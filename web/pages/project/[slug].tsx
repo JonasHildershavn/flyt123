@@ -13,7 +13,7 @@ const ProjectPage: NextPage<ProjectPageProps> = ({
   project,
 }) => {
   return (
-    <PageLayout>
+    <PageLayout title={project.title}>
       <Project {...project}/>
     </PageLayout>
   )

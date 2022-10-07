@@ -3,7 +3,7 @@ import PageLayout from '../../components/page-layout/page-layout'
 
 const LedigTidForm: NextPage = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Ledig tid">
             
             <form>
                 <label>
