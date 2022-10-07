@@ -7,7 +7,19 @@
             ]
         },
         {
-            "route": "/articles/*",
+            "route": "/project/*",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/ledig-tid/*",
+            "allowedRoles": [
+                "authenticated"
+            ]
+        },
+        {
+            "route": "/api/*",
             "allowedRoles": [
                 "authenticated"
             ]
