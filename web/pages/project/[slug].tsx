@@ -6,7 +6,7 @@ import { SanityProject } from '../../models/sanity-project'
 
 const ProjectPage = ({project}: {project: SanityProject}) => {
   return (
-    <PageLayout>
+    <PageLayout title={project.title}>
       <Project {...project}/>
     </PageLayout>
   )
