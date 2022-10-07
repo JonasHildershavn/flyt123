@@ -14,10 +14,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     slug,
 }) => (
     <Link key={_id} title={title}href={`project/${slug.current}`}>
-        <div className="project__card">
+        <a className="project__card">
             <h2>{title}</h2>
             <p>{intro}</p>
-        </div>
+        </a>
         
     </Link>
 )
