@@ -8,19 +8,34 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+  
 
 stages:
 
-- stage: build_and_deploy_dev
-  displayName: Build and Deploy to dev
+# - stage: build_and_deploy_dev
+#   displayName: Build and Deploy to dev
+#   jobs:
+#     - job: deploy
+#       steps:
+#       - task: AzureStaticWebApp@0
+#         displayName: Deploy to development enviroment
+#         inputs:
+#           output_location: 'out'
+#           app_location: '/web'
+#           deployment_environment: dev
+#           azure_static_web_apps_api_token: $(deployment_token)
+
+- stage: deploy_sanity
+  displayName: Deploy to sanity
   jobs:
     - job: deploy
+      variables:
+          SANITY_AUTH_TOKEN: $(deploy_token_sanity)
       steps:
-      - task: AzureStaticWebApp@0
-        displayName: Deploy to development enviroment
+      - task: CmdLine@2
         inputs:
-          output_location: 'out'
-          app_location: '/web'
-          deployment_environment: dev
-          azure_static_web_apps_api_token: $(deployment_token)
+          script: |
+            cd studio
+            npm install -g @sanity/cli
+            npm install
+            sanity deploy
