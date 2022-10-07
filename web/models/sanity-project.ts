@@ -5,6 +5,7 @@ export interface SanityProject {
   intro: string;
   description: string;
   completed: boolean;
+  status: string;
   author: SanityAuthor;
   resources: string[];
   projectLeader: string;
