@@ -2,8 +2,8 @@ import Contributors from "../contributors/contributors";
 import Heading from "../heading/heading";
 import Interest from "../interest/interest";
 import Tasks from "../tasks/tasks";
-import Container from "../container/container";
 import ContactPersons from "../contact-persons/contact-persons";
+import Status from "../status/status";
 
 import { SanityProject } from "../../models/sanity-project";
 
@@ -11,6 +11,7 @@ const Project: React.FC<SanityProject> = ({
   title,
   description,
   completed,
+  status,
   resources = ["figma", "github", "jira"],
   projectLeader,
   techLead,
@@ -44,7 +45,9 @@ const Project: React.FC<SanityProject> = ({
           />
         </div>
 
-        <div className="project__status">Prosjektstatus</div>
+        <div className="project__status">
+          <Status status={status} />
+        </div>
       </div>
 
       <Interest />
