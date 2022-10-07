@@ -1,8 +1,10 @@
-.project__card {
-    color: inherit;
-    text-decoration: inherit;
-    height:14rem;
-    width: 24rem;
-    background-color: $color--melon;
-    padding: 2vh;
+.project-card {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: $color--melon;
+  padding: 20px;
+
+  &__title {
+    overflow-wrap: break-word;
+  }
 }
