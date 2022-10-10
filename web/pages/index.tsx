@@ -6,6 +6,7 @@ import PageLayout from '../components/page-layout/page-layout';
 import ProjectOverview from '../components/project-overview/project-overview';
 import Hero from '../components/hero/hero';
 import { SanityProject } from '../models/sanity-project';
+import Logo from '../components/logo/logo';
 
 interface Props {
   uncompleted: SanityProject[]
