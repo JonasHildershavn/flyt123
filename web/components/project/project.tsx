@@ -17,6 +17,7 @@ const Project: React.FC<SanityProject> = ({
   techLead,
   designLead,
   contributors,
+  needs,
 }) => {
   return (
     <div className="project">
@@ -51,7 +52,7 @@ const Project: React.FC<SanityProject> = ({
       </div>
 
       <Interest />
-      <Tasks tasks={["1", "to", "drei", "svei"]} />
+      <Tasks tasks={needs} />
       <Contributors contributors={contributors} />
     </div>
   );

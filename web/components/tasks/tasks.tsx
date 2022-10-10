@@ -1,24 +1,41 @@
-import Heading from '../heading/heading'
+import cn from "classnames";
+
+import Heading from "../heading/heading";
 
 interface TasksProps {
-  tasks: string[]
+  tasks: string[];
 }
+
+const color: { [key: string]: string } = {
+  dev: "tasks__list-item--red",
+  des: "tasks__list-item--blue",
+  cat: "tasks__list-item--green",
+};
+
+const text: any = {
+  dev: "utvikler",
+  des: "design",
+  cat: "katt",
+};
 
 const Tasks: React.FC<TasksProps> = ({ tasks }) => (
   <div className="tasks">
-    <Heading headingLevel='h2' className='tasks__title'>Noen oppgaver vi trengre hjelp med</Heading>
-    <div>tags</div>
-    <div className='tasks__list'>
-      {tasks && tasks.length > 0 && (
-        <ul>
-          {tasks.map((task, index) => (
-            <li key={'task-' + index}>{task}</li>
-          ))}
-        </ul>
-      )}
-    </div>  
+    <Heading headingLevel="h2" className="tasks__title">
+      Noen oppgaver vi trenger hjelp med
+    </Heading>
+    {tasks && tasks.length > 0 && (
+      <ul className="tasks__list">
+        {tasks.map((task, index) => (
+          <li
+            key={"needs-" + index}
+            className={cn("tasks__list-item", color[task])}
+          >
+            Vi har masse {text[task]}-jobber! Please hjelp oss
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 );
-  
-  export default Tasks;
-  
+
+export default Tasks;

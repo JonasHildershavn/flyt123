@@ -1,4 +1,9 @@
 const status = ['Oppstartsfase', 'Pågående', 'Avsluttende fase'];
+const needs = [
+  { value: 'dev', title: 'Utviklere' },
+  { value: 'des', title: 'Designere' },
+  { value: 'cat', title: 'Katter' }
+]
 
 export default {
   name: 'project',
@@ -41,6 +46,19 @@ export default {
       options: {
         list: status,
         layout: 'radio'
+      }
+    },
+    {
+      name: 'needs',
+      title: 'Behov',
+      type: 'array',
+      description: 'Status på prosjektet',
+      of: [{
+        type: 'string'
+      }],
+      options: {
+        list: needs,
+        layout: 'checkbox'
       }
     },
     {

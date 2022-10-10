@@ -12,4 +12,5 @@ export interface SanityProject {
   techLead: string;
   designLead: string;
   contributors: SanityAuthor[];
+  needs: string[];
 }
