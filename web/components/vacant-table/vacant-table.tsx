@@ -21,7 +21,7 @@ const VacantTable: React.FC<VacantTableProps> = ({
         { field: 'capacity', headerName: 'Kapasitet', type: 'number', width: 100 },
         { field: 'freeTill', headerName: 'Ledig til', width: 180 },
         { field: 'rowKey', headerName: 'Email', width: 240 },
-        { field: 'timestamp', headerName: 'Sist oppdatert', width: 180 },
+        { field: 'timestamp', headerName: 'Sist oppdatert', width: 240 },
     ];
 
     const rows = array

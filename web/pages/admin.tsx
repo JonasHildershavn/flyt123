@@ -2,9 +2,8 @@ import { NextPage } from 'next'
 import PageLayout from '../components/page-layout/page-layout';
 import VacantTable from '../components//vacant-table/vacant-table';
 
-// import AzureTables from "@azure/data-tables";
-import { TableClient, AzureNamedKeyCredential } from "@azure/data-tables";
 import { AzureVacant } from '../models/azure-vacant';
+import { Storage } from '../api/azure-storage';
 
 interface Props {
     vacants: AzureVacant[]
@@ -14,32 +13,19 @@ interface Props {
 const AdminPage : NextPage<Props> = ({
     vacants,
 }) => {
+    
     return (
         <PageLayout title="Adminpanel">
-            <p>Admin</p>
+            <h2>Admin</h2>
             <VacantTable array={vacants}/>
         </PageLayout>
     )
 }
 
 export async function getStaticProps() {
+    let storage = new Storage();
+    let vacants = await storage.getVacants();
 
-    const account = "flytstorageaccount";
-    const accountKey = "RGGRqAcHULge99e0yqjA4d1NWXYUoR9HlIpLNJMKZm1QKXPyZDYQmSGpecBlA0UVgtV2Zr1Wk07A+ASt6bl91w==";
-    const tableName = "vacants";
-
-    const credential = new AzureNamedKeyCredential(account, accountKey);
-    const client = new TableClient(`https://${account}.table.core.windows.net`, tableName, credential);
-
-    const vacantsIter = client.listEntities()
-
-    let vacants = [];
-    for await (const vacant of vacantsIter) {
-        const parsed: AzureVacant = vacant
-        
-        vacants.push(parsed)
-    }
-    
     return {
         props: {
             vacants,
@@ -48,3 +34,4 @@ export async function getStaticProps() {
 }
 
 export default AdminPage
+
