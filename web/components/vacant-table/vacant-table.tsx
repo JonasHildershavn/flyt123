@@ -13,7 +13,6 @@ interface VacantTableProps {
 const VacantTable: React.FC<VacantTableProps> = ({
     array,
 }) => {
-    console.log("ARRAY", array)
 
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Navn', width: 180},
