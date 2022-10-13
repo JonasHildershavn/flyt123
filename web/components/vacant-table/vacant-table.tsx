@@ -38,6 +38,10 @@ const VacantTable: React.FC<VacantTableProps> = ({
                 // checkboxSelection
                 components={{Toolbar: CustomToolbar,
                 }}
+                sx={{
+                    border: 'none',
+                    borderRadius: '0',
+                }}
 
             />
         </div>
