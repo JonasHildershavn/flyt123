@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import PageLayout from '../components/page-layout/page-layout';
 import VacantTable from '../components//vacant-table/vacant-table';
-import { Storage } from "../../api/azure-storage"
 
 // import AzureTables from "@azure/data-tables";
 import { TableClient, AzureNamedKeyCredential } from "@azure/data-tables";
