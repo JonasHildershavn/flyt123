@@ -10,11 +10,10 @@ export class Storage {
     private client: TableClient;
 
     constructor() {
-        try {
-            this.accountKey = process.env.Azure_StorageAccount_AccessKey // AccessKey should be stored locally and not shared
-        } catch (error) {
-            console.log("Could not retrieve Azure_StorageAccount_AccessKey: ", error)
+        if (process.env.Azure_StorageAccount_AccessKey === undefined) {
+            console.log("Could not retrieve Azure_StorageAccount_AccessKey: ")
         }
+        this.accountKey = process.env.Azure_StorageAccount_AccessKey as string
         this.credential = new AzureNamedKeyCredential(this.account, this.accountKey);
         this.client = new TableClient(`https://${this.account}.table.core.windows.net`, this.tableName, this.credential);
         
