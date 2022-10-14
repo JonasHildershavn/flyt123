@@ -1,6 +1,6 @@
 import Project from "../../components/project/project";
 import PageLayout from "../../components/page-layout/page-layout";
-import client from "../../client";
+import client from "../../api/sanity-client";
 import groq from "groq";
 import { SanityProject } from "../../models/sanity-project";
 

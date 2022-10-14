@@ -11,6 +11,7 @@
     background-color: black;
     width: 10rem;
     height: 10rem;
+    overflow: hidden;
   }
 
   &__ledig-tid-btn span {
@@ -21,7 +22,7 @@
     text-decoration: none;
     text-align: right;
     color: $color--white;
-    font-size: $font-size--32;
+    font-size: $font-size--28;
     font-weight: bold;
     // line-height: 0.7;
   }
