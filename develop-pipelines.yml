@@ -16,6 +16,9 @@ stages:
   displayName: Build and Deploy to dev
   jobs:
     - job: deploy
+      variables:
+      - name: Azure_StorageAccount_AccessKey
+        value: $(Azure_StorageAccount_AccessKey)
       steps:
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
