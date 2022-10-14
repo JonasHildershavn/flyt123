@@ -4,10 +4,11 @@ import {
     GridToolbarContainer, 
     GridToolbarExport 
 } from '@mui/x-data-grid';
+import { AzureVacant } from '../../models/azure-vacant';
 
 
 interface VacantTableProps {
-    array: Array<Object>;
+    array: AzureVacant[];
 }
 
 const VacantTable: React.FC<VacantTableProps> = ({

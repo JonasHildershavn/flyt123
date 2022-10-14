@@ -23,14 +23,16 @@ export class Storage {
         const vacantsIter = this.client.listEntities()
         let vacants: AzureVacant[] = []
         for await (const vacant of vacantsIter) {
-            vacants.push(vacant)
+            vacants.push(vacant as AzureVacant)
         }
 
         return vacants
     }
 
     async upsertVacant(vacant: AzureVacant) {
-        await this.client.updateEntity(vacant)
+        if (vacant) {
+            //await this.client.updateEntity(vacant)
+        }
         return;
     }
 }
