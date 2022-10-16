@@ -26,39 +26,12 @@
       color: $color--digital-black;
     }
   
-    &__description {
-      font-size: 1rem;
-      margin: 0.5rem 0 1.5rem;
-      color: $color--light-digital-black;
-    }
-  
-    &__categories {
-      font-size: 1rem;
-      color: $color--lighter-digital-black;
-    }
   
     &__link {
       display: flex;
       justify-content: space-between;
       text-decoration: none;
     }
+}
   
-    &__icon {
-      transition: opacity 200ms ease-in-out;
-      opacity: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: block;
-      flex-shrink: 0;
-    }
-  }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
   

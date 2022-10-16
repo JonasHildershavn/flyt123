@@ -11,9 +11,8 @@ const Collabtool: React.FC<CollabtoolProps> = ({
 }) => (
     <div className="collabtool">
         <a className="collabtool_link" href={url}>
-            <div>
-                <h3 className="collabtool_title">{title}</h3>
-            </div>
+        <p className="collabtool_title">{title}</p>
+            
         </a>
     </div>
 

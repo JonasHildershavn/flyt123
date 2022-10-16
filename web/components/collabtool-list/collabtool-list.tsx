@@ -8,8 +8,8 @@ export interface CollabtoolListProps {
 const CollabtoolList: React.FC<CollabtoolListProps> = ({ collabtools }) => {
   return (
     <ul className="collabtool-list">
-      {collabtools.map((collabtool) => (
-        <li className="collabtool-item">
+      {collabtools.map((collabtool, index) => (
+        <li key={"collabtool"+index}  className="collabtool-item">
           <Collabtool {...collabtool} />
         </li>
       ))}
