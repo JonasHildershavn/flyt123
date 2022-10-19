@@ -35,12 +35,17 @@ const VacantTable: React.FC<VacantTableProps> = ({
                 getRowId={(row) => row.rowKey}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                // checkboxSelection
+                checkboxSelection
                 components={{Toolbar: CustomToolbar,
                 }}
                 sx={{
                     border: 'none',
                     borderRadius: '0',
+                }}
+                 initialState={{
+                    sorting: {
+                    sortModel: [{ field: 'capacity', sort: 'desc' }],
+                    },
                 }}
 
             />
