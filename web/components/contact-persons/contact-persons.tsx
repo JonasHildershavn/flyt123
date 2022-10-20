@@ -1,11 +1,8 @@
+import { SanityContactPerson } from "../../models/sanity-contact-person";
 import Heading from "../heading/heading";
 
-interface ContactPersonProps {
-  title: string;
-  role: string;
-}
 interface ContactPersonListProps {
-  contactPersons: ContactPersonProps[];
+  contactPersons: SanityContactPerson[];
 }
 const ContactPersons: React.FC<ContactPersonListProps> = ({
   contactPersons,
@@ -14,10 +11,10 @@ const ContactPersons: React.FC<ContactPersonListProps> = ({
     <Heading headingLevel="h2">Kontaktpersoner:</Heading>
     {contactPersons && contactPersons.length > 0 && (
       <ul className="contact-persons__list">
-        {contactPersons.map(({ title, role }, index) => (
+        {contactPersons.map(({ employee, role }, index) => (
           <li key={"contactPerson" + index} className="contact-persons__person">
             <span className="contact-persons__pretext">{role}:</span>
-            <p className="contact-persons__name">{title}</p>
+            <p className="contact-persons__name">{employee.name}</p>
           </li>
         ))}
       </ul>

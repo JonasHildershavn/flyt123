@@ -17,4 +17,10 @@ export default {
             validation: (Rule) => Rule.required(),
         },
     ],
+    preview: {
+        select: {
+            title: 'employee.name',
+            subtitle: 'role'
+        }
+    }
 };
