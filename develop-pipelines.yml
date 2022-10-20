@@ -24,6 +24,8 @@ stages:
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
+        env:
+          Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
 
 # - stage: deploy_sanity
 #   displayName: Deploy to sanity
