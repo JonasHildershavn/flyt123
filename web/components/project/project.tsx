@@ -13,9 +13,7 @@ const Project: React.FC<SanityProject> = ({
   completed,
   status,
   resources = ["figma", "github", "jira"],
-  projectLeader,
-  techLead,
-  designLead,
+  contactPersons,
   contributors,
 }) => {
   return (
@@ -38,11 +36,7 @@ const Project: React.FC<SanityProject> = ({
               </ul>
             )}
           </div>
-          <ContactPersons
-            projectLeader={projectLeader}
-            techLead={techLead}
-            designLead={designLead}
-          />
+          <ContactPersons contactPersons={contactPersons} />
         </div>
 
         <div className="project__status">
