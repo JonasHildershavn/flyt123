@@ -1,3 +1,5 @@
+const status = ['Oppstartsfase', 'Pågående', 'Avsluttende fase'];
+
 export default {
   name: 'project',
   title: 'Prosjekt',
@@ -30,6 +32,16 @@ export default {
       name: "description",
       title: "Beskrivelse",
       type: "text",
+    },
+    {
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      description: 'Status på prosjektet',
+      options: {
+        list: status,
+        layout: 'radio'
+      }
     },
     {
       name: "contactPersons",

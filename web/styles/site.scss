@@ -19,12 +19,12 @@ section {
 
 
 h1 {
-  font-family: knowit;
+  // font-family: knowit;
   font-weight: Bold;
 }
 h2 {
   color: $color--deep-black;
-  font-family: knowit;
+  // font-family: knowit;
   font-weight: normal;
 }
 
@@ -32,6 +32,10 @@ ul,
 li,
 p {
   line-height: 1.6;
+}
+
+a {
+  text-decoration: inherit;
 }
 
 ::selection {
