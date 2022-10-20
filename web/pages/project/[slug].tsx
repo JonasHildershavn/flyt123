@@ -4,7 +4,13 @@ import client from "../../api/sanity-client";
 import groq from "groq";
 import { SanityProject } from "../../models/sanity-project";
 
-const ProjectPage = ({ project, slug }: { project: SanityProject, slug: string }) => {
+const ProjectPage = ({
+  project,
+  slug,
+}: {
+  project: SanityProject;
+  slug: string;
+}) => {
   return (
     <PageLayout title={project.title}>
       <Project {...project} />
@@ -34,6 +40,7 @@ export async function getStaticProps(context: any) {
 }
 
 const query = groq`*[_type == "project" && slug.current == $slug][0]{
+      _id,
       title,
       intro,
       description,

@@ -6,9 +6,11 @@ import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";
 
 import { SanityProject } from "../../models/sanity-project";
+import LikeButton from "../like-button/like-button";
 
 const Project: React.FC<SanityProject> = ({
-  title,
+  _id,
+  title = "Prosjekt",
   description,
   completed,
   status,
@@ -23,6 +25,7 @@ const Project: React.FC<SanityProject> = ({
       <Heading headingLevel="h1" className="project__title">
         {title}
       </Heading>
+      <LikeButton target={title} />
       <div className="project__onboarding">
         <div className="project__description">
           <Heading headingLevel="h2">Beskrivelse:</Heading>

@@ -1,6 +1,7 @@
 import { SanityAuthor } from "./sanity-author";
 
 export interface SanityProject {
+  _id: string;
   title?: string;
   intro: string;
   description: string;
