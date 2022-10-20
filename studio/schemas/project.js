@@ -32,28 +32,16 @@ export default {
       type: "text",
     },
     {
-      name: 'projectLeader',
-      title: 'Prosjektleder',
-      type: 'reference',
-      to: {type: 'author'},
+      name: "contactPersons",
+      title: "Kontaktpersoner",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "contactPerson" }] }]
     },
     {
-      name: 'techLead',
-      title: 'Tech lead',
+      name: 'employee',
+      title: 'Ansatt',
       type: 'reference',
-      to: {type: 'author'},
-    },
-    {
-      name: 'designLead',
-      title: 'Design lead',
-      type: 'reference',
-      to: {type: 'author'},
-    },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
+      to: { type: 'employee' },
     },
     {
       name: "completed",
@@ -64,8 +52,9 @@ export default {
       title: 'Bidragsytere',
       name: 'contributors',
       type: 'array',
-      of: [{type: 'reference',
-        to: {type: 'author'}
+      of: [{
+        type: 'reference',
+        to: { type: 'employee' }
       }]
     }
   ],

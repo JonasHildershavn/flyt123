@@ -1,8 +1,8 @@
 // import { IoPerson } from "react-icons/ri";
 
 export default {
-  name: "author",
-  title: "Forfattere",
+  name: "employee",
+  title: "Ansatt",
   type: "document",
   // icon: IoPerson,
   fields: [
