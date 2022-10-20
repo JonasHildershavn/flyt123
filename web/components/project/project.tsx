@@ -1,72 +1,60 @@
-import Contributions from '../contributions/contributions';
-import Heading from '../heading/heading';
-import Interest from '../interest/interest';
-import Tasks from '../tasks/tasks';
-import Container from '../container/container';
-import { SanityProject } from '../../models/sanity-project';
+import Contributors from "../contributors/contributors";
+import Heading from "../heading/heading";
+import Interest from "../interest/interest";
+import Tasks from "../tasks/tasks";
+import ContactPersons from "../contact-persons/contact-persons";
+import Status from "../status/status";
 
-// interface ProjectProps {
-//     title: string;
-//     intro: string;
-//     description: string;
-//     completed: boolean;
-//     author: string;
-//     resources: string[];
-// }
+import { SanityProject } from "../../models/sanity-project";
 
 const Project: React.FC<SanityProject> = ({
-    title,
-    intro,
-    description,
-    completed,
-    author,
-    resources
-}) => (
-    <div className='project'>
-        <Container className='project__container' theme='article'>
-            <Heading headingLevel='h1' className='project__title'>{title}</Heading>
-            <div className='project__onboarding'>
-                <div className='project__short-info'>
-                    <div className='project__intro'>
-                        <span className='project__pretext'>Intro:</span>
-                        <p>{intro}</p>
-                    </div>
-                    <div className='project__resources'>
-                        {resources && resources.length > 0 && (
-                            <ul>
-                                {resources.map((resource: any, index: number) => (
-                                    <li key={'resource-'+index}>{resource}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                    <div className='project__project-leader'>
-                        <span className='project__pretext'>Prosjektleder:</span>
-                        <p>{author}</p>
-                    </div>
-                </div>
-                <div className='project__description'>
-                    <span className='project__pretext'>Beskrivelse:</span>
-                    <p>{description}</p>
-                </div>
-                
-            </div>
-            
-            <Interest />
-            <Tasks tasks={["1", "to", "drei", "svei"]}/>
-            <Contributions contributions={["1", "to", "drei"]} />
-        </Container>
-    </div>
-    
-);
+  title,
+  description,
+  completed,
+  status,
+  resources = ["figma", "github", "jira"],
+  projectLeader,
+  techLead,
+  designLead,
+  contributors,
+}) => {
+  return (
+    <div className="project">
+      <Heading headingLevel="h1" className="project__title">
+        {title}
+      </Heading>
+      <div className="project__onboarding">
+        <div className="project__description">
+          <Heading headingLevel="h2">Beskrivelse:</Heading>
+          <p>{description}</p>
+        </div>
+        <div className="project__short-info">
+          <div className="project__resources">
+            {resources && resources.length > 0 && (
+              <ul>
+                {resources.map((resource: any, index: number) => (
+                  <li key={"resource-" + index}>{resource}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <ContactPersons
+            projectLeader={projectLeader}
+            techLead={techLead}
+            designLead={designLead}
+          />
+        </div>
 
-const test = (title: any, author: any) => {
-    console.log(author, title)
-    return (
-        <></>
-    )
-}
+        <div className="project__status">
+          <Status status={status} />
+        </div>
+      </div>
+
+      <Interest />
+      <Tasks tasks={["1", "to", "drei", "svei"]} />
+      <Contributors contributors={contributors} />
+    </div>
+  );
+};
 
 export default Project;
-
-

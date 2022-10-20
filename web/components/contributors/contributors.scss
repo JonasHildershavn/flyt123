@@ -1,0 +1,14 @@
+.contributors {
+  text-align: center;
+
+  &__list {
+    @include list-style-reset();
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__list-item {
+    margin: 10px 20px;
+  }
+}

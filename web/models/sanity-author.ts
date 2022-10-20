@@ -1,3 +1,3 @@
 export interface SanityAuthor {
-    name: string
+  name: string;
 }

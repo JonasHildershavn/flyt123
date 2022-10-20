@@ -1,12 +1,11 @@
 .footer {
+  height: 9vh;
   background-color: $color--forest;
-  font-family: 'Knowit';
+  font-family: "Knowit";
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
   bottom: 0;
   width: 100%;
-  margin-top: 4rem;
 }

@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+  
 
 stages:
 
@@ -24,3 +24,20 @@ stages:
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
+        env:
+          Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
+
+# - stage: deploy_sanity
+#   displayName: Deploy to sanity
+#   jobs:
+#     - job: deploy
+#       variables:
+#           SANITY_AUTH_TOKEN: $(deploy_token_sanity)
+#       steps:
+#       - task: CmdLine@2
+#         inputs:
+#           script: |
+#             cd studio
+#             npm install -g @sanity/cli
+#             npm install
+#             sanity deploy
