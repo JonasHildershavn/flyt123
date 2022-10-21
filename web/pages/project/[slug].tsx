@@ -4,7 +4,13 @@ import client from "../../api/sanity-client";
 import groq from "groq";
 import { SanityProject } from "../../models/sanity-project";
 
-const ProjectPage = ({ project, slug }: { project: SanityProject, slug: string }) => {
+const ProjectPage = ({
+  project,
+  slug,
+}: {
+  project: SanityProject;
+  slug: string;
+}) => {
   return (
     <PageLayout title={project.title}>
       <Project {...project} />
@@ -39,13 +45,10 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       description,
       completed,
       status,
-      "author": author->name,
       "collabtools": collabtool[]->{title, url},
-      "projectLeader": projectLeader->name,
-      "techLead": techLead->name,
-      "designLead": designLead->name,
+      "employee": employee->name,
+      "contactPersons": contactPersons[]->{employee->{name}, role},
       contributors[]->{name}
 }`;
-
 
 export default ProjectPage;
