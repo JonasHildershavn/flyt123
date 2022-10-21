@@ -1,8 +1,9 @@
-.project-overview {
+.task-overview {
   width: 100%;
+  background-color: $color--pear;
 
   &__title {
-    margin-bottom: 2rem;
+    margin-bottom: 10px;
   }
 
   &__grid {
@@ -12,16 +13,10 @@
     gap: 10px;
 
     @include break-at($break-point--small) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
     @include break-at($break-point--medium-plus) {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 30px;
     }
-  }
-
-  &--green {
-    background-color: $color--pear;
   }
 }
