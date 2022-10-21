@@ -68,6 +68,12 @@ export default {
         type: 'reference',
         to: { type: 'employee' }
       }]
+    },
+    {
+      name: "collabtool",
+      title: "Samhandlingsverktøy",
+      type: "array",
+      of: [{type: "reference", to: [{type: "collabtool"}]}]
     }
   ],
 }
