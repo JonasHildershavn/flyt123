@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $color--white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: neue-haas-grotesk-text, Arial, Helvetica, sans-serif;
   font-size: 100%;
 }
 
@@ -17,14 +17,13 @@ section {
   margin: 0 auto;
 }
 
-
 h1 {
-  // font-family: knowit;
+  font-family: neue-haas-grotesk-display;
   font-weight: Bold;
 }
 h2 {
   color: $color--deep-black;
-  // font-family: knowit;
+  font-family: neue-haas-grotesk-display;
   font-weight: normal;
 }
 
