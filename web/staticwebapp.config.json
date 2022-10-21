@@ -49,13 +49,13 @@
     },
     "auth": {
         "identityProviders": {
-            "azureActiveDirectory": {
-                "registration": {
-                    "openIdIssuer": "https://login.microsoftonline.com/6735929c-9dbf-473b-9fc6-5fbdcd2c9fc4/v2.0",
-                    "clientIdSettingName": "AAD__ClientId",
-                    "clientSecretSettingName": "AAD__Secret"
-                }
+          "azureActiveDirectory": {
+            "registration": {
+              "openIdIssuer": "https://login.microsoftonline.com/6735929c-9dbf-473b-9fc6-5fbdcd2c9fc4/v2.0",
+              "clientIdSettingName": "AAD__ClientId",
+              "clientSecretSettingName": "AAD__Secret"
             }
+          }
         }
-    }
+      }
 }
