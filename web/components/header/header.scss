@@ -1,30 +1,5 @@
 .header {
-  height: 9vh;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  top: 0;
-
-  margin: 0 auto;
-  width: 95%;
-  max-width: $break-point--large;
-
-  @include break-at($break-point--large) {
-    width: 85%;
-  }
-
-  &__tagline {
-    font-family: "Knowit";
-    margin-right: 2rem;
-  }
-
-  &__logo {
-    color: inherit;
-    text-decoration: inherit;
-    margin-left: 2rem;
-  }
-  &__logo-text {
-    cursor: pointer;
-  }
 }
+
+

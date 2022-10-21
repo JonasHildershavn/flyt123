@@ -1,11 +1,8 @@
-import Link from "next/link";
+import Logo from '../logo/logo';
 
 const Header: React.FC = () => (
   <header className="header">
-    <Link href="/" className="header__logo">
-      <h1 className="header__logo-text">Flyt</h1>
-    </Link>
-    <span className="header__tagline">Plattformen for deg som flyter</span>
+    <Logo/>
   </header>
 );
 

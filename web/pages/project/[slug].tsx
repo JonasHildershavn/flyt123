@@ -1,10 +1,16 @@
 import Project from "../../components/project/project";
 import PageLayout from "../../components/page-layout/page-layout";
-import client from "../../client";
+import client from "../../api/sanity-client";
 import groq from "groq";
 import { SanityProject } from "../../models/sanity-project";
 
-const ProjectPage = ({ project }: { project: SanityProject }) => {
+const ProjectPage = ({
+  project,
+  slug,
+}: {
+  project: SanityProject;
+  slug: string;
+}) => {
   return (
     <PageLayout title={project.title}>
       <Project {...project} />
@@ -16,10 +22,9 @@ export async function getStaticPaths() {
   const paths: string[] = await client.fetch(
     `*[_type == "project" && defined(slug.current)][].slug.current`
   );
-
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -29,6 +34,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       project,
+      slug,
     },
   };
 }
@@ -39,12 +45,9 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       description,
       completed,
       status,
-      "author": author->name,
-      "projectLeader": projectLeader->name,
-      "techLead": techLead->name,
-      "designLead": designLead->name,
-      contributors[]->{name},
-      needs[]
+      "employee": employee->name,
+      "contactPersons": contactPersons[]->{employee->{name}, role},
+      contributors[]->{name}
 }`;
 
 export default ProjectPage;

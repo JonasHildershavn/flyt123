@@ -1,16 +1,14 @@
-import { SanityAuthor } from "./sanity-author";
+import { SanityContactPerson } from "./sanity-contact-person";
+import { SanityEmployee } from "./sanity-employee";
 
 export interface SanityProject {
-  title: string;
+  title?: string;
   intro: string;
   description: string;
   completed: boolean;
   status: string;
-  author: SanityAuthor;
+  employee: SanityEmployee;
   resources: string[];
-  projectLeader: string;
-  techLead: string;
-  designLead: string;
-  contributors: SanityAuthor[];
-  needs: string[];
+  contactPersons: SanityContactPerson[];
+  contributors: SanityEmployee[];
 }

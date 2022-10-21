@@ -1,9 +1,4 @@
 const status = ['Oppstartsfase', 'Pågående', 'Avsluttende fase'];
-const needs = [
-  { value: 'dev', title: 'Utviklere' },
-  { value: 'des', title: 'Designere' },
-  { value: 'cat', title: 'Katter' }
-]
 
 export default {
   name: 'project',
@@ -49,41 +44,16 @@ export default {
       }
     },
     {
-      name: 'needs',
-      title: 'Behov',
-      type: 'array',
-      description: 'Status på prosjektet',
-      of: [{
-        type: 'string'
-      }],
-      options: {
-        list: needs,
-        layout: 'checkbox'
-      }
+      name: "contactPersons",
+      title: "Kontaktpersoner",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "contactPerson" }] }]
     },
     {
-      name: 'projectLeader',
-      title: 'Prosjektleder',
+      name: 'employee',
+      title: 'Ansatt',
       type: 'reference',
-      to: { type: 'author' },
-    },
-    {
-      name: 'techLead',
-      title: 'Tech lead',
-      type: 'reference',
-      to: { type: 'author' },
-    },
-    {
-      name: 'designLead',
-      title: 'Design lead',
-      type: 'reference',
-      to: { type: 'author' },
-    },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: { type: 'author' },
+      to: { type: 'employee' },
     },
     {
       name: "completed",
@@ -96,7 +66,7 @@ export default {
       type: 'array',
       of: [{
         type: 'reference',
-        to: { type: 'author' }
+        to: { type: 'employee' }
       }]
     }
   ],
