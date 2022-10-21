@@ -1,5 +1,7 @@
 import cn from "classnames";
 
+import Heading from "../heading/heading";
+
 interface ProjectCardProps {
   _id: string;
   title: string;
@@ -27,7 +29,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     })}
     href={`project/${slug.current}`}
   >
-    <h2 className="project-card__title">{title}</h2>
+    <Heading
+      headingLevel="h3"
+      className="project-card__title"
+      theme="pinkUnderline"
+    >
+      {title}
+    </Heading>
     <p>{intro}</p>
   </a>
 );

@@ -2,6 +2,7 @@ import cn from "classnames";
 
 import ProjectCard from "../project-card/project-card";
 import Container from "../container/container";
+import Heading from "../heading/heading";
 
 interface ProjectOverviewProps {
   title: string;
@@ -11,6 +12,7 @@ interface ProjectOverviewProps {
 
 const themes: { [key: string]: string } = {
   green: "green",
+  whiteBlueTone: "white-blue-tone",
 };
 
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({
@@ -24,15 +26,13 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({
     })}
   >
     <Container className="project-overview__container" theme="wide">
-      <h1 className="project-overview__title">{title}</h1>
+      <Heading headingLevel="h2" className="project-overview__title">
+        {title}
+      </Heading>
       <div className="project-overview__grid">
         {projects.length > 0 &&
           projects.map((project, idx) => (
-            <ProjectCard
-              {...project}
-              key={idx}
-              theme={theme === "green" && "white"}
-            />
+            <ProjectCard {...project} key={idx} theme={"white"} />
           ))}
       </div>
     </Container>

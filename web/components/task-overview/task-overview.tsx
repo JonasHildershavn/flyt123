@@ -1,6 +1,7 @@
 import { SanityProject } from "../../models/sanity-project";
 import TaskCard from "../task-card/task-card";
 import Container from "../container/container";
+import Heading from "../heading/heading";
 
 interface TaskOverviewProps {
   title: string;
@@ -10,7 +11,9 @@ const TaskOverview: React.FC<TaskOverviewProps> = ({ title }) => {
   return (
     <section className="task-overview">
       <Container className="task-overview__container" theme="wide">
-        <h1 className="task-overview__title">{title}</h1>
+        <Heading headingLevel="h2" className="task-overview__title">
+          {title}
+        </Heading>
         <div className="task-overview__grid">
           <TaskCard
             id="salg"

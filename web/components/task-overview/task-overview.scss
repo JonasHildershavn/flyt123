@@ -1,6 +1,6 @@
 .task-overview {
   width: 100%;
-  background-color: $color--pear;
+  background-color: $color--white-blue-tone;
 
   &__title {
     margin-bottom: 10px;
@@ -11,6 +11,8 @@
     max-width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+
+    padding: 20px 0;
 
     @include break-at($break-point--small) {
       gap: 20px;

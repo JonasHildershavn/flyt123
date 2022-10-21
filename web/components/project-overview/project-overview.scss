@@ -11,6 +11,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 
+    padding: 20px 0;
+
     @include break-at($break-point--small) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
@@ -23,5 +25,9 @@
 
   &--green {
     background-color: $color--pear;
+  }
+
+  &--white-blue-tone {
+    background-color: $color--white-blue-tone;
   }
 }
