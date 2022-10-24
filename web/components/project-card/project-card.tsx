@@ -1,11 +1,13 @@
 import cn from "classnames";
 
 import Heading from "../heading/heading";
+import Tag from "../tag/tag";
 
 interface ProjectCardProps {
   _id: string;
   title: string;
   intro: string;
+  tags: any[];
   slug: any;
   theme?: string;
 }
@@ -18,6 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   _id,
   title,
   intro,
+  tags,
   slug,
   theme = "",
 }) => (
@@ -27,7 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     className={cn("project-card", {
       [`project-card--${themes[theme]}`]: themes[theme],
     })}
-    href={`project/${slug.current}`}
+    href={`/project/${slug}`}
   >
     <Heading
       headingLevel="h3"
@@ -37,6 +40,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {title}
     </Heading>
     <p>{intro}</p>
+    <div className="project-card__tags">
+      {tags &&
+        tags.length > 0 &&
+        tags.map((tag, index) => (
+          <Tag key={tag.tag} color={""} text={tag.tag} />
+        ))}
+    </div>
   </a>
 );
 

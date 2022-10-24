@@ -7,4 +7,16 @@
   &--white {
     background-color: white;
   }
+
+  &__title {
+    overflow-wrap: break-word;
+    font-weight: $font-weight--bold;
+  }
+
+  &__tags {
+    display: flex;
+  }
+  &:hover {
+    animation: float 7s infinite ease-in-out;
+  }
 }

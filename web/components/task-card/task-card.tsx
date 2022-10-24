@@ -11,7 +11,7 @@ interface TasksProps {
 const TaskCard: React.FC<TasksProps> = ({ id, title, intro }) => (
   <div className="task-card">
     <Heading
-      headingLevel="h2"
+      headingLevel="h3"
       className="task-card__title"
       theme="pinkUnderline"
     >

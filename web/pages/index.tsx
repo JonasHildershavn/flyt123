@@ -35,12 +35,12 @@ const Index: NextPage<Props> = ({ uncompleted, completed }) => {
 };
 
 export async function getStaticProps() {
-  const uncompleted: SanityProject[] = await client.fetch(groq`
-      *[_type == "project" && completed == false]|order(publishedAt desc)
-    `);
-  const completed: SanityProject[] = await client.fetch(groq`
-      *[_type == "project" && completed == true]|order(publishedAt desc)
-    `);
+  const uncompleted: SanityProject[] = await client.fetch(query, {
+    completed: false,
+  });
+  const completed: SanityProject[] = await client.fetch(query, {
+    completed: true,
+  });
   return {
     props: {
       uncompleted,
@@ -48,5 +48,18 @@ export async function getStaticProps() {
     },
   };
 }
+
+const query = groq`*[_type == "project" && completed == $completed]{
+  title,
+  intro,
+  description,
+  completed,
+  "slug":slug.current,
+  status,
+  "employee": employee->name,
+  "contactPersons": contactPersons[]->{employee->{name}, role},
+  contributors[]->{name},
+  "tags": tags[]->{tag}
+}|order(publishedAt desc)`;
 
 export default Index;
