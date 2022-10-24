@@ -1,6 +1,7 @@
 import { SanityContactPerson } from "./sanity-contact-person";
 import { SanityEmployee } from "./sanity-employee";
 import { SanityProjectTag } from "./sanity-project-tags";
+import { SanityColabTool } from "./sanity-colabtool";
 
 export interface SanityProject {
   title?: string;
@@ -11,7 +12,11 @@ export interface SanityProject {
   status: string;
   employee: SanityEmployee;
   resources: string[];
+  projectLeader: string;
+  techLead: string;
+  designLead: string;
   contactPersons: SanityContactPerson[];
   contributors: SanityEmployee[];
-  tags: SanityProjectTag[]
+  tags: SanityProjectTag[];
+  collabtools?: SanityColabTool[];
 }
