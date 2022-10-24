@@ -68,6 +68,12 @@ export default {
         type: 'reference',
         to: { type: 'employee' }
       }]
+    },
+    {
+      name: "tags",
+      title: "Fagfelt",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "projectTag" }] }]
     }
   ],
 }
