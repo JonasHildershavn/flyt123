@@ -9,6 +9,7 @@ import employee from './employee'
 import project from './project'
 import collabtool from './collabtool'
 import contactPerson from './contact-person'
+import projectTag from './project-tag'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,5 +24,6 @@ export default createSchema({
     collabtool,
     employee,
     contactPerson,
+    projectTag,
   ]),
 })
