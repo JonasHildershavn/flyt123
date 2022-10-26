@@ -1,24 +1,37 @@
 import { AzureVacant } from "../../models/azure-vacant";
-import { Storage } from "../../pages/api/azure-storage"
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-interface VacantFormProps {
-    storage: Storage
-}
+const VacantForm: React.FC = ({
 
-const VacantForm: React.FC<VacantFormProps> = ({
-    storage,
-    
 }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    async function onSubmit(data: any) {
+    async function onSubmit(e: any) {
+        const data: AzureVacant = {
+            partitionKey: "",
+            rowKey: e.rowKey,
+            name: e.name,
+            stilling: e.stilling,
+            capacity: e.capacity,
+            freeTill: e.freeTill,
+            etag: ""
+        }
+        
         console.log("submitting=",data)
-        const storage = new Storage()
-        storage.upsertVacant()
+        
+        const postData = async () => {
+            const response = await fetch("/api/vacant/put", {
+                method: "PUT",
+                body: JSON.stringify(data),
+            });
+            return response.json();
+            };
+            postData().then((data) => {
+            alert("data.message");
+        });
     }
 
 
@@ -28,7 +41,16 @@ const VacantForm: React.FC<VacantFormProps> = ({
                 Navn <input {...register("name")} />
             </label>
             <label>
-                Mail <input {...register("mail", { required: true })}/>
+                Mail <input {...register("rowKey", { required: true })}/>
+            </label>
+            <label>
+                Stilling <input {...register("stilling")} />
+            </label>
+            <label>
+                Capacity <input {...register("capacity")} />
+            </label>
+            <label>
+                FreeTill <input {...register("freeTill")} />
             </label>
             <input type="submit"/>
         </form>

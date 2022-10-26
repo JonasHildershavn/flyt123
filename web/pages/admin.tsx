@@ -15,10 +15,11 @@ const AdminPage : NextPage<AdminPageProps> = ({
     return (
         <PageLayout title="Adminpanel">
             <h2>Admin</h2>
-            <VacantTable array={vacants}/>
+            <VacantTable vacants={vacants}/>
         </PageLayout>
     )
 }
+
 AdminPage.getInitialProps = async () => {
     const resp = await fetch('http://localhost:3000/api/vacants');
     const json = await resp.json();

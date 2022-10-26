@@ -8,11 +8,11 @@ import { AzureVacant } from '../../models/azure-vacant';
 
 
 interface VacantTableProps {
-    array: AzureVacant[];
+    vacants: AzureVacant[];
 }
 
 const VacantTable: React.FC<VacantTableProps> = ({
-    array,
+    vacants,
 }) => {
 
     const columns: GridColDef[] = [
@@ -24,7 +24,7 @@ const VacantTable: React.FC<VacantTableProps> = ({
         { field: 'timestamp', headerName: 'Sist oppdatert', width: 240 },
     ];
 
-    const rows = array
+    const rows = vacants;
     
     return (
         <div style={{ height: 400, width: '100%' }}>

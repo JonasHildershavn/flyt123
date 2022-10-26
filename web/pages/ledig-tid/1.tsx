@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 
-import { Storage } from '../api/azure-storage'
+import { AzureStorage } from '../api/azure-storage'
 import { AzureVacant } from '../../models/azure-vacant';
 
 import PageLayout from '../../components/page-layout/page-layout'

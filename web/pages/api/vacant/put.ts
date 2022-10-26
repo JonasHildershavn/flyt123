@@ -8,22 +8,18 @@ export default async function getVacantById(req: NextApiRequest, res: NextApiRes
     const client = new AzureClient;
 
     switch (req.method) {
-        case 'GET': {
-            const rowKey = req.query.id as string
-            const vacant = await client.getEntity("", rowKey) as AzureVacant
-            res.json(vacant);
-        }
-
         case 'PUT': {
-            const vacant: AzureVacant = {
-                partitionKey: "",
-                rowKey: "testbruker@mail.no",
-                name: "nyttnavn",
-                stilling: "Utvikler",
-                capacity: 0,
-                freeTill: "2023-01-01",
-                etag: ""
-            }
+            // const vacant = {
+            //     partitionKey: "",
+            //     rowKey: "kortnavn@mail.no",
+            //     name: "kort navn",
+            //     stilling: "Utvikler",
+            //     capacity: 0,
+            //     freeTill: "2023-01-01",
+            //     etag: ""
+            // }
+            const vacant = JSON.parse(req.body);
+            console.log("vacant in put.ts=", vacant)
             client.upsertEntity(vacant)
 
         }

@@ -1,15 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { AzureVacant } from '../../models/azure-vacant'
-import { AzureStorage } from './azure-storage'
+// import { AzureStorage } from './azure-storage'
+import { AzureClient } from './azure-client'
 
 export default async function getAllVacants(req: NextApiRequest, res: NextApiResponse<AzureVacant[]>) {
-    if (req.method === 'GET') {
-        const storage = new AzureStorage() 
-
-        
-        const vacants = await storage.getVacants() as AzureVacant[]
-        console.log(vacants)
-        res.json(vacants);
+    switch (req.method) {
+        case 'GET': {
+            const client = new AzureClient()
+            const vacantsIter = client.listEntities()
+            let vacants: AzureVacant[] = []
+            for await (const vacant of vacantsIter) {
+                vacants.push(vacant as AzureVacant)
+            }
+            res.json(vacants);
+        }
     }
-    
 }
