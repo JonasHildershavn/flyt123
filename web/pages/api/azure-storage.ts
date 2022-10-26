@@ -1,7 +1,8 @@
-import { TableClient, AzureNamedKeyCredential } from "@azure/data-tables";
-import { AzureVacant } from '../models/azure-vacant';
+import { TableClient, AzureNamedKeyCredential, TableEntity } from "@azure/data-tables";
+import { AzureVacant } from '../../models/azure-vacant';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export class Storage {
+export class AzureStorage {
     private account: string = "flytstorageaccount";
     private accountKey: string;
 
@@ -10,13 +11,13 @@ export class Storage {
     private client: TableClient;
 
     constructor() {
-        if (process.env.Azure_StorageAccount_AccessKey === undefined) {
-            console.log("Could not retrieve Azure_StorageAccount_AccessKey: ")
-        }
         this.accountKey = process.env.Azure_StorageAccount_AccessKey as string
+        if(!this.accountKey || this.accountKey === ""){
+            throw new ReferenceError ("Could not retrieve Azure_StorageAccount_AccessKey");
+
+        }
         this.credential = new AzureNamedKeyCredential(this.account, this.accountKey);
-        this.client = new TableClient(`https://${this.account}.table.core.windows.net`, this.tableName, this.credential);
-        
+        this.client = new TableClient(`https://${this.account}.table.core.windows.net`, this.tableName, this.credential);   
     }
 
     async getVacants(): Promise<AzureVacant[]> {
@@ -25,14 +26,16 @@ export class Storage {
         for await (const vacant of vacantsIter) {
             vacants.push(vacant as AzureVacant)
         }
-
         return vacants
     }
 
+    async getVacantByMail(mail: string) {
+        return await this.client.getEntity("", mail)
+    }
+
     async upsertVacant(vacant: AzureVacant) {
-        if (vacant) {
-            //await this.client.updateEntity(vacant)
-        }
-        return;
+        await this.client.upsertEntity(vacant, "Merge")
+        return "success";
     }
 }
+

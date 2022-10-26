@@ -1,7 +1,12 @@
 import { NextPage } from 'next'
-import PageLayout from '../../components/page-layout/page-layout'
-import { Storage } from '../../api/azure-storage'
+
+import { Storage } from '../api/azure-storage'
 import { AzureVacant } from '../../models/azure-vacant';
+
+import PageLayout from '../../components/page-layout/page-layout'
+import VacantForm from '../../components/vacant-form/vacant-form';
+import TestForm from '../../components/test-form/test-form';
+
 
 interface Props {
 }
@@ -9,18 +14,14 @@ interface Props {
 const LedigTidForm: NextPage<Props> = ({
     
 }) => {
-    // addVacant()
     return (
         <PageLayout title="Ledig tid">
-            <form >
-                <label>
-                <input placeholder='Name' type="text" name="name" />
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
+            <VacantForm/>
+            
         </PageLayout>
     )
 }
+
 
 // TODO: Metode for å legge laste opp input til azure tablestorage
 
@@ -45,12 +46,16 @@ const LedigTidForm: NextPage<Props> = ({
 //         }
 //     }
 // }
-
-// async function addVacant(){
+// export async function getStaticProps() {
+    
 //     let storage = new Storage();
-//     let vacants = await storage.getVacants();
-//     console.log("STORAGE: ", vacants)
-// }
+//     let vacants = await storage.upsertVacant();
 
+//     return {
+//         props: {
+//             vacants,
+//         }
+//     }
+// }
 
 export default LedigTidForm

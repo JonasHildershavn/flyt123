@@ -1,19 +1,17 @@
 import { NextPage } from 'next'
 import PageLayout from '../components/page-layout/page-layout';
-import VacantTable from '../components//vacant-table/vacant-table';
+import VacantTable from '../components/vacant-table/vacant-table';
 
 import { AzureVacant } from '../models/azure-vacant';
-import { Storage } from '../api/azure-storage';
 
-interface Props {
+interface AdminPageProps {
     vacants: AzureVacant[]
 }
 
 
-const AdminPage : NextPage<Props> = ({
+const AdminPage : NextPage<AdminPageProps> = ({
     vacants,
 }) => {
-    
     return (
         <PageLayout title="Adminpanel">
             <h2>Admin</h2>
@@ -21,16 +19,10 @@ const AdminPage : NextPage<Props> = ({
         </PageLayout>
     )
 }
-
-export async function getStaticProps() {
-    let storage = new Storage();
-    let vacants = await storage.getVacants();
-
-    return {
-        props: {
-            vacants,
-        }
-    }
+AdminPage.getInitialProps = async () => {
+    const resp = await fetch('http://localhost:3000/api/vacants');
+    const json = await resp.json();
+    return {vacants: json}
 }
 
 export default AdminPage
