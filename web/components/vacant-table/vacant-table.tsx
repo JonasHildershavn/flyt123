@@ -16,12 +16,15 @@ const VacantTable: React.FC<VacantTableProps> = ({
 }) => {
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Navn', width: 180},
+        { field: 'name', headerName: 'Navn', width: 120},
+        { field: 'rowKey', headerName: 'Email', width: 120 },
         { field: 'role', headerName: 'Stilling', width: 120 },
+        { field: 'prefActivity', headerName: 'Vil gjøre', width: 120 },
+        { field: 'prefProject', headerName: 'Prosjektinteresse', width: 120 },
+        { field: 'motivation', headerName: 'Motivasjon', width: 120 },
         { field: 'capacity', headerName: 'Kapasitet', type: 'number', width: 100 },
-        { field: 'freeTill', headerName: 'Ledig til', width: 180 },
-        { field: 'rowKey', headerName: 'Email', width: 240 },
-        { field: 'timestamp', headerName: 'Sist oppdatert', width: 240 },
+        { field: 'availableTill', headerName: 'Ledig til', width: 120 },
+        { field: 'timestamp', headerName: 'Oppdatert', width: 120 },
     ];
 
     const rows = vacants;
