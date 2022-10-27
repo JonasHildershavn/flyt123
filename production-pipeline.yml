@@ -23,3 +23,5 @@ stages:
           output_location: 'out'
           app_location: '/web'
           azure_static_web_apps_api_token: $(deployment_token)
+        env:
+          Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)

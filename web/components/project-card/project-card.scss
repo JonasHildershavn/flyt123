@@ -8,3 +8,14 @@
     overflow-wrap: break-word;
   }
 }
+
+.project-card {
+  &__title {
+    overflow-wrap: break-word;
+    font-weight: $font-weight--bold;
+  }
+
+  &__tags {
+    display: flex;
+  }
+}

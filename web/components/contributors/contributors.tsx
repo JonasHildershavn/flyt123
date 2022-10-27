@@ -1,9 +1,9 @@
 import Heading from "../heading/heading";
 
-import { SanityAuthor } from "../../models/sanity-author";
+import { SanityEmployee } from "../../models/sanity-employee";
 
 interface ContributionsProps {
-  contributors: SanityAuthor[];
+  contributors: SanityEmployee[];
 }
 
 const Contributors: React.FC<ContributionsProps> = ({ contributors }) => (
