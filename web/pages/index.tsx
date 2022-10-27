@@ -21,7 +21,7 @@ const Index: NextPage<Props> = ({ uncompleted, completed }) => {
       <ProjectOverview
         title="Pågående Flyt-prosjekter"
         projects={uncompleted}
-        theme={"whiteBlueTone"}
+        theme={"green"}
       />
       <TaskOverview title="Annet" />
       <CtaAvailableBanner />
