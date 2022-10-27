@@ -27,13 +27,13 @@ const VacantTable: React.FC<VacantTableProps> = ({
     const rows = vacants;
     
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div style={{ height: 800, width: '100%' }}>
             <DataGrid
                 className='vacant-table'
                 rows={rows}
                 columns={columns}
                 getRowId={(row) => row.rowKey}
-                pageSize={5}
+                // pageSize={5}
                 rowsPerPageOptions={[5]}
                 checkboxSelection
                 components={{Toolbar: CustomToolbar,

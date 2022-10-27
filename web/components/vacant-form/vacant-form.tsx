@@ -9,7 +9,7 @@ const VacantForm: React.FC = ({
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    async function onSubmit(e: any) {
+    function onSubmit(e: any) {
         const data: AzureVacant = {
             partitionKey: "",
             rowKey: e.rowKey,
@@ -19,8 +19,7 @@ const VacantForm: React.FC = ({
             freeTill: e.freeTill,
             etag: ""
         }
-        
-        console.log("submitting=",data)
+        // console.log("submitting:",data)
         
         const postData = async () => {
             const response = await fetch("/api/vacant/put", {
@@ -29,8 +28,9 @@ const VacantForm: React.FC = ({
             });
             return response.json();
             };
-            postData().then((data) => {
-            alert("data.message");
+            
+        postData().then((data) => {
+        console.log(data.message);
         });
     }
 
