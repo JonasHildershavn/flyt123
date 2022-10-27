@@ -1,26 +1,13 @@
 import { AzureVacant } from "../../models/azure-vacant";
-
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const VacantForm: React.FC = ({
-
 }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-
-    function onSubmit(e: any) {
-        const data: AzureVacant = {
-            partitionKey: "",
-            rowKey: e.rowKey,
-            name: e.name,
-            stilling: e.stilling,
-            capacity: e.capacity,
-            freeTill: e.freeTill,
-            etag: ""
-        }
-        // console.log("submitting:",data)
-        
+    
+    function onSubmit(data: any) {
+        data["partitionKey"] = "";  // adding unused partitionKey field
         const postData = async () => {
             const response = await fetch("/api/vacant/put", {
                 method: "PUT",
@@ -28,31 +15,30 @@ const VacantForm: React.FC = ({
             });
             return response.json();
             };
-            
+
         postData().then((data) => {
-        console.log(data.message);
+        console.log('result:', data);
         });
     }
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-                Navn <input {...register("name")} />
-            </label>
-            <label>
-                Mail <input {...register("rowKey", { required: true })}/>
-            </label>
-            <label>
-                Stilling <input {...register("stilling")} />
-            </label>
-            <label>
-                Capacity <input {...register("capacity")} />
-            </label>
-            <label>
-                FreeTill <input {...register("freeTill")} />
-            </label>
-            <input type="submit"/>
+        <form className="vacant-form" onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="email" {...register("rowKey")} />
+            <input type="text" placeholder="name" {...register("name")} />
+            <input type="text" placeholder="role" {...register("role")} />
+            <input type="text" placeholder="prefAcitvity" {...register("prefActivity")} />
+            <input type="text" placeholder="prefProject" {...register("prefProject")} />
+            <input type="text" placeholder="motivation" {...register("motivation")} />
+
+            {/* Number slider from MUI? 
+            https://mui.com/material-ui/react-slider/ */}
+            <input type="number" placeholder="capacity" {...register("capacity", {min: 0, max: 100})} />
+            
+            {/* Date picker from MUI?
+            https://mui.com/x/react-date-pickers/date-picker/ */}
+            <input type="datetime" placeholder="availableTill" {...register("availableTill", {})} />
+            <input type="submit" />
         </form>
         
     )

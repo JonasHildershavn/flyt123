@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import groq from 'groq'
-import client from './api/sanity-client'
+import client from '../clients/sanity-client'
 
 import PageLayout from '../components/page-layout/page-layout';
 import ProjectOverview from '../components/project-overview/project-overview';

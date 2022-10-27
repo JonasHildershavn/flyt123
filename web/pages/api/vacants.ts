@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { AzureVacant } from '../../models/azure-vacant'
 // import { AzureStorage } from './azure-storage'
-import { AzureClient } from './azure-client'
+import { AzureClient } from '../../clients/azure-client'
 
 export default async function getAllVacants(req: NextApiRequest, res: NextApiResponse<AzureVacant[]>) {
     switch (req.method) {
