@@ -74,6 +74,12 @@ export default {
       title: "Fagfelt",
       type: "array",
       of: [{ type: "reference", to: [{ type: "projectTag" }] }]
+    },
+    {
+      name: "collabtool",
+      title: "Samhandlingsverktøy",
+      type: "array",
+      of: [{type: "reference", to: [{type: "collabtool"}]}]
     }
   ],
 }

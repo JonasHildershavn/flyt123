@@ -24,8 +24,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <p>{intro}</p>
     <div className="project-card__tags">
       {
-        tags !== undefined ? tags.map(tag => (
-          <Tag color={""} text={tag.tag}/>
+        tags !== undefined ? tags.map((tag, idx) => (
+          <Tag color={""} text={tag.tag} key={idx}/>
         )) : <></>
       }
     </div>
