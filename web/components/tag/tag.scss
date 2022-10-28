@@ -1,5 +1,20 @@
 .tag {
-    background-color: $color--pear;
+    
     padding: 12px;
     margin: 2px;
+    &--development {
+        background-color: $color--pear;
+    }
+    &--design {
+        background-color: $color--digital-lollipop;
+    }
+    &--content {
+        background-color: $color--pear;
+    }
+    &--administration {
+        background-color: $color--pear;
+    }
+    &--other {
+        background-color: $color--pear;
+    }
 }

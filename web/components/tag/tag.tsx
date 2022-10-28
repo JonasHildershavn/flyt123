@@ -1,15 +1,32 @@
 interface TagProps {
     text: string;
-    color: string;
+    category: string;
   }
   
   const Tag: React.FC<TagProps> = ({
     text,
-    color,
+    category,
   }) => (
-    <span className="tag">
+    <span className={`tag--${text}`}>
         {text}
     </span>
   );
   
   export default Tag;
+
+  export const tagText = (catgory: string) => {
+    switch (catgory) {
+      case 'development':
+        return 'Utvikling'
+      case 'design':
+        return 'Design'
+      case 'content':
+        return 'Innhold'
+      case 'administration':
+        return 'Ledelse'
+      case 'other':
+        return 'Annet'
+      default:
+        return ''
+    }
+  }

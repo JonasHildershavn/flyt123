@@ -47,7 +47,7 @@ const query = groq`*[_type == "project" && completed == $completed]{
   "employee": employee->name,
   "contactPersons": contactPersons[]->{employee->{name}, role},
   contributors[]->{name},
-  "tags": tags[]->{tag}
+  "tags": tags[]->{tag,category}
 }|order(publishedAt desc)`;
 
 export default Index
