@@ -1,3 +1,6 @@
+import cn from "classnames";
+
+import Heading from "../heading/heading";
 import Tag from "../tag/tag";
 
 interface ProjectCardProps {
@@ -6,7 +9,12 @@ interface ProjectCardProps {
   intro: string;
   tags: any[];
   slug: any;
+  theme?: string;
 }
+
+const themes: { [key: string]: string } = {
+  white: "white",
+};
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   _id,
@@ -14,20 +22,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   intro,
   tags,
   slug,
+  theme = "",
 }) => (
   <a
     key={_id}
-    className="project-card"
+    title={title}
+    className={cn("project-card", {
+      [`project-card--${themes[theme]}`]: themes[theme],
+    })}
     href={`/project/${slug}`}
   >
-    <h2 className="project-card__title">{title}</h2>
+    <Heading
+      headingLevel="h3"
+      className="project-card__title"
+      theme="pinkUnderline"
+    >
+      {title}
+    </Heading>
     <p>{intro}</p>
     <div className="project-card__tags">
-      {
-        tags !== undefined ? tags.map(tag => (
-          <Tag color={""} text={tag.tag}/>
-        )) : <></>
-      }
+      {tags &&
+        tags.length > 0 &&
+        tags.map((tag, index) => (
+          <Tag key={tag.tag} color={""} text={tag.tag} />
+        ))}
     </div>
   </a>
 );

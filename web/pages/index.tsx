@@ -2,39 +2,51 @@ import { NextPage } from 'next'
 import groq from 'groq'
 import client from '../clients/sanity-client'
 
-import PageLayout from '../components/page-layout/page-layout';
-import ProjectOverview from '../components/project-overview/project-overview';
-import Hero from '../components/hero/hero';
-import { SanityProject } from '../models/sanity-project';
-import Logo from '../components/logo/logo';
+import PageLayout from "../components/page-layout/page-layout";
+import ProjectOverview from "../components/project-overview/project-overview";
+import Hero from "../components/hero/hero";
+import { SanityProject } from "../models/sanity-project";
+import CtaAvailableBanner from "../components/cta-available-banner/cta-available-banner";
+import TaskOverview from "../components/task-overview/task-overview";
 
 interface Props {
-  uncompleted: SanityProject[]
-  completed: SanityProject[]
+  uncompleted: SanityProject[];
+  completed: SanityProject[];
 }
 
-const Index: NextPage<Props> = ({
-  uncompleted,
-  completed,
-}) => {
+const Index: NextPage<Props> = ({ uncompleted, completed }) => {
   return (
     <PageLayout title="Flyt">
-      <Hero/>
-      <ProjectOverview title="Pågående Flyt-prosjekter" projects={uncompleted}/>
-      <ProjectOverview title="Ferdigstilte Flyt-prosjekter" projects={completed} />
+      <Hero />
+      <ProjectOverview
+        title="Pågående Flyt-prosjekter"
+        projects={uncompleted}
+        theme={"green"}
+      />
+      <TaskOverview title="Annet" />
+      <CtaAvailableBanner />
+      <ProjectOverview
+        title="Ferdigstilte Flyt-prosjekter"
+        projects={completed}
+        theme={"whiteBlueTone"}
+      />
     </PageLayout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
-  const uncompleted: SanityProject[] = await client.fetch(query, { completed: false })
-  const completed: SanityProject[] = await client.fetch(query, { completed: true })
+  const uncompleted: SanityProject[] = await client.fetch(query, {
+    completed: false,
+  });
+  const completed: SanityProject[] = await client.fetch(query, {
+    completed: true,
+  });
   return {
     props: {
       uncompleted,
       completed,
-    }
-  }
+    },
+  };
 }
 
 const query = groq`*[_type == "project" && completed == $completed]{
@@ -50,4 +62,4 @@ const query = groq`*[_type == "project" && completed == $completed]{
   "tags": tags[]->{tag}
 }|order(publishedAt desc)`;
 
-export default Index
+export default Index;
