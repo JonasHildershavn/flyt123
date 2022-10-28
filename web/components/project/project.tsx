@@ -5,6 +5,7 @@ import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";
 import Container from "../container/container";
 import CollabtoolList from "../collabtool-list/collabtool-list";
+import Tag from "../tag/tag";
 
 import { SanityProject } from "../../models/sanity-project";
 
@@ -15,20 +16,37 @@ const Project: React.FC<SanityProject> = ({
   status,
   collabtools,
   contactPersons,
-  contributors,
+  tags,
 }) => {
   return (
     <div className="project">
-      <Container className="project-overview__container" theme="wide">
-        <Heading headingLevel="h1" className="project__title">
+      <Container className="project__container" theme="wide">
+        <Heading level={1} className="project__title">
           {title}
         </Heading>
-        <div className="project__onboarding">
-          <div className="project__description">
-            <Heading headingLevel="h2">Beskrivelse:</Heading>
-            <p>{description}</p>
+        <div className="project__grid">
+          <div className="project__sidebar">
+            <div className="project__sidebar-col">
+              <Status status={status} />
+            </div>
+            <div className="project__sidebar-col">
+              <ContactPersons contactPersons={contactPersons} />
+            </div>
           </div>
-          <div className="project__short-info">
+          <div className="project__content">
+            <p className="project__description">{description}</p>
+            <div className="project__tags-wrapper">
+              <Heading level={2} className="project__tags-header">
+                Dette trenger vi hjelp til:
+              </Heading>
+              <div className="project__tags">
+                {tags &&
+                  tags.length > 0 &&
+                  tags.map((tag, index) => (
+                    <Tag key={tag.tag} color={""} text={tag.tag} />
+                  ))}
+              </div>
+            </div>
             <div className="project__resources">
               {collabtools && collabtools.length > 0 && (
                 <div>
@@ -37,16 +55,8 @@ const Project: React.FC<SanityProject> = ({
                 </div>
               )}
             </div>
-            <ContactPersons contactPersons={contactPersons} />
-          </div>
-
-          <div className="project__status">
-            <Status status={status} />
           </div>
         </div>
-
-        <Interest />
-        <Contributors contributors={contributors} />
       </Container>
     </div>
   );

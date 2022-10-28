@@ -1,37 +1,37 @@
 .collabtool {
-    margin-top: 2rem;
-    border-left: 2px solid $color--sand;
-    padding-left: 1rem;
-    animation-name: fadeIn;
-    animation-duration: 0.6s;
-    transition-timing-function: ease-in;
-    margin-left: 2px;
-    transition: all 100ms ease-in-out;
-  
-    &:hover {
-      border-left-width: 4px;
-      border-color: $color--digital-black;
-      margin-left: 0;
-      
-      .collabtool__icon {
-        opacity: 1;
-      }
+  $radius: 50%;
+
+  display: flex;
+  margin-right: 10px;
+
+  &__spacer {
+    z-index: 1;
+    background-color: $color--minmimal-grey;
+    width: 20px;
+
+    &--left {
+      -webkit-border-top-left-radius: $radius;
+      -webkit-border-bottom-left-radius: $radius;
+      -moz-border-radius-topleft: $radius;
+      -moz-border-radius-bottomleft: $radius;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
     }
-  
-    &__title {
-      font-family: knowit;
-      font-weight: $font-weight--normal;
-      font-size: $font-size--20;
-      margin: 0 0 0.5rem 0;
-      color: $color--digital-black;
+    &--right {
+      -webkit-border-top-right-radius: $radius;
+      -webkit-border-bottom-right-radius: $radius;
+      -moz-border-radius-topright: $radius;
+      -moz-border-radius-bottomright: $radius;
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
     }
-  
-  
-    &__link {
-      display: flex;
-      justify-content: space-between;
-      text-decoration: none;
-    }
+  }
+
+  &__link {
+    z-index: 2;
+    background-color: $color--minmimal-grey;
+    padding: 5px 0;
+    font-size: 14px;
+    text-decoration: none;
+  }
 }
-  
-  

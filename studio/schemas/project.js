@@ -1,4 +1,4 @@
-const status = ['Oppstartsfase', 'Pågående', 'Avsluttende fase'];
+const status = ["Oppstart", "Pågående", "Vedlikehold"];
 
 export default {
   name: 'project',

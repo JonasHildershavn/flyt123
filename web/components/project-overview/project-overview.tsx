@@ -26,7 +26,7 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({
     })}
   >
     <Container className="project-overview__container" theme="wide">
-      <Heading headingLevel="h2" className="project-overview__title">
+      <Heading level={2} className="project-overview__title">
         {title}
       </Heading>
       <div className="project-overview__grid">

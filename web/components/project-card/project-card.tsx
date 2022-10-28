@@ -32,11 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     })}
     href={`/project/${slug}`}
   >
-    <Heading
-      headingLevel="h3"
-      className="project-card__title"
-      theme="pinkUnderline"
-    >
+    <Heading level={3} className="project-card__title" theme="pinkUnderline">
       {title}
     </Heading>
     <p>{intro}</p>

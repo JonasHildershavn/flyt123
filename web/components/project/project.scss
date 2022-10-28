@@ -1,57 +1,53 @@
 .project {
-  &__onboarding {
+  &__grid {
     display: grid;
     gap: 10px;
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 10fr 10fr;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-      "status status"
-      "intro  intro"
-      "info   info ";
+      "sidebar"
+      "content";
 
     @include break-at($break-point--small) {
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 10fr 10fr 7fr;
-      grid-template-areas:
-        "intro  intro status"
-        "info   info  status";
+      -ms-grid-columns: 3fr 7fr;
+      grid-template-columns: 3fr 7fr;
+      grid-template-areas: "sidebar  content";
     }
+
+    padding: 50px 0;
+  }
+
+  &__sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: sidebar;
+
+    display: flex;
+  }
+  &__sidebar-col {
+    width: 50%;
+    padding: 5px;
+  }
+
+  &__content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: content;
+
+    padding: 5px;
   }
 
   &__description {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-area: intro;
-
-    background-color: $color--mint;
-    padding: 10px;
-  }
-  &__short-info {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-area: info;
-
-    display: flex;
-    width: 100%;
+    margin: 0;
+    padding-top: 16.6px;
   }
 
-  &__resources {
-    width: 100%;
-    background-color: $color--mint;
-    padding: 10px;
+  &__tags-wrapper {
+    padding: 20px 0;
   }
-
-  &__status {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
-    -ms-grid-column-span: 1;
-    grid-area: status;
-
-    background-color: $color--mint;
-    padding: 10px;
+  &__tags {
+    padding: 10px 0;
   }
-
-
 }

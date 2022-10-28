@@ -11,7 +11,7 @@ const TaskOverview: React.FC<TaskOverviewProps> = ({ title }) => {
   return (
     <section className="task-overview">
       <Container className="task-overview__container" theme="wide">
-        <Heading headingLevel="h2" className="task-overview__title">
+        <Heading level={2} className="task-overview__title">
           {title}
         </Heading>
         <div className="task-overview__grid">
