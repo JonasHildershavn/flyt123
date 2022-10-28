@@ -1,0 +1,33 @@
+.interest-form {
+  &__field-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+  &__field-label {
+    margin-bottom: 15px;
+  }
+  &__field-input {
+    width: 200px;
+    border: none;
+    border-radius: 0%;
+    padding: 5px;
+    border-bottom: 2px solid black;
+    &:focus {
+      outline: 1px dotted $color--digital-black;
+    }
+  }
+
+  &__motivation {
+    padding: 20px 0;
+  }
+  &__motivation-list {
+    @include list-style-reset();
+  }
+  &__motivation-li {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
