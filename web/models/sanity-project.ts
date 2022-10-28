@@ -17,5 +17,6 @@ export interface SanityProject {
   designLead: string;
   contactPersons: SanityContactPerson[];
   contributors: SanityEmployee[];
+  tags: SanityProjectTag[];
   collabtools?: SanityColabTool[];
 }
