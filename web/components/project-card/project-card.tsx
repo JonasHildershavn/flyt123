@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { text } from "stream/consumers";
-import { SanityProjectTag } from "../../models/sanity-project-tags";
-import Tag, { tagText } from "../tag/tag";
+import { CategoryText, SanityProjectTag } from "../../models/sanity-project-tags";
+import Tag from "../tag/tag";
 import cn from "classnames";
 
 import Heading from "../heading/heading";
@@ -65,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {tags &&
           tags.length > 0 &&
           categories.map((category) => (
-            <Tag key={category} category={category} text={category} />
+            <Tag key={category} category={category} text={CategoryText[category]} />
           ))}
       </div>
     </a>

@@ -1,3 +1,5 @@
+import cn from "classnames";
+
 interface TagProps {
     text: string;
     category: string;
@@ -7,26 +9,12 @@ interface TagProps {
     text,
     category,
   }) => (
-    <span className={`tag--${text}`}>
+    <span className={cn("tag", {
+      [`tag--${category}`]: category,
+    })}
+    >
         {text}
     </span>
   );
   
   export default Tag;
-
-  export const tagText = (catgory: string) => {
-    switch (catgory) {
-      case 'development':
-        return 'Utvikling'
-      case 'design':
-        return 'Design'
-      case 'content':
-        return 'Innhold'
-      case 'administration':
-        return 'Ledelse'
-      case 'other':
-        return 'Annet'
-      default:
-        return ''
-    }
-  }
