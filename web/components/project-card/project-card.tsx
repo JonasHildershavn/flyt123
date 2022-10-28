@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { text } from "stream/consumers";
 import { SanityProjectTag } from "../../models/sanity-project-tags";
 import Tag, { tagText } from "../tag/tag";
+import cn from "classnames";
+
+import Heading from "../heading/heading";
 
 interface ProjectCardProps {
   _id: string;
@@ -9,7 +12,12 @@ interface ProjectCardProps {
   intro: string;
   tags: SanityProjectTag[];
   slug: any;
+  theme?: string;
 }
+
+const themes: { [key: string]: string } = {
+  white: "white",
+};
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   _id,
@@ -17,27 +25,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   intro,
   tags,
   slug,
-}) => {
-
+  theme = "",
+}) =>{
   const allCategories = ['development', 'design', 'content', 'administration', 'other']
-  // const activeTags: string[] = []
-  // if (tags !== undefined) {
-  //   allCategories.forEach((category) => {
-  //     if (tags.find(tag => tag.category === category) !== undefined) {
-  //       activeTags.push(category)
-  //     }
-  //   })
-  // }
+  
   const updateCatgories = () => {
     if (tags === undefined) return
     const activeCategories = []
-    console.log('Tags:', tags)
     for (const category of allCategories) {
       if (tags.find(tag => tag.category == category) !== undefined) {
         activeCategories.push(category)
       }
     }
-    console.log('Categories:', activeCategories)
     setCategories(activeCategories)
   }
   const [categories, setCategories] = useState<string[]>([]) 
@@ -45,22 +44,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     updateCatgories();
   }, [])
   return (
+
     <a
       key={_id}
-      className="project-card"
+      title={title}
+      className={cn("project-card", {
+        [`project-card--${themes[theme]}`]: themes[theme],
+      })}
       href={`/project/${slug}`}
     >
-      <h2 className="project-card__title">{title}</h2>
+      <Heading
+        headingLevel="h3"
+        className="project-card__title"
+        theme="pinkUnderline"
+      >
+        {title}
+      </Heading>
       <p>{intro}</p>
       <div className="project-card__tags">
-        {
-          categories.map(category => (
-            <Tag key={category} category={category} text={tagText(category)}/>
-          ))
-        }
+        {tags &&
+          tags.length > 0 &&
+          categories.map((category) => (
+            <Tag key={category} category={category} text={category} />
+          ))}
       </div>
     </a>
   );
-} 
+}
 
 export default ProjectCard;
