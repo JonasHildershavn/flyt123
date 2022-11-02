@@ -1,13 +1,18 @@
+import cn from "classnames";
+
 interface TagProps {
     text: string;
-    color: string;
+    category: string;
   }
   
   const Tag: React.FC<TagProps> = ({
     text,
-    color,
+    category,
   }) => (
-    <span className="tag">
+    <span className={cn("tag", {
+      [`tag--${category}`]: category,
+    })}
+    >
         {text}
     </span>
   );
