@@ -1,29 +1,80 @@
 .logo {
-  font-size: 10rem;
+  $block: &;
+  $float-time: 15s;
+
+  font-size: 15.2rem;
   font-weight: bold;
   color: $color--deep-black;
+  position: relative;
+  width: 100%;
+  min-height: 256px;
 
-  &:hover {
-    .f {
+  &__letter {
+    position: absolute;
+    transition: ease-in-out;
+
+    &--f {
+      animation: floater_f $float-time infinite;
     }
-
-    .l {
-      padding-left: 8%;
+    &--l {
+      left: 100px;
+      animation: floater_l $float-time infinite;
     }
-
-    .y {
-      padding-left: 25%;
+    &--y {
+      left: 200px;
+      animation: floater_y $float-time infinite;
     }
-
-    .t {
-      padding-left: 100%;
+    &--t {
+      left: 300px;
+      animation: floater_t $float-time infinite;
     }
   }
 
-  span {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+  @keyframes floater_f {
+    0% {
+      left: 0%;
+    }
+    50% {
+      left: 10%;
+    }
+    100% {
+      left: 0%;
+    }
+  }
+  @keyframes floater_l {
+    0% {
+      left: 20%;
+    }
+    50% {
+      left: calc(50% - 100px);
+    }
+    100% {
+      left: 20%;
+    }
+  }
+  @keyframes floater_y {
+    0% {
+      left: 40%;
+    }
+    40% {
+      left: calc(75% - 175px);
+    }
+    50% {
+      left: calc(75% - 175px);
+    }
+    100% {
+      left: 40%;
+    }
+  }
+  @keyframes floater_t {
+    0% {
+      left: 75%;
+    }
+    50% {
+      left: calc(90% - 100px);
+    }
+    100% {
+      left: 75%;
+    }
   }
 }
