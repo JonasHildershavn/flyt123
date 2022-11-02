@@ -36,21 +36,26 @@ const Project: React.FC<SanityProject> = ({
           <div className="project__content">
             <p className="project__description">{description}</p>
             <div className="project__tags-wrapper">
-              <Heading level={2} className="project__tags-header">
-                Dette trenger vi hjelp til:
-              </Heading>
-              <div className="project__tags">
-                {tags &&
-                  tags.length > 0 &&
-                  tags.map((tag, index) => (
-                    <Tag key={tag.tag} color={""} text={tag.tag} />
-                  ))}
-              </div>
+              {tags && (
+                <>
+                  <Heading level={2} className="project__tags-header">
+                    Dette trenger vi hjelp til:
+                  </Heading>
+                  <div className="project__tags">
+                    {tags.length > 0 &&
+                      tags.map((tag, index) => (
+                        <Tag key={tag.tag} color={""} text={tag.tag} />
+                      ))}
+                  </div>
+                </>
+              )}
             </div>
             <div className="project__resources">
               {collabtools && collabtools.length > 0 && (
                 <div>
-                  <h2>Samarbeidsverktøy</h2>
+                  <Heading level={2} className="project__tags-header">
+                    Samarbeidsverktøy
+                  </Heading>
                   <CollabtoolList collabtools={collabtools} />
                 </div>
               )}
