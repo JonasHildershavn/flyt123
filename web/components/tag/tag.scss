@@ -1,7 +1,20 @@
 .tag {
-  background-color: $color--pear;
   font-size: 14px;
-  padding: 10px;
-  margin-right: 10px;
-  text-transform: uppercase;
+  padding: 12px;
+  margin: 2px;
+  &--development {
+    background-color: $color--pear;
+  }
+  &--design {
+    background-color: $color--digital-lollipop;
+  }
+  &--content {
+    background-color: $color--pear;
+  }
+  &--administration {
+    background-color: $color--pear;
+  }
+  &--other {
+    background-color: $color--pear;
+  }
 }

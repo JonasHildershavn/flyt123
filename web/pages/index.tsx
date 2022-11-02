@@ -1,6 +1,6 @@
-import { NextPage } from "next";
-import groq from "groq";
-import client from "../api/sanity-client";
+import { NextPage } from 'next'
+import groq from 'groq'
+import client from '../clients/sanity-client'
 
 import PageLayout from "../components/page-layout/page-layout";
 import ProjectOverview from "../components/project-overview/project-overview";
@@ -59,7 +59,7 @@ const query = groq`*[_type == "project" && completed == $completed]{
   "employee": employee->name,
   "contactPersons": contactPersons[]->{employee->{name}, role},
   contributors[]->{name},
-  "tags": tags[]->{tag}
+  "tags": tags[]->{tag,category}
 }|order(publishedAt desc)`;
 
 export default Index;
