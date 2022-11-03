@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
     "@azure/data-tables": "^13.2.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",

@@ -1,7 +1,5 @@
 import cn from "classnames";
 
-import Link from "next/link";
-
 interface LinkProps {
   href?: string;
   text: string;
@@ -10,7 +8,13 @@ interface LinkProps {
 
 const LinkButton: React.FC<LinkProps> = ({ href, text, className }) => (
   <div className={cn("link-button", className)}>
-    {href ? <Link href={href}>{text}</Link> : <span>{text}</span>}
+    {href ? (
+      <a className="link-button__text" href={href}>
+        {text}
+      </a>
+    ) : (
+      <span className="link-button__text">{text}</span>
+    )}
   </div>
 );
 

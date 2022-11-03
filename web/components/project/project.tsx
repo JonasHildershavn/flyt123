@@ -1,11 +1,10 @@
-import Contributors from "../contributors/contributors";
+import BlockContent from "@sanity/block-content-to-react";
 import Heading from "../heading/heading";
-import Interest from "../interest/interest";
 import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";
 import Container from "../container/container";
 import CollabtoolList from "../collabtool-list/collabtool-list";
-import Tag from "../tag/tag";
+import Tags from "../tags/tags";
 
 import { SanityProject } from "../../models/sanity-project";
 
@@ -34,19 +33,16 @@ const Project: React.FC<SanityProject> = ({
             </div>
           </div>
           <div className="project__content">
-            <p className="project__description">{description}</p>
+            <div className="project__description">
+              <BlockContent blocks={description} />
+            </div>
             <div className="project__tags-wrapper">
               {tags && (
                 <>
                   <Heading level={2} className="project__tags-header">
                     Dette trenger vi hjelp til:
                   </Heading>
-                  <div className="project__tags">
-                    {tags.length > 0 &&
-                      tags.map((tag, index) => (
-                        <Tag key={tag.tag} color={""} text={tag.tag} />
-                      ))}
-                  </div>
+                  <Tags tags={tags} />
                 </>
               )}
             </div>
@@ -54,7 +50,7 @@ const Project: React.FC<SanityProject> = ({
               {collabtools && collabtools.length > 0 && (
                 <div>
                   <Heading level={2} className="project__tags-header">
-                    Samarbeidsverktøy
+                    Samarbeidsverktøy:
                   </Heading>
                   <CollabtoolList collabtools={collabtools} />
                 </div>

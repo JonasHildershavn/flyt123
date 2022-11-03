@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { text } from "stream/consumers";
+import cn from "classnames";
+
 import {
   CategoryText,
   SanityProjectTag,
 } from "../../models/sanity-project-tags";
-import Tag from "../tag/tag";
-import cn from "classnames";
 
+import Tag from "../tag/tag";
 import Heading from "../heading/heading";
+import Tags from "../tags/tags";
 
 interface ProjectCardProps {
   _id: string;
@@ -30,28 +31,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slug,
   theme = "",
 }) => {
-  const allCategories = [
-    "development",
-    "design",
-    "content",
-    "administration",
-    "other",
-  ];
-
-  const updateCatgories = () => {
-    if (tags === undefined) return;
-    const activeCategories = [];
-    for (const category of allCategories) {
-      if (tags.find((tag) => tag.category == category) !== undefined) {
-        activeCategories.push(category);
-      }
-    }
-    setCategories(activeCategories);
-  };
-  const [categories, setCategories] = useState<string[]>([]);
-  useEffect(() => {
-    updateCatgories();
-  }, []);
   return (
     <a
       key={_id}
@@ -65,17 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {title}
       </Heading>
       <p>{intro}</p>
-      <div className="project-card__tags">
-        {tags &&
-          tags.length > 0 &&
-          categories.map((category) => (
-            <Tag
-              key={category}
-              category={category}
-              text={CategoryText[category]}
-            />
-          ))}
-      </div>
+      <Tags tags={tags} />
     </a>
   );
 };

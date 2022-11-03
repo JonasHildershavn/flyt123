@@ -1,18 +1,24 @@
 .tag {
+  display: inline-block;
   font-size: 14px;
   padding: 12px;
-  margin: 2px;
+  margin-right: 5px;
+  border-radius: 25px / 50%;
+  text-align: center;
+  min-width: 25px;
+  text-transform: uppercase;
+
   &--development {
-    background-color: $color--pear;
+    background-color: $color--blue;
   }
   &--design {
-    background-color: $color--digital-lollipop;
+    background-color: $color--lime;
   }
   &--content {
     background-color: $color--pear;
   }
   &--administration {
-    background-color: $color--pear;
+    background-color: $color--pink;
   }
   &--other {
     background-color: $color--pear;

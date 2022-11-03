@@ -49,7 +49,7 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       "employee": employee->name,
       "contactPersons": contactPersons[]->{employee->{name}, role},
       contributors[]->{name},
-      "tags": tags[]->{tag}
+      "tags": tags[]->{tag, category}
 }`;
 
 export default ProjectPage;

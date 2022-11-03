@@ -8,11 +8,9 @@ export interface CollabtoolProps {
 }
 const Collabtool: React.FC<CollabtoolProps> = ({ title, url }) => (
   <div className="collabtool">
-    <div className={cn("collabtool__spacer", "collabtool__spacer--left")} />
     <a className="collabtool__link" href={url}>
       {title}
     </a>
-    <div className={cn("collabtool__spacer", "collabtool__spacer--right")} />
   </div>
 );
 

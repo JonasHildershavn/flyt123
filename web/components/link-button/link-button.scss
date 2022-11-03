@@ -2,6 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $color--digital-lollipop;
-  padding: 10px;
+  background-color: $color--violet;
+  padding: 10px 20px;
+  height: fit-content;
+  border-radius: 25px / 50%;
+
+  &__text {
+    color: black;
+  }
 }
