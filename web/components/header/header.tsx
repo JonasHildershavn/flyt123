@@ -4,7 +4,9 @@ import Container from "../container/container";
 const Header: React.FC = () => (
   <header className="header">
     <Container className="header__container" theme="wide">
-      <a href="/">Flyt</a>
+      <a className="header__main-link" href="/">
+        Flyt
+      </a>
       <Link href="ledig-tid/1">
         <a className="header__button">
           <span>MELD INN LEDIG TID</span>

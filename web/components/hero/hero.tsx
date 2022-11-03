@@ -4,7 +4,9 @@ import Logo from "../logo/logo";
 
 const Hero: React.FC = () => (
   <section className="hero">
-    <Logo />
+    <Container className="project-overview__container" theme="wide">
+      <Logo />
+    </Container>
   </section>
 );
 
