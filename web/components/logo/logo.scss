@@ -1,13 +1,23 @@
 .logo {
   $block: &;
-  $float-time: 15s;
+  $float-time: 10s;
 
-  font-size: 15.2rem;
+  line-height: 1;
+  font-size: 6rem;
+  min-height: 85px;
   font-weight: bold;
   color: $color--deep-black;
   position: relative;
   width: 100%;
-  min-height: 256px;
+
+  @include break-at($break-point--small) {
+    font-size: 12rem;
+    min-height: 175px;
+  }
+  @include break-at($break-point--large) {
+    font-size: 15rem;
+    min-height: 220px;
+  }
 
   &__letter {
     position: absolute;
@@ -17,15 +27,12 @@
       animation: floater_f $float-time infinite;
     }
     &--l {
-      left: 100px;
-      animation: floater_l $float-time infinite;
+      animation: floater_l $float-time infinite 40ms;
     }
     &--y {
-      left: 200px;
-      animation: floater_y $float-time infinite;
+      animation: floater_y $float-time infinite 40ms;
     }
     &--t {
-      left: 300px;
       animation: floater_t $float-time infinite;
     }
   }
@@ -46,7 +53,7 @@
       left: 20%;
     }
     50% {
-      left: calc(50% - 100px);
+      left: 40%;
     }
     100% {
       left: 20%;
@@ -54,27 +61,24 @@
   }
   @keyframes floater_y {
     0% {
-      left: 40%;
-    }
-    40% {
-      left: calc(75% - 175px);
+      right: 40%;
     }
     50% {
-      left: calc(75% - 175px);
+      right: 20%;
     }
     100% {
-      left: 40%;
+      right: 40%;
     }
   }
   @keyframes floater_t {
     0% {
-      left: 75%;
+      right: 10%;
     }
     50% {
-      left: calc(90% - 100px);
+      right: 0%;
     }
     100% {
-      left: 75%;
+      right: 10%;
     }
   }
 }
