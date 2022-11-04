@@ -1,0 +1,18 @@
+.link-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color--violet;
+  padding: 10px 20px;
+  height: fit-content;
+  border-radius: 25px / 50%;
+
+  &--tag {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    color: black;
+  }
+}

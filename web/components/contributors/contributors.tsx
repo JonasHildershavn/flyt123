@@ -8,7 +8,7 @@ interface ContributionsProps {
 
 const Contributors: React.FC<ContributionsProps> = ({ contributors }) => (
   <div className="contributors">
-    <Heading headingLevel="h2" className="contributors__heading">
+    <Heading level={2} className="contributors__heading">
       Tusen takk for alle bidrag - store og små
     </Heading>
     {contributors && contributors.length > 0 && (

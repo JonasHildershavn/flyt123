@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { ReactNode } from "react";
+import cn from "classnames";
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p"
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  theme?: string;
+  children: ReactNode;
 }
+
+const themes: { [key: string]: string } = {
+  pinkUnderline: "heading--pink-underline",
+};
 
 const Heading = ({
-  headingLevel = "p",
+  level = 2,
   children,
   className,
+  theme = "",
 }: HeadingProps) => {
-  const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
-    React.createElement(headingLevel, props, children)
-
-  return <Heading className={className}>{children}</Heading>
-}
+  return React.createElement(
+    `h${level}`,
+    {
+      className: cn("heading", className, {
+        [themes[theme]]: themes[theme],
+      }),
+    },
+    children
+  );
+};
 
 export default Heading;

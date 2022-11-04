@@ -8,13 +8,13 @@ const ContactPersons: React.FC<ContactPersonListProps> = ({
   contactPersons,
 }) => (
   <div className="contact-persons">
-    <Heading headingLevel="h2">Kontaktpersoner:</Heading>
+    <Heading level={2}>Kontaktpersoner:</Heading>
     {contactPersons && contactPersons.length > 0 && (
       <ul className="contact-persons__list">
         {contactPersons.map(({ employee, role }, index) => (
           <li key={"contactPerson" + index} className="contact-persons__person">
-            <span className="contact-persons__pretext">{role}:</span>
             <p className="contact-persons__name">{employee.name}</p>
+            <span className="contact-persons__role">({role})</span>
           </li>
         ))}
       </ul>

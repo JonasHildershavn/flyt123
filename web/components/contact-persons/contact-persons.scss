@@ -1,16 +1,14 @@
 .contact-persons {
   margin: 0;
-  background-color:$color--mint;
-  width: 100%;
-  margin-left: 10px;
-  padding: 10px;
 
-  &__pretext {
-    font-weight: bold;
+  &__person {
+    margin: 15px 0;
   }
-
   &__name {
-    margin-top: 5px;
+    margin: 2px 0;
+  }
+  &__role {
+    font-size: 16px;
   }
 
   &__list {
