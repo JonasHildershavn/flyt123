@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Container from "../container/container";
+import LinkButton from "../link-button/link-button";
 
 const Header: React.FC = () => (
   <header className="header">
@@ -7,11 +7,7 @@ const Header: React.FC = () => (
       <a className="header__main-link" href="/">
         Flyt
       </a>
-      <Link href="ledig-tid/1">
-        <a className="header__button">
-          <span>MELD INN LEDIG TID</span>
-        </a>
-      </Link>
+      <LinkButton className="" href="ledig-tid/1" text="Meld inn ledig tid" />
     </Container>
   </header>
 );
