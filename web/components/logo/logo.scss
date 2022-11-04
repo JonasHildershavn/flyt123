@@ -1,5 +1,10 @@
 .logo {
-  font-size: 10rem;
+  $block: &;
+  $float-time: 10s;
+
+  line-height: 1;
+  font-size: 6rem;
+  min-height: 85px;
   font-weight: bold;
   color: $color--deep-black;
   display: flex;

@@ -8,7 +8,7 @@ const CtaAvailableBanner: React.FC<CtaAvailableBannerProps> = ({}) => {
   return (
     <section className="cta-available-banner">
       <Container className="cta-available-banner__container" theme="wide">
-        <Heading headingLevel="h2" className="cta-available-banner__title">
+        <Heading level={2} className="cta-available-banner__title">
           Pst... finner du ingenting interessant?
         </Heading>
         <div className="cta-available-banner__content">

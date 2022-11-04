@@ -1,7 +1,7 @@
 // NOTE: This component styles some of the headings by tag name in order to avoid default styles that are hard to override
 
 .heading {
-  display: inline;
+  display: inline-block;
   overflow-wrap: break-word;
 
   // NOTE: @at-root ensures that the heading tag selectors are output using just the tag name
@@ -49,9 +49,7 @@
   }
 
   &--pink-underline {
+    display: inline;
     border-bottom: 2px solid $color--digital-lollipop;
-    &:hover {
-      border-bottom: none;
-    }
   }
 }

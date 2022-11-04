@@ -1,10 +1,10 @@
-import Contributors from "../contributors/contributors";
+import BlockContent from "@sanity/block-content-to-react";
 import Heading from "../heading/heading";
-import Interest from "../interest/interest";
 import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";
 import Container from "../container/container";
 import CollabtoolList from "../collabtool-list/collabtool-list";
+import Tags from "../tags/tags";
 
 import { SanityProject } from "../../models/sanity-project";
 
@@ -15,38 +15,49 @@ const Project: React.FC<SanityProject> = ({
   status,
   collabtools,
   contactPersons,
-  contributors,
+  tags,
 }) => {
   return (
     <div className="project">
-      <Container className="project-overview__container" theme="wide">
-        <Heading headingLevel="h1" className="project__title">
+      <Container className="project__container" theme="wide">
+        <Heading level={1} className="project__title">
           {title}
         </Heading>
-        <div className="project__onboarding">
-          <div className="project__description">
-            <Heading headingLevel="h2">Beskrivelse:</Heading>
-            <p>{description}</p>
+        <div className="project__grid">
+          <div className="project__sidebar">
+            <div className="project__sidebar-col">
+              <Status status={status} />
+            </div>
+            <div className="project__sidebar-col">
+              <ContactPersons contactPersons={contactPersons} />
+            </div>
           </div>
-          <div className="project__short-info">
+          <div className="project__content">
+            <div className="project__description">
+              <BlockContent blocks={description} />
+            </div>
+            <div className="project__tags-wrapper">
+              {tags && (
+                <>
+                  <Heading level={2} className="project__tags-header">
+                    Dette trenger vi hjelp til:
+                  </Heading>
+                  <Tags tags={tags} theme="left" />
+                </>
+              )}
+            </div>
             <div className="project__resources">
               {collabtools && collabtools.length > 0 && (
                 <div>
-                  <h2>Samarbeidsverktøy</h2>
+                  <Heading level={2} className="project__tags-header">
+                    Samarbeidsverktøy:
+                  </Heading>
                   <CollabtoolList collabtools={collabtools} />
                 </div>
               )}
             </div>
-            <ContactPersons contactPersons={contactPersons} />
-          </div>
-
-          <div className="project__status">
-            <Status status={status} />
           </div>
         </div>
-
-        <Interest />
-        <Contributors contributors={contributors} />
       </Container>
     </div>
   );
