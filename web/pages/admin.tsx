@@ -4,8 +4,6 @@ import VacantTable from '../components/vacant-table/vacant-table';
 
 import { AzureVacant } from '../models/azure-vacant';
 import { Storage } from '../api/azure-storage';
-import Head from 'next/head';
-import Footer from '../components/footer/footer';
 import Admin from '../components/admin/admin';
 
 interface AdminPageProps {
@@ -19,7 +17,7 @@ const AdminPage : NextPage<AdminPageProps> = ({
     return (
         <PageLayout title="Adminpanel">
             <Admin></Admin>
-            <VacantTable array={vacants} />
+            <VacantTable vacants={vacants} />
         </PageLayout>
     )
 }

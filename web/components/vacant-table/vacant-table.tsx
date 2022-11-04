@@ -30,7 +30,7 @@ const VacantTable: React.FC<VacantTableProps> = ({
     const rows = vacants;
     
     return (
-        <div style={{ height: 800, width: '100%' }}>
+        <div style={{ height: 800, width: '80%' }}>
             <DataGrid
                 className='vacant-table'
                 rows={rows}
