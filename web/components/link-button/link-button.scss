@@ -11,6 +11,9 @@
     font-size: 14px;
     text-transform: uppercase;
   }
+  &--transparent {
+    background-color: transparent;
+  }
 
   &__text {
     color: black;

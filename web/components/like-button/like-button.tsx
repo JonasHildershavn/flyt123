@@ -44,6 +44,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
       );
       setIsAdded(false);
     }
+    window.dispatchEvent(new Event("storage"));
   };
   return (
     <button
