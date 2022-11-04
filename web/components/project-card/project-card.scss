@@ -3,13 +3,12 @@
   text-decoration: inherit;
   background-color: $color--melon;
   padding: 20px;
+  box-shadow: 0px 0px 10px $color--clay;
 
-  &__title {
-    overflow-wrap: break-word;
+  &--white {
+    background-color: white;
   }
-}
 
-.project-card {
   &__title {
     overflow-wrap: break-word;
     font-weight: $font-weight--bold;
@@ -17,5 +16,8 @@
 
   &__tags {
     display: flex;
+  }
+  &:hover {
+    animation: float 7s infinite ease-in-out;
   }
 }
