@@ -7,6 +7,11 @@
   height: fit-content;
   border-radius: 25px / 50%;
 
+  &--tag {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
   &__text {
     color: black;
   }

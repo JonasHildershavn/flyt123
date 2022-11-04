@@ -1,4 +1,10 @@
 .project {
+  &__title {
+    font-size: 44px;
+    @include break-at($break-point--small) {
+      font-size: 70px;
+    }
+  }
   &__grid {
     display: grid;
     gap: 10px;
@@ -14,7 +20,7 @@
       grid-template-areas: "sidebar  content";
     }
 
-    padding: 50px 0;
+    padding-bottom: 50px;
   }
 
   &__sidebar {
@@ -41,12 +47,17 @@
 
   &__description {
     margin: 0;
+    padding-bottom: 30px;
   }
 
   &__tags-wrapper {
-    padding: 20px 0;
+    padding-bottom: 30px;
   }
   &__tags {
     padding: 10px 0;
+  }
+
+  &__resources {
+    padding-bottom: 30px;
   }
 }

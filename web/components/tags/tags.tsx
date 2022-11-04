@@ -8,7 +8,9 @@ import Tag from "../tag/tag";
 
 interface TagsProps {
   tags: SanityProjectTag[];
+  theme?: string;
 }
+
 const allCategories = [
   "development",
   "design",
@@ -17,7 +19,12 @@ const allCategories = [
   "other",
 ];
 
-const Tags: React.FC<TagsProps> = ({ tags }) => {
+const themes: { [key: string]: string } = {
+  left: "tags--left",
+  right: "tags--right",
+};
+
+const Tags: React.FC<TagsProps> = ({ tags, theme = "right" }) => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
@@ -32,7 +39,7 @@ const Tags: React.FC<TagsProps> = ({ tags }) => {
   }, [tags]);
 
   return (
-    <div className="tags">
+    <div className={cn("tags", { [themes[theme]]: themes[theme] })}>
       {tags &&
         tags.length > 0 &&
         categories.map((category) => (
