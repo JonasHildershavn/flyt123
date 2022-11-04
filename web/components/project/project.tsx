@@ -1,3 +1,5 @@
+import { SanityProject } from "../../models/sanity-project";
+
 import Contributors from "../contributors/contributors";
 import Heading from "../heading/heading";
 import Interest from "../interest/interest";
@@ -5,9 +7,9 @@ import Tasks from "../tasks/tasks";
 import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";
 import CollabtoolList from "../collabtool-list/collabtool-list";
-
-import { SanityProject } from "../../models/sanity-project";
 import LikeButton from "../like-button/like-button";
+
+import Star from "../../assets/star.svg";
 
 const Project: React.FC<SanityProject> = ({
   _id,
@@ -21,10 +23,15 @@ const Project: React.FC<SanityProject> = ({
 }) => {
   return (
     <div className="project">
-      <Heading headingLevel="h1" className="project__title">
-        {title}
-      </Heading>
-      <LikeButton target={title} />
+      <div className="project__header">
+        <Heading headingLevel="h1" className="project__title">
+          {title}
+        </Heading>
+        <div className="project__like-button">
+          <LikeButton target={title} width={"57px"} height={"57px"} />
+        </div>
+      </div>
+
       <div className="project__onboarding">
         <div className="project__description">
           <Heading headingLevel="h2">Beskrivelse:</Heading>

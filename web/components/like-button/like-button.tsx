@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import cn from "classnames";
 
+import Star from "../../assets/star.svg";
+import { height } from "@mui/system";
+
 interface LikeButtonProps {
   target: string;
+  width?: string;
+  height?: string;
 }
 
-const LikeButton: React.FC<LikeButtonProps> = ({ target }) => {
+const LikeButton: React.FC<LikeButtonProps> = ({
+  target,
+  width = "40px",
+  height = "40px",
+}) => {
   const [isAdded, setIsAdded] = useState(false);
 
   useEffect(() => {
@@ -40,8 +49,14 @@ const LikeButton: React.FC<LikeButtonProps> = ({ target }) => {
     <button
       className={cn("like-button", { "like-button--active": isAdded })}
       onClick={() => handleOnClick(target)}
+      style={{
+        width: width,
+        height: height,
+      }}
     >
-      like
+      <div className="like-button__icon">
+        <Star />
+      </div>
     </button>
   );
 };

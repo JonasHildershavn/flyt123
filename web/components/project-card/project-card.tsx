@@ -23,7 +23,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <h2 className="project-card__title">{title}</h2>
       <p>{intro}</p>
     </a>
-    <LikeButton target={title} />
+    <div className="project-card__like-button">
+      <LikeButton target={title} />
+    </div>
   </div>
 );
 
