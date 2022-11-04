@@ -10,11 +10,7 @@ interface TasksProps {
 
 const TaskCard: React.FC<TasksProps> = ({ id, title, intro }) => (
   <div className="task-card">
-    <Heading
-      headingLevel="h3"
-      className="task-card__title"
-      theme="pinkUnderline"
-    >
+    <Heading level={3} className="task-card__title" theme="pinkUnderline">
       {title}
     </Heading>
     <p className="task-card__intro">{intro}</p>

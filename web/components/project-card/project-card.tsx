@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { text } from "stream/consumers";
-import { CategoryText, SanityProjectTag } from "../../models/sanity-project-tags";
-import Tag from "../tag/tag";
 import cn from "classnames";
 
+import {
+  CategoryText,
+  SanityProjectTag,
+} from "../../models/sanity-project-tags";
+
+import Tag from "../tag/tag";
 import Heading from "../heading/heading";
+import Tags from "../tags/tags";
 
 interface ProjectCardProps {
   _id: string;
@@ -26,25 +30,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tags,
   slug,
   theme = "",
-}) =>{
-  const allCategories = ['development', 'design', 'content', 'administration', 'other']
-  
-  const updateCatgories = () => {
-    if (tags === undefined) return
-    const activeCategories = []
-    for (const category of allCategories) {
-      if (tags.find(tag => tag.category == category) !== undefined) {
-        activeCategories.push(category)
-      }
-    }
-    setCategories(activeCategories)
-  }
-  const [categories, setCategories] = useState<string[]>([]) 
-  useEffect(() => {
-    updateCatgories();
-  }, [])
+}) => {
   return (
-
     <a
       key={_id}
       title={title}
@@ -53,23 +40,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       })}
       href={`/project/${slug}`}
     >
-      <Heading
-        headingLevel="h3"
-        className="project-card__title"
-        theme="pinkUnderline"
-      >
+      <Heading level={3} className="project-card__title" theme="pinkUnderline">
         {title}
       </Heading>
       <p>{intro}</p>
-      <div className="project-card__tags">
-        {tags &&
-          tags.length > 0 &&
-          categories.map((category) => (
-            <Tag key={category} category={category} text={CategoryText[category]} />
-          ))}
-      </div>
+      <Tags tags={tags} />
     </a>
   );
-}
+};
 
 export default ProjectCard;
