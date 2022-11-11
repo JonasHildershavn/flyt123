@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import Star from "../../assets/star.svg";
-import { height } from "@mui/system";
 
 interface LikeButtonProps {
   target: string;
@@ -49,7 +48,11 @@ const LikeButton: React.FC<LikeButtonProps> = ({
   return (
     <button
       className={cn("like-button", { "like-button--active": isAdded })}
-      onClick={() => handleOnClick(target)}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleOnClick(target);
+      }}
       style={{
         width: width,
         height: height,

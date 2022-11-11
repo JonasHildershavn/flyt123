@@ -20,9 +20,6 @@
   &__tags {
     display: flex;
   }
-  &:hover {
-    animation: float 7s infinite ease-in-out;
-  }
   &__like-button {
     position: absolute;
     top: 5px;
