@@ -17,7 +17,7 @@ const VacantTable: React.FC<VacantTableProps> = ({
 
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Navn', width: 120},
-        { field: 'rowKey', headerName: 'Email', width: 120 },
+        { field: 'rowKey', headerName: 'Email', width: 180 },
         { field: 'role', headerName: 'Stilling', width: 120 },
         { field: 'prefActivity', headerName: 'Vil gjøre', width: 120 },
         { field: 'prefProject', headerName: 'Prosjektinteresse', width: 120 },
@@ -27,12 +27,16 @@ const VacantTable: React.FC<VacantTableProps> = ({
         { field: 'timestamp', headerName: 'Oppdatert', width: 120 },
     ];
 
-    const rows = vacants;
+    let filteredVacants = vacants.filter(function(item) { 
+        return item.showInAdmin == true;  
+    });
+
+    const rows = filteredVacants;
     
     return (
-        <div style={{ height: 800, width: '100%' }}>
+        <div className="vacant-table">
             <DataGrid
-                className='vacant-table'
+                className='vacant-table__grid'
                 rows={rows}
                 columns={columns}
                 getRowId={(row) => row.rowKey}
@@ -50,10 +54,8 @@ const VacantTable: React.FC<VacantTableProps> = ({
                     sortModel: [{ field: 'capacity', sort: 'desc' }],
                     },
                 }}
-
             />
-        </div>
-        
+        </div>   
     )
 }
 
@@ -64,11 +66,5 @@ function CustomToolbar() {
         </GridToolbarContainer>
     );
 }
-    
-  
-
-
-
-
 
 export default VacantTable;

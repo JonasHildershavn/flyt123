@@ -1,4 +1,4 @@
-import BlockContent from "@sanity/block-content-to-react";
+import BlockContent from '@sanity/block-content-to-react';
 import Heading from "../heading/heading";
 import ContactPersons from "../contact-persons/contact-persons";
 import Status from "../status/status";

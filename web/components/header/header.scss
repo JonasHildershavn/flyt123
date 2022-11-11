@@ -1,8 +1,15 @@
 .header {
   width: 100%;
-  background-color: white;
+
   &__container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+  }
+  &__main-link {
+    background-color: transparent !important;
+    font-size: 32px !important;
+    color: $color--deep-black;
   }
 }

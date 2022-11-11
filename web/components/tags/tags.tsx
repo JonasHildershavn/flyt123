@@ -28,7 +28,7 @@ const Tags: React.FC<TagsProps> = ({ tags, theme = "right" }) => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    if (tags === undefined) return;
+    if (tags === undefined || tags === null) return;
     const activeCategories = [];
     for (const category of allCategories) {
       if (tags.find((tag: any) => tag.category == category) !== undefined) {
