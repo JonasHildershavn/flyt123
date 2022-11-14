@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@azure/static-web-apps-cli": "^1.0.2",
+    "@svgr/webpack": "^6.5.1",
     "@types/dotenv": "^8.2.0",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",

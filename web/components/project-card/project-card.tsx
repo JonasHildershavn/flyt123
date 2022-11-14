@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import LikeButton from "../like-button/like-button";
 import cn from "classnames";
 
-import {
-  CategoryText,
-  SanityProjectTag,
-} from "../../models/sanity-project-tags";
+import { SanityProjectTag } from "../../models/sanity-project-tags";
 
-import Tag from "../tag/tag";
 import Heading from "../heading/heading";
 import Tags from "../tags/tags";
 
@@ -40,11 +36,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       })}
       href={`/project/${slug}`}
     >
-      <Heading level={3} className="project-card__title" theme="pinkUnderline">
-        {title}
-      </Heading>
+      <div className="project-card__title-spacer">
+        <Heading
+          level={3}
+          className="project-card__title"
+          theme="pinkUnderline"
+        >
+          {title}
+        </Heading>
+      </div>
+
       <p>{intro}</p>
       <Tags tags={tags} />
+      <div className="project-card__like-button">
+        <LikeButton target={title} />
+      </div>
     </a>
   );
 };

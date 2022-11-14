@@ -40,6 +40,7 @@ export async function getStaticProps(context: any) {
 }
 
 const query = groq`*[_type == "project" && slug.current == $slug][0]{
+      _id,
       title,
       intro,
       description,

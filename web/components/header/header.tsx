@@ -1,17 +1,58 @@
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import cn from "classnames";
+
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
 
-const Header: React.FC = () => (
-  <header className="header">
-    <Container className="header__container" theme="wide">
-      <Link href="/">
-        <a className="header__main-link">FLYT</a>
-      </Link>
-      
-      <LinkButton className="" href="/ledig-tid/1" text="Meld inn ledig tid" />
-    </Container>
-  </header>
-);
+const Header: React.FC = () => {
+  const [numLikes, setNumLikes] = useState(0);
+  const [anim, setAnim] = useState(false);
+
+  useEffect(() => {
+    const currentItems: Array<string> =
+      localStorage.getItem("likes") !== null
+        ? JSON.parse(String(localStorage.getItem("likes")))
+        : [];
+    setNumLikes(currentItems.length);
+
+    window.addEventListener("storage", () => {
+      const currentItems: Array<string> =
+        localStorage.getItem("likes") !== null
+          ? JSON.parse(String(localStorage.getItem("likes")))
+          : [];
+      setNumLikes(currentItems.length);
+
+      setAnim(true);
+      setTimeout(() => setAnim(false), 500);
+    });
+  }, []);
+
+  return (
+    <header className="header">
+      <Container className="header__container" theme="wide">
+        <a className="header__main-link" href="/">
+          Flyt
+        </a>
+        <div className="header__like-wrapper">
+          <LinkButton
+            className=""
+            href="ledig-tid/1"
+            text="Meld inn ledig tid"
+            theme="transparent"
+          />
+          <span
+            key="counter"
+            className={cn(
+              "header__counter",
+              anim ? "header__counter--pulse" : null
+            )}
+          >
+            {numLikes}
+          </span>
+        </div>
+      </Container>
+    </header>
+  );
+};
 
 export default Header;

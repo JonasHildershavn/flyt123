@@ -10,7 +10,7 @@ const Logo: React.FC = () => {
     <div
       className="logo"
       style={{
-        opacity: 1.1 - scrollY / 300,
+        opacity: 1.5 - scrollY / 175,
       }}
     >
       <span className={cn("logo__letter", "logo__letter--f")}>F</span>

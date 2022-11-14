@@ -11,6 +11,7 @@ interface LinkProps {
 
 const themes: { [key: string]: string } = {
   tag: "link-button--tag",
+  transparent: "link-button--transparent",
 };
 
 const LinkButton: React.FC<LinkProps> = ({
