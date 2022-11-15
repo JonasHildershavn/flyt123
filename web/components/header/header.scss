@@ -1,5 +1,40 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  //width: 100%;
+  padding: 26px;
+
+  &__inner{
+
+  }
+
+  &__logo{
+    font-size: 30px;
+  }
+
+  &__right-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &__text{
+    text-decoration: underline;
+    font-size: 25px;
+  }
+
+  &__indicator{
+    background-color: #CCC8FF;
+    border-radius: 50%;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    margin-left: 5px;
+  }
 }
 
 
