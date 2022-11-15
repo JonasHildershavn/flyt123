@@ -13,6 +13,8 @@ interface ProjectOverviewProps {
 const themes: { [key: string]: string } = {
   green: "green",
   whiteBlueTone: "white-blue-tone",
+  backgroundWhite: "background-white"
+
 };
 
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({
@@ -26,6 +28,9 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({
     })}
   >
     <Container className="project-overview__container" theme="wide">
+      <div>
+      Velkommen til Flyt! Her finner du en oversikt over prosjekter og oppgaver man kan gjøre ved ledig tid. Alt fra internprosjekter til å steke vafler på vaffelfredag!
+      </div>
       <Heading headingLevel="h2" className="project-overview__title">
         {title}
       </Heading>
