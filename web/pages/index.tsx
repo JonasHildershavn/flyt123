@@ -17,18 +17,17 @@ interface Props {
 const Index: NextPage<Props> = ({ uncompleted, completed }) => {
   return (
     <PageLayout title="Flyt">
-      <Hero />
       <ProjectOverview
-        title="Pågående Flyt-prosjekter"
+        title="Internprosjekter"
         projects={uncompleted}
-        theme={"green"}
+        theme={"backgroundWhite"}
       />
       <TaskOverview title="Annet" />
       <CtaAvailableBanner />
       <ProjectOverview
-        title="Ferdigstilte Flyt-prosjekter"
+        title="Tidligere internprosjekter"
         projects={completed}
-        theme={"whiteBlueTone"}
+        theme={"backgroundWhite"}
       />
     </PageLayout>
   );

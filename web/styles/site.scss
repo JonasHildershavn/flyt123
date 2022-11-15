@@ -6,7 +6,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: $color--white;
+  background-color: $color--background-white;
   font-family: neue-haas-grotesk-text, Arial, Helvetica, sans-serif;
   font-size: 106%;
 }
@@ -22,6 +22,12 @@ h1 {
   font-weight: Bold;
 }
 h2 {
+  color: $color--deep-black;
+  font-family: neue-haas-grotesk-display;
+  font-weight: normal;
+}
+
+h3 {
   color: $color--deep-black;
   font-family: neue-haas-grotesk-display;
   font-weight: normal;
