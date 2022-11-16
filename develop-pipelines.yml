@@ -25,7 +25,7 @@ stages:
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
         inputs:
-          output_location: 'out'
+          output_location: '/.next'
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
