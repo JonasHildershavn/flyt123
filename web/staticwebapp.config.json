@@ -3,21 +3,25 @@
         {
             "route": "/",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/project/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/ledig-tid/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/api/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
@@ -47,9 +51,9 @@
         "identityProviders": {
             "azureActiveDirectory": {
                 "registration": {
-                    "openIdIssuer": "https://login.microsoftonline.com/6735929c-9dbf-473b-9fc6-5fbdcd2c9fc4/v2.0",
-                    "clientIdSettingName": "AAD__ClientId",
-                    "clientSecretSettingName": "AAD__Secret"
+                    "openIdIssuer": "https://login.microsoftonline.com/0e14ca26-be5b-4746-9d2c-d04483a1517b/v2.0",
+                    "clientIdSettingName": "AZURE__CLIENT_ID",
+                    "clientSecretSettingName": "AZURE_CLIENT_SECRET"
                 }
             }
         }
