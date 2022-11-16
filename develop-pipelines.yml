@@ -19,17 +19,15 @@ stages:
   jobs:
     - job: deploy
       steps:
-      - task: CmdLine@2
-        inputs:
-          script: 'npm cache clean --force'
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
         inputs:
-          output_location: '/.next'
+          output_location: 'out'
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
         env:
+          IS_STATIC_EXPORT: true
           Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
 
 # - stage: deploy_sanity
