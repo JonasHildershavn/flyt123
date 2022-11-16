@@ -10,7 +10,6 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-  
 
 stages:
 
@@ -19,6 +18,11 @@ stages:
   jobs:
     - job: deploy
       steps:
+      - task: NodeTool@0
+        inputs:
+          versionSource: 'spec'
+          versionSpec: '14.19.1'
+
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
         inputs:
