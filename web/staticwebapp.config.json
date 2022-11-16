@@ -3,21 +3,25 @@
         {
             "route": "/",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/project/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/ledig-tid/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
             "route": "/api/*",
             "allowedRoles": [
+                "authenticated"
             ]
         },
         {
@@ -40,7 +44,7 @@
     "responseOverrides": {
         "401": {
             "statusCode": 302,
-            "redirect": "/login"
+            "redirect": "/.auth/login/aad"
         }
     },
     "auth": {

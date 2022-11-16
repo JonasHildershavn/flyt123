@@ -3,7 +3,7 @@
   $float-time: 10s;
 
   line-height: 1;
-  font-size: 6rem;
+  font-size: 290px;
   min-height: 85px;
   font-weight: bold;
   color: $color--deep-black;
@@ -14,6 +14,7 @@
     position: relative;
     flex-grow: 1;
     display: flex;
+    justify-content: space-evenly;
   }
   &:hover {
     .f {
