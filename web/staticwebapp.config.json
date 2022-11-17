@@ -47,6 +47,9 @@
             "redirect": "/login"
         }
     },
+    "platform": {
+        "apiRuntime": "node:14"
+    },
     "auth": {
         "identityProviders": {
             "azureActiveDirectory": {
