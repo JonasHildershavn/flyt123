@@ -10,10 +10,10 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            name: "url",
-            title: "Url",
-            type: "url",
-            validation: (Rule) => Rule.required(),
-        },
+            name: "image",
+            title: "Bilde",
+            type: "image",
+            valitadion: (Rule) => Rule.required(),
+        }
     ],
 };

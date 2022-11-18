@@ -90,11 +90,13 @@ export default {
       type: "array",
       of: [{ type: "reference", to: [{ type: "projectTag" }] }]
     },
+
     {
-      name: "collabtool",
+      name: "collabtools",
       title: "Samhandlingsverktøy",
       type: "array",
-      of: [{ type: "reference", to: [{ type: "collabtool" }] }]
+      of: [{ type: "collabtoolObject" }]
     }
+
   ],
 }

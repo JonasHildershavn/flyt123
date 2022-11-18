@@ -53,7 +53,6 @@ const Project: React.FC<SanityProject> = ({
                 <Tags tags={tags} theme="left" />
               </div>
             )}
-
             {collabtools && collabtools.length > 0 && (
               <div className="project__resources">
                 <div>
