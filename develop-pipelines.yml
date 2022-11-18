@@ -25,7 +25,7 @@ stages:
           output_location: 'out'
           app_location: '/web'
           deployment_environment: dev
-          app_build_command: 'next build && next export'
+          app_build_command: 'npm install && npm run build'
           azure_static_web_apps_api_token: $(deployment_token)
         env:
           Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
