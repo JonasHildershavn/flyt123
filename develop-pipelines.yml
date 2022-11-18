@@ -18,10 +18,6 @@ stages:
   jobs:
     - job: deploy
       steps:
-      - task: NodeTool@0
-        inputs:
-          versionSource: 'spec'
-          versionSpec: '14.19.1'
 
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
@@ -29,22 +25,7 @@ stages:
           output_location: 'out'
           app_location: '/web'
           deployment_environment: dev
+          app_build_command: 'next build && next export'
           azure_static_web_apps_api_token: $(deployment_token)
         env:
-          IS_STATIC_EXPORT: true
           Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
-
-# - stage: deploy_sanity
-#   displayName: Deploy to sanity
-#   jobs:
-#     - job: deploy
-#       variables:
-#           SANITY_AUTH_TOKEN: $(deploy_token_sanity)
-#       steps:
-#       - task: CmdLine@2
-#         inputs:
-#           script: |
-#             cd studio
-#             npm install -g @sanity/cli
-#             npm install
-#             sanity deploy
