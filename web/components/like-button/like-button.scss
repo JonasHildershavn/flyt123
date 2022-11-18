@@ -1,0 +1,12 @@
+.like-button {
+  $block: &;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  color: transparent;
+
+  &--active {
+    color: $color--light-lime;
+  }
+}

@@ -4,6 +4,7 @@ import { SanityProjectTag } from "./sanity-project-tags";
 import { SanityColabTool } from "./sanity-colabtool";
 
 export interface SanityProject {
+  _id: string;
   title?: string;
   intro: string;
   description: any[] | any;

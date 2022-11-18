@@ -1,4 +1,5 @@
 import cn from "classnames";
+import Link from "next/link";
 
 interface LinkProps {
   href?: string;
@@ -10,6 +11,7 @@ interface LinkProps {
 
 const themes: { [key: string]: string } = {
   tag: "link-button--tag",
+  transparent: "link-button--transparent",
 };
 
 const LinkButton: React.FC<LinkProps> = ({
@@ -34,9 +36,12 @@ const LinkButton: React.FC<LinkProps> = ({
       })}
     >
       {href ? (
-        <a className="link-button__text" href={href} {...targetAttributes}>
-          {text}
-        </a>
+        <Link href={href}>
+          <a className="link-button__text"  {...targetAttributes}>
+            {text}
+          </a>
+        </Link>
+        
       ) : (
         <span className="link-button__text">{text}</span>
       )}

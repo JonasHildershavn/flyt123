@@ -1,6 +1,7 @@
 import cn from "classnames";
 
 import Heading from "../heading/heading";
+import LikeButton from "../like-button/like-button";
 
 interface TasksProps {
   id: string;
@@ -14,6 +15,9 @@ const TaskCard: React.FC<TasksProps> = ({ id, title, intro }) => (
       {title}
     </Heading>
     <p className="task-card__intro">{intro}</p>
+    <div className="task-card__like-button">
+      <LikeButton target={id} />
+    </div>
   </div>
 );
 
