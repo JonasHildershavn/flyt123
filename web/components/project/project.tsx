@@ -50,7 +50,7 @@ const Project: React.FC<SanityProject> = ({
                 <Heading level={2} className="project__tags-header">
                   Dette trenger vi hjelp til:
                 </Heading>
-                <Tags tags={tags} theme="left" />
+                <Tags tags={tags} theme="left" onlyTopLevel={false} />
               </div>
             )}
 
