@@ -7,7 +7,8 @@ const Logo: React.FC = () => {
     let mouseXL = 0
     let mouseXY = 0
     let width = 0 
-    let endX : number | null = null
+    let endX: number | null = null
+    let lastEndX: number | null = null
     let lLeft = 0
     let yLeft = 0
     let containerLeft = 0
@@ -48,8 +49,6 @@ const Logo: React.FC = () => {
     const handleMouseLeave = (ev: any) => {
         //cancelAnimationFrame(requestRef.current);
         endX = null
-        mouseXL = 0
-        mouseXY = 0
     }
 
     const handleMouseEnter = (ev: any) => {
@@ -79,8 +78,8 @@ const Logo: React.FC = () => {
             && floatingDiv.current != null) {
         
           if (endX == null) {
-            mouseXL = ((lLeft - mouseXL) / 100)
-            mouseXY = ((yLeft - mouseXY) / 100) 
+            mouseXL = ((lLeft - mouseXL) / 50)
+            mouseXY = ((yLeft - mouseXY) / 50) 
             mouseXL += mouseXY
             mouseXY += mouseXY
             const leftL = mouseXL
@@ -94,9 +93,13 @@ const Logo: React.FC = () => {
             const containerWidth = floatingDiv.current.getBoundingClientRect().width
             const widthL = letterL.current.getBoundingClientRect().width
             const widthY = letterY.current.getBoundingClientRect().width
+            const isNegative = lastEndX != null && lastEndX > endX
 
-            mouseXL += endX < mouseXL - widthL ? ((endX - mouseXL - widthL) / 50) : ((endX - mouseXL - widthL) / 70)// + lLeft
-            mouseXY += endX > mouseXY ? ((endX - mouseXY) / 70) : ((endX - mouseXY) / 50) // + yLeft
+            mouseXL += isNegative ? ((endX - mouseXL - widthL) / 40) : ((endX - mouseXL - widthL) / 80)// + lLeft
+            mouseXY += isNegative ? ((endX - mouseXY) / 80) : ((endX - mouseXY) / 40) // + yLeft
+
+            // mouseXL += endX > mouseXL ? ((endX - mouseXL - widthL) / 50) : ((endX - mouseXL - widthL) / 70)// + lLeft
+            // mouseXY += endX < mouseXY ? ((endX - mouseXY) / 70) : ((endX - mouseXY) / 50) // + yLeft
 
             //mouseXL += endX < mouseXL ? (endX - mouseXL) / 30 : (endX - mouseXL) / 100
             //mouseXY += endX < mouseXY ? (endX - mouseXY) / 100 : (endX - mouseXY) / 30
@@ -119,8 +122,6 @@ const Logo: React.FC = () => {
 
             let leftL = mouseXL - lLeft//mouseXL - lLeft - widthL 
             let leftY = mouseXY - yLeft//mouseXY - yLeft
-
-             console.log(leftL)
             
             // leftL = Math.max(leftL, minL)
             // leftL = Math.min(leftL, maxL)
