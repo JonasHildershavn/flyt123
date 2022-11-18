@@ -11,10 +11,8 @@ const Logo: React.FC = () => {
     let lLeft = 0
     let yLeft = 0
     let containerLeft = 0
-    let maxL = 0
-    let maxY = 0
-    let minL = 0
-    let minY = 0
+    let max = 0
+    let min = 0
     const previousTimeRef = useRef<null | number>(null)
     const letterY = useRef<null | HTMLDivElement>(null)
     const letterL = useRef<null | HTMLDivElement>(null)
@@ -30,10 +28,12 @@ const Logo: React.FC = () => {
         if (letterL.current != null && letterY.current != null) {
             lLeft = letterL.current.getBoundingClientRect().left
             yLeft = letterY.current.getBoundingClientRect().left
-            minL = lLeft - containerLeft
-            minY = yLeft - containerLeft + letterL.current.getBoundingClientRect().width
-            maxL = lLeft - containerLeft + width - letterY.current.getBoundingClientRect().width - letterL.current.getBoundingClientRect().width
-            maxY = yLeft - containerLeft + width - letterY.current.getBoundingClientRect().width
+            // minL = lLeft - containerLeft
+            // minY = yLeft - containerLeft + letterL.current.getBoundingClientRect().width
+            // maxL = lLeft - containerLeft + width - letterY.current.getBoundingClientRect().width - letterL.current.getBoundingClientRect().width
+            // maxY = yLeft - containerLeft + width - letterY.current.getBoundingClientRect().width
+            min = containerLeft + letterL.current.getBoundingClientRect().width
+            max = containerLeft + width - letterY.current.getBoundingClientRect().width
             mouseXL = lLeft
             mouseXY = yLeft
         }
@@ -48,6 +48,8 @@ const Logo: React.FC = () => {
     const handleMouseLeave = (ev: any) => {
         //cancelAnimationFrame(requestRef.current);
         endX = null
+        mouseXL = 0
+        mouseXY = 0
     }
 
     const handleMouseEnter = (ev: any) => {
@@ -58,12 +60,15 @@ const Logo: React.FC = () => {
         if (floatingDiv.current != null) {
             width = floatingDiv.current.getBoundingClientRect().width
             containerLeft = floatingDiv.current.getBoundingClientRect().left
+            
         }
         if (letterL.current != null && letterY.current != null) {
             lLeft = letterL.current.getBoundingClientRect().left
             yLeft = letterY.current.getBoundingClientRect().left
             mouseXL = lLeft
             mouseXY = yLeft
+            min = containerLeft + letterL.current.getBoundingClientRect().width
+            max = containerLeft + width - letterY.current.getBoundingClientRect().width
         }
     }
 
@@ -74,8 +79,8 @@ const Logo: React.FC = () => {
             && floatingDiv.current != null) {
         
           if (endX == null) {
-            mouseXL = ((lLeft - mouseXL) / 30)
-            mouseXY = ((yLeft - mouseXY) / 30) 
+            mouseXL = ((lLeft - mouseXL) / 100)
+            mouseXY = ((yLeft - mouseXY) / 100) 
             mouseXL += mouseXY
             mouseXY += mouseXY
             const leftL = mouseXL
@@ -90,8 +95,8 @@ const Logo: React.FC = () => {
             const widthL = letterL.current.getBoundingClientRect().width
             const widthY = letterY.current.getBoundingClientRect().width
 
-            mouseXL += endX > mouseXL - widthL ? ((endX - mouseXL - widthL) / 20) : ((endX - mouseXL - widthL) / 50)// + lLeft
-            mouseXY += endX > mouseXY ? ((endX - mouseXY) / 50) : ((endX - mouseXY) / 20) // + yLeft
+            mouseXL += endX < mouseXL - widthL ? ((endX - mouseXL - widthL) / 50) : ((endX - mouseXL - widthL) / 70)// + lLeft
+            mouseXY += endX > mouseXY ? ((endX - mouseXY) / 70) : ((endX - mouseXY) / 50) // + yLeft
 
             //mouseXL += endX < mouseXL ? (endX - mouseXL) / 30 : (endX - mouseXL) / 100
             //mouseXY += endX < mouseXY ? (endX - mouseXY) / 100 : (endX - mouseXY) / 30
@@ -144,6 +149,8 @@ const Logo: React.FC = () => {
             //endX = relativeLeft / width//relativeLeft
             
             endX = x
+            endX = Math.max(min, endX)
+            endX = Math.min(max, endX)
             //setMouseX(relativeLeft)
             //mouseX = relativeLeft
         }
