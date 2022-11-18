@@ -3,12 +3,13 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+
+
 trigger:
 - dev
 
 pool:
   vmImage: ubuntu-latest
-  
 
 stages:
 
@@ -17,6 +18,7 @@ stages:
   jobs:
     - job: deploy
       steps:
+
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
         inputs:
@@ -24,20 +26,6 @@ stages:
           app_location: '/web'
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
+          is_static_export: true
         env:
           Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
-
-# - stage: deploy_sanity
-#   displayName: Deploy to sanity
-#   jobs:
-#     - job: deploy
-#       variables:
-#           SANITY_AUTH_TOKEN: $(deploy_token_sanity)
-#       steps:
-#       - task: CmdLine@2
-#         inputs:
-#           script: |
-#             cd studio
-#             npm install -g @sanity/cli
-#             npm install
-#             sanity deploy
