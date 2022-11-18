@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
   const [numLikes, setNumLikes] = useState(0);
   const [anim, setAnim] = useState(false);
+  const router = useRouter()
+  const headerHeight = 80 
+  const logoHeight = 290
 
   useEffect(() => {
     const currentItems: Array<string> =
@@ -28,20 +32,49 @@ const Header: React.FC = () => {
     });
   }, []);
 
+  const [showHeader, setShowHeader]  = useState(false)
+  const showHeaderChecker = useRef(false)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(showHeader)
+  }, [showHeader])
+
+  const handleScroll = (ev: any) => {
+    const shouldShowHeader = window.scrollY > logoHeight && lastScrollY.current < window.scrollY
+    if (shouldShowHeader != showHeaderChecker.current) {
+      console.log("Inside show header")
+      showHeaderChecker.current = shouldShowHeader
+      setShowHeader(shouldShowHeader)
+    }
+  }
+
   return (
-    <header className="header">
-      <Container className="header__container" theme="wide">
-        <Link className="header__main-link" href="/">
-          Flyt
+
+      <header className={cn(
+        "header",
+        showHeader ? "header--show" : null,
+      )} >
+      {/* <Container className="header__container" theme="wide"> */}
+        <Link href="/">
+          <a className="header__main-link">FLYT</a>
         </Link>
         <div className="header__like-wrapper">
           <LinkButton
-            className=""
+            className="header__like-link"
             href="ledig-tid/1"
-            text="Meld inn ledig tid"
+            text="Meld interesser"
             theme="transparent"
           />
-          <span
+          {/* <span
             key="counter"
             className={cn(
               "header__counter",
@@ -49,10 +82,20 @@ const Header: React.FC = () => {
             )}
           >
             {numLikes}
-          </span>
+          </span> */}
+          <Link href={"ledig-tid/1"}>
+            <div className={cn(
+              "header__counter2",
+              anim ? "header__counter2--pulse" : null,
+              numLikes > 0 ? "header__counter2--active" : null
+            )}>
+              {numLikes}
+            </div>
+          </Link>
         </div>
-      </Container>
+      {/* </Container> */}
     </header>
+    
   );
 };
 
