@@ -1,4 +1,4 @@
-import BlockContent from "@sanity/block-content-to-react";
+//import BlockContent from "@sanity/block-content-to-react";
 import { SanityProject } from "../../models/sanity-project";
 
 import Heading from "../heading/heading";
@@ -41,7 +41,7 @@ const Project: React.FC<SanityProject> = ({
           <div className="project__content">
             {description && (
               <div className="project__description">
-                <BlockContent blocks={description} />
+                {/* <BlockContent blocks={description} /> */}
               </div>
             )}
 
