@@ -46,7 +46,10 @@ const query = groq`*[_type == "project" && slug.current == $slug][0]{
       description,
       completed,
       status,
-      "collabtools": collabtool[]->{title, url},
+      collabtools[]{
+        collabtool->{title, image},
+        url
+      },
       "employee": employee->name,
       "contactPersons": contactPersons[]->{employee->{name}, role},
       contributors[]->{name},
