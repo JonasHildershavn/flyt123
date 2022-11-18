@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [numLikes, setNumLikes] = useState(0);
@@ -30,9 +31,9 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <Container className="header__container" theme="wide">
-        <a className="header__main-link" href="/">
+        <Link className="header__main-link" href="/">
           Flyt
-        </a>
+        </Link>
         <div className="header__like-wrapper">
           <LinkButton
             className=""
