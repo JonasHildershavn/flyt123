@@ -1,40 +1,75 @@
 .header {
   display: flex;
   justify-content: space-between;
-  //width: 100%;
-  padding: 26px;
+  width: 100%;
 
-  &__inner{
-
-  }
-
-  &__logo{
+  &__logo {
     font-size: 30px;
   }
 
-  &__right-container{
+  &__right-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-
-  &__text{
+  &__text {
     text-decoration: underline;
     font-size: 25px;
   }
 
-  &__indicator{
-    background-color: #CCC8FF;
-    border-radius: 50%;
-    font-size: 25px;
+  &__container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 26px;
-    height: 26px;
-    margin-left: 5px;
+  }
+  &__main-link {
+    font-size: 32px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: $color--deep-black;
+  }
+
+  &__like-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__counter {
+    position: relative;
+    background: $color--purple;
+    border-radius: 50%;
+    padding: 3px 3px 1px 1px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    z-index: 10;
+
+    &--pulse {
+      &::before {
+        content: "";
+        position: absolute;
+        background: $color--purple;
+        opacity: 0;
+        border-radius: 50%;
+        padding: 3px 3px 1px 1px;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        z-index: -1;
+        animation: pulse 500ms none;
+      }
+    }
   }
 }
 
-
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 1.7;
+  }
+}

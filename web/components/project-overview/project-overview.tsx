@@ -8,19 +8,20 @@ interface ProjectOverviewProps {
   title: string;
   projects: any[];
   theme?: string;
+  cardTheme?: string;
+  likable?: boolean;
 }
 
 const themes: { [key: string]: string } = {
   green: "green",
-  whiteBlueTone: "white-blue-tone",
-  backgroundWhite: "background-white"
-
 };
 
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({
   title,
   projects,
   theme = "",
+  cardTheme,
+  likable = true,
 }) => (
   <section
     className={cn("project-overview", {
@@ -28,16 +29,18 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({
     })}
   >
     <Container className="project-overview__container" theme="wide">
-      <div>
-      Velkommen til Flyt! Her finner du en oversikt over prosjekter og oppgaver man kan gjøre ved ledig tid. Alt fra internprosjekter til å steke vafler på vaffelfredag!
-      </div>
-      <Heading headingLevel="h2" className="project-overview__title">
+      <Heading level={2} className="project-overview__title">
         {title}
       </Heading>
       <div className="project-overview__grid">
         {projects.length > 0 &&
           projects.map((project, idx) => (
-            <ProjectCard {...project} key={idx} theme={"white"} />
+            <ProjectCard
+              {...project}
+              key={idx}
+              theme={cardTheme}
+              likable={likable}
+            />
           ))}
       </div>
     </Container>

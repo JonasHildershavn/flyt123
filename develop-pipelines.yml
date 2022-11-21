@@ -3,12 +3,13 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+
+
 trigger:
 - dev
 
 pool:
   vmImage: ubuntu-latest
-  
 
 stages:
 
@@ -17,6 +18,11 @@ stages:
   jobs:
     - job: deploy
       steps:
+      - task: NodeTool@0
+        inputs:
+          versionSource: 'spec'
+          versionSpec: '14.19.1'
+
       - task: AzureStaticWebApp@0
         displayName: Deploy to development enviroment
         inputs:
@@ -25,6 +31,7 @@ stages:
           deployment_environment: dev
           azure_static_web_apps_api_token: $(deployment_token)
         env:
+          IS_STATIC_EXPORT: true
           Azure_StorageAccount_AccessKey: $(Azure_StorageAccount_AccessKey)
 
 # - stage: deploy_sanity

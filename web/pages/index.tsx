@@ -1,6 +1,6 @@
-import { NextPage } from 'next'
-import groq from 'groq'
-import client from '../clients/sanity-client'
+import { NextPage } from "next";
+import groq from "groq";
+import client from "../clients/sanity-client";
 
 import PageLayout from "../components/page-layout/page-layout";
 import ProjectOverview from "../components/project-overview/project-overview";
@@ -17,17 +17,19 @@ interface Props {
 const Index: NextPage<Props> = ({ uncompleted, completed }) => {
   return (
     <PageLayout title="Flyt">
+      <Hero />
       <ProjectOverview
         title="Internprosjekter"
         projects={uncompleted}
-        theme={"backgroundWhite"}
+        cardTheme="muddish"
       />
       <TaskOverview title="Annet" />
       <CtaAvailableBanner />
       <ProjectOverview
         title="Tidligere internprosjekter"
         projects={completed}
-        theme={"backgroundWhite"}
+        cardTheme="lime"
+        likable={false}
       />
     </PageLayout>
   );

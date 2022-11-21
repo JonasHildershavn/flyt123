@@ -6,9 +6,10 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: $color--background-white;
+  background-color: $color--white;
   font-family: neue-haas-grotesk-text, Arial, Helvetica, sans-serif;
   font-size: 106%;
+  color: $color--black;
 }
 
 section {
@@ -41,6 +42,7 @@ p {
 
 a {
   text-decoration: inherit;
+  color: $link-color;
 }
 
 ::selection {

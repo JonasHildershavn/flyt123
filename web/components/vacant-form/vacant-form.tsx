@@ -1,48 +1,93 @@
 import { AzureVacant } from "../../models/azure-vacant";
 import { useForm } from "react-hook-form";
+import {useState} from 'react';
+import SaveFeedback from "../save-feedback/save-feedback";
+import FormGroup from '@mui/material/FormGroup';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-const VacantForm: React.FC = ({
+interface VacantFormProps {
+    existingVacant: AzureVacant
+}
+
+const VacantForm: React.FC<VacantFormProps> = ({
+    existingVacant,
 }) => {
-
-    const { register, handleSubmit, formState: { errors } } = useForm();
     
-    function onSubmit(data: any) {
-        data["partitionKey"] = "";  // adding unused partitionKey field
+    const [showSaveFeedback, setShowSaveFeedback] = useState(false);
+    const [availableTill, setAvailableTill] = useState(existingVacant.availableTill);
+    
+    const parsedVacant = JSON.parse(JSON.stringify(existingVacant).replace(/null/g, '""'))
+    
+    const { register, handleSubmit} = useForm({
+        defaultValues: parsedVacant
+    });
+
+    function onSubmit(data: AzureVacant) {
+        data.availableTill = availableTill
         const postData = async () => {
-            const response = await fetch("/api/vacant/put", {
+            const url = "/api/vacant/put";
+            const response = await fetch(url, {
                 method: "PUT",
                 body: JSON.stringify(data),
             });
-            return response.json();
-            };
+            return response
+        }
 
-        postData().then((data) => {
-        console.log('result:', data);
+        postData().then((response) => {
+            if (response.ok) {
+                setShowSaveFeedback(current => !current);
+
+            } else {
+                console.log("RESP NOT OK", response)
+            }
         });
+        
     }
 
-
     return (
-        <form className="vacant-form" onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" placeholder="email" {...register("rowKey")} />
-            <input type="text" placeholder="name" {...register("name")} />
-            <input type="text" placeholder="role" {...register("role")} />
-            <input type="text" placeholder="prefAcitvity" {...register("prefActivity")} />
-            <input type="text" placeholder="prefProject" {...register("prefProject")} />
-            <input type="text" placeholder="motivation" {...register("motivation")} />
+        <FormGroup className="vacant-form">
 
-            {/* Number slider from MUI? 
-            https://mui.com/material-ui/react-slider/ */}
-            <input type="number" placeholder="capacity" {...register("capacity", {min: 0, max: 100})} />
+            <label>Vis for ledere<Switch defaultChecked={existingVacant.showInAdmin} {...register("showInAdmin")}/></label>
+
+            <TextField disabled label="Email" variant="standard" {...register("rowKey")}/>
+
+            <TextField disabled label="Navn" variant="standard" {...register("name")}/>
+
+            <TextField label="Rolle" variant="standard" {...register("role")}/>
+
+            <TextField label="Foretrukket aktivitet" variant="standard" {...register("prefActivity")}/>
+
+            <TextField label="Foretrukket prosjekt" variant="standard" {...register("prefProject")}/>
+
+            <TextField label="Motivasjon" variant="standard" {...register("motivation")}/>
             
-            {/* Date picker from MUI?
-            https://mui.com/x/react-date-pickers/date-picker/ */}
-            <input type="datetime" placeholder="availableTill" {...register("availableTill", {})} />
-            <input type="submit" />
-        </form>
+            <TextField label="Kapasitet" variant="standard" {...register("capacity", {min: 0, max: 100})}/>
+            
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                        label="Ledig til"
+                        value={availableTill}
+                        onChange={(newValue) => {
+                            if (newValue == null) newValue = "";
+                            setAvailableTill(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider>
+           
+            <Button onClick={handleSubmit(onSubmit)} variant="contained">Lagre</Button>
+
+            {showSaveFeedback && (
+                <SaveFeedback setShowSaveFeedback={setShowSaveFeedback}/>
+            )}
+        </FormGroup>
         
     )
 }
-
 
 export default VacantForm;

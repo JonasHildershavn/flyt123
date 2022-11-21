@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { text } from "stream/consumers";
-import { CategoryText, SanityProjectTag } from "../../models/sanity-project-tags";
-import Tag from "../tag/tag";
+
 import cn from "classnames";
 
+import { SanityProjectTag } from "../../models/sanity-project-tags";
+
+import LikeButton from "../like-button/like-button";
 import Heading from "../heading/heading";
+import Tags from "../tags/tags";
 
 interface ProjectCardProps {
   _id: string;
@@ -13,10 +15,13 @@ interface ProjectCardProps {
   tags: SanityProjectTag[];
   slug: any;
   theme?: string;
+  likable: boolean;
 }
 
 const themes: { [key: string]: string } = {
-  white: "white",
+  muddish: "muddish",
+  blue: "blue",
+  lime: "lime",
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -26,50 +31,48 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tags,
   slug,
   theme = "",
-}) =>{
-  const allCategories = ['development', 'design', 'content', 'administration', 'other']
-  
-  const updateCatgories = () => {
-    if (tags === undefined) return
-    const activeCategories = []
-    for (const category of allCategories) {
-      if (tags.find(tag => tag.category == category) !== undefined) {
-        activeCategories.push(category)
-      }
-    }
-    setCategories(activeCategories)
-  }
-  const [categories, setCategories] = useState<string[]>([]) 
-  useEffect(() => {
-    updateCatgories();
-  }, [])
-  return (
+  likable = true,
+}) => {
+  const [isLiked, setIsLiked] = useState(false);
 
+  useEffect(() => {
+    setIsLiked(
+      (localStorage.getItem("likes") !== null
+        ? JSON.parse(String(localStorage.getItem("likes")))
+        : []
+      ).includes(title)
+    );
+  }, [title]);
+
+  const handleLike = (val: boolean) => {
+    setIsLiked(val);
+  };
+
+  return (
     <a
       key={_id}
       title={title}
       className={cn("project-card", {
         [`project-card--${themes[theme]}`]: themes[theme],
+        "project-card--liked": isLiked,
       })}
       href={`/project/${slug}`}
     >
-      <Heading
-        headingLevel="h3"
-        className="project-card__title"
-        theme="pinkUnderline"
-      >
-        {title}
-      </Heading>
-      <p>{intro}</p>
-      <div className="project-card__tags">
-        {tags &&
-          tags.length > 0 &&
-          categories.map((category) => (
-            <Tag key={category} category={category} text={CategoryText[category]} />
-          ))}
+      <div className="project-card__title-spacer">
+        <Heading level={3} className="project-card__title">
+          {title}
+        </Heading>
       </div>
+
+      <p className="project-card__intro">{intro}</p>
+      <Tags tags={tags} />
+      {likable && (
+        <div className="project-card__like-button">
+          <LikeButton target={title} like={handleLike} />
+        </div>
+      )}
     </a>
   );
-}
+};
 
 export default ProjectCard;
