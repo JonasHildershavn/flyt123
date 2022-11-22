@@ -3,30 +3,26 @@
         {
             "route": "/",
             "allowedRoles": [
-                "authenticated"
             ]
         },
         {
             "route": "/project/*",
             "allowedRoles": [
-                "authenticated"
             ]
         },
         {
             "route": "/ledig-tid/*",
             "allowedRoles": [
-                "authenticated"
             ]
         },
         {
             "route": "/api/*",
             "allowedRoles": [
-                "authenticated"
             ]
         },
         {
             "route": "/login",
-            "rewrite": "/.auth/login/aad"
+            "rewrite": "/api/auth/signin"
         },
         {
             "route": "/logout",
