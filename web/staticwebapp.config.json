@@ -48,7 +48,7 @@
         }
     },
     "platform": {
-        "apiRuntime": "node:14"
+        "apiRuntime": "node:16"
     },
     "auth": {
         "identityProviders": {
