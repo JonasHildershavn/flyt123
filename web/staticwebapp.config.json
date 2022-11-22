@@ -55,7 +55,7 @@
             "azureActiveDirectory": {
                 "registration": {
                     "openIdIssuer": "https://login.microsoftonline.com/0e14ca26-be5b-4746-9d2c-d04483a1517b/v2.0",
-                    "clientIdSettingName": "AZURE__CLIENT_ID",
+                    "clientIdSettingName": "AZURE_CLIENT_ID",
                     "clientSecretSettingName": "AZURE_CLIENT_SECRET"
                 }
             }
