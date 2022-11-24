@@ -12,6 +12,7 @@ const Header: React.FC = () => {
   const router = useRouter()
   const headerHeight = 80 
   const logoHeight = 290
+  const [isFrontPage, setIsFrontPage] = useState(false)
 
   useEffect(() => {
     const currentItems: Array<string> =
@@ -37,12 +38,21 @@ const Header: React.FC = () => {
   const lastScrollY = useRef(0)
 
   useEffect(() => {
+    if (router.pathname.substring(0).trim().length == 0) {
+      setIsFrontPage(true)
+    }
     window.addEventListener('scroll', handleScroll)
     
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
+  useEffect(() => {
+    setIsFrontPage(router.pathname.substring(0).trim().length == 0)
+  }, [router.pathname])
+
+  
 
   useEffect(() => {
     console.log(showHeader)
@@ -64,34 +74,9 @@ const Header: React.FC = () => {
         "header",
         showHeader ? "header--show" : null,
       )} >
-      {/* <Container className="header__container" theme="wide"> */}
         <Link href="/">
           <a className="header__main-link">FLYT</a>
         </Link>
-        {/* <div className="header__like-wrapper">
-          <LinkButton
-            className="header__like-link"
-    <header className="header">
-      <Container className="header__container" theme="wide">
-        <Link href="/">
-          <a className="header__main-link">Flyt</a>
-        </Link>
-        <div className="header__like-wrapper">
-          <LinkButton
-            className="header__available-button"
-            href="ledig-tid/1"
-            text="Meld interesser"
-            theme="transparent"
-          /> */}
-          {/* <span
-            key="counter"
-            className={cn(
-              "header__counter",
-              anim ? "header__counter--pulse" : null
-            )}
-          >
-            {numLikes}
-          </span> */}
         <div className="header__like-wrapper">
           <LinkButton
             className="header__available-button"
@@ -109,7 +94,6 @@ const Header: React.FC = () => {
             </div>
           </Link>
         </div>
-      {/* </Container> */}
     </header>
     
   );
