@@ -1,4 +1,3 @@
-$color--white-blue-tone: #fafafa;
 $color--deep-black: #292929;
 $color--digital-black: #333333;
 $color--light-digital-black: #505050;
@@ -16,6 +15,7 @@ $color--digital-lollipop: #ff00ff;
 $color--dark-pebble: #f4ede3;
 $color--powder-purple: #ccc8ff;
 $color--minmimal-grey: #d9d9d9;
+$color--minmimal-grey-lighter: #d9d9d966;
 
 $link-color: $color--digital-lollipop;
 
@@ -27,11 +27,13 @@ $color--yellow: #f7ff9f;
 $color--coral: #ff9a7d;
 $color--purple: #a8b6ff;
 $color--violet: #ccc8ff;
+$color--violet-lighter: #ccc8ff66;
 $color--pink: #d8a8ff;
 $color--powder: #e3c4e5;
 $color--lime: #b7e731;
 $color--light-lime: #e0fba9;
 $color--muddish: #bfbda7;
+$color--muddish-lighter: #bfbda766;
 $color--blue: #96afff;
 
 $font-size--12: 0.75rem;
@@ -66,3 +68,6 @@ $spacing-mobile-sm: 2.5rem;
 
 $gutter-sm: 1rem;
 $gutter-lg: 2.5rem;
+
+$width--article: 789px;
+$width--wide: 1357px;

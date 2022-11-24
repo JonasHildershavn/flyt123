@@ -55,11 +55,12 @@ const Header: React.FC = () => {
       showHeaderChecker.current = shouldShowHeader
       setShowHeader(shouldShowHeader)
     }
+    lastScrollY.current = window.scrollY
   }
 
   return (
 
-      <header className={cn(
+    <header className={cn(
         "header",
         showHeader ? "header--show" : null,
       )} >
@@ -67,13 +68,21 @@ const Header: React.FC = () => {
         <Link href="/">
           <a className="header__main-link">FLYT</a>
         </Link>
-        <div className="header__like-wrapper">
+        {/* <div className="header__like-wrapper">
           <LinkButton
             className="header__like-link"
+    <header className="header">
+      <Container className="header__container" theme="wide">
+        <Link href="/">
+          <a className="header__main-link">Flyt</a>
+        </Link>
+        <div className="header__like-wrapper">
+          <LinkButton
+            className="header__available-button"
             href="ledig-tid/1"
             text="Meld interesser"
             theme="transparent"
-          />
+          /> */}
           {/* <span
             key="counter"
             className={cn(
@@ -83,6 +92,13 @@ const Header: React.FC = () => {
           >
             {numLikes}
           </span> */}
+        <div className="header__like-wrapper">
+          <LinkButton
+            className="header__available-button"
+            href="ledig-tid/1"
+            text="Meld interesser"
+            theme="transparent"
+            />
           <Link href={"ledig-tid/1"}>
             <div className={cn(
               "header__counter2",

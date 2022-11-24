@@ -8,7 +8,9 @@ const ContactPersons: React.FC<ContactPersonListProps> = ({
   contactPersons,
 }) => (
   <div className="contact-persons">
-    <Heading level={2}>Kontaktpersoner:</Heading>
+    <Heading level={2} className="contact-persons__title">
+      Kontaktpersoner:
+    </Heading>
     {contactPersons && contactPersons.length > 0 && (
       <ul className="contact-persons__list">
         {contactPersons.map(({ employee, role }, index) => (

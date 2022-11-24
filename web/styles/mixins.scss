@@ -7,29 +7,26 @@
 @mixin heading-level--1 {
   font-size: 24px;
   line-height: 1.15;
-  font-weight: 700;
 
   @include break-at($break-point--small) {
     font-size: 32px;
   }
 
   @include break-at($break-point--large) {
-    font-size: 44px;
+    font-size: 70px;
   }
 }
 
 @mixin heading-level--2 {
   font-size: 20px;
-  font-weight: 600;
 
   @include break-at($break-point--large) {
-    font-size: 24px;
+    font-size: 36px;
   }
 }
 
 @mixin heading-level--3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 32px;
 }
 
 @mixin list-style-reset {

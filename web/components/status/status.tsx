@@ -10,7 +10,9 @@ const Status: React.FC<StatusProps> = ({ status = "Oppstartsfase" }) => {
   const statusOptions = ["Oppstart", "Pågående", "Vedlikehold"];
   return (
     <div className="status">
-      <Heading level={2}>Status</Heading>
+      <Heading level={2} className="status__title">
+        Status
+      </Heading>
       <ul className="status__list">
         {statusOptions.map((option, index) => (
           <li

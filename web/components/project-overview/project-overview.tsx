@@ -8,17 +8,20 @@ interface ProjectOverviewProps {
   title: string;
   projects: any[];
   theme?: string;
+  cardTheme?: string;
+  likable?: boolean;
 }
 
 const themes: { [key: string]: string } = {
   green: "green",
-  whiteBlueTone: "white-blue-tone",
 };
 
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({
   title,
   projects,
   theme = "",
+  cardTheme,
+  likable = true,
 }) => (
   <section
     className={cn("project-overview", {
@@ -32,7 +35,12 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({
       <div className="project-overview__grid">
         {projects.length > 0 &&
           projects.map((project, idx) => (
-            <ProjectCard {...project} key={idx} theme={"white"} />
+            <ProjectCard
+              {...project}
+              key={idx}
+              theme={cardTheme}
+              likable={likable}
+            />
           ))}
       </div>
     </Container>

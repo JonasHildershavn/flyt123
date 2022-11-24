@@ -1,6 +1,11 @@
 .contact-persons {
   margin: 0;
 
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
   &__person {
     margin: 15px 0;
   }

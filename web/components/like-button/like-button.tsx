@@ -7,12 +7,14 @@ interface LikeButtonProps {
   target: string;
   width?: string;
   height?: string;
+  like?: (val: boolean) => void;
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({
   target,
   width = "40px",
   height = "40px",
+  like = () => {},
 }) => {
   const [isAdded, setIsAdded] = useState(false);
 
@@ -36,12 +38,14 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 
       localStorage.setItem("likes", JSON.stringify(currentItems));
       setIsAdded(true);
+      like(true);
     } else {
       localStorage.setItem(
         "likes",
         JSON.stringify(currentItems.filter((item: string) => item !== target))
       );
       setIsAdded(false);
+      like(false);
     }
     window.dispatchEvent(new Event("storage"));
   };
