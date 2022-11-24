@@ -1,6 +1,6 @@
-import { NextPage } from 'next'
-import groq from 'groq'
-import client from '../clients/sanity-client'
+import { NextPage } from "next";
+import groq from "groq";
+import client from "../clients/sanity-client";
 
 import PageLayout from "../components/page-layout/page-layout";
 import ProjectOverview from "../components/project-overview/project-overview";
@@ -19,16 +19,17 @@ const Index: NextPage<Props> = ({ uncompleted, completed }) => {
     <PageLayout title="Flyt">
       <Hero />
       <ProjectOverview
-        title="Pågående Flyt-prosjekter"
+        title="Internprosjekter"
         projects={uncompleted}
-        theme={"green"}
+        cardTheme="muddish"
       />
       <TaskOverview title="Annet" />
       <CtaAvailableBanner />
       <ProjectOverview
-        title="Ferdigstilte Flyt-prosjekter"
+        title="Tidligere internprosjekter"
         projects={completed}
-        theme={"whiteBlueTone"}
+        cardTheme="lime"
+        likable={false}
       />
     </PageLayout>
   );

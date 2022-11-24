@@ -25,9 +25,11 @@ const Project: React.FC<SanityProject> = ({
           <Heading level={1} className="project__title">
             {title}
           </Heading>
-          <div className="project__like-button">
-            <LikeButton target={title} width={"57px"} height={"57px"} />
-          </div>
+          {!completed && (
+            <div className="project__like-button">
+              <LikeButton target={title} width={"57px"} height={"57px"} />
+            </div>
+          )}
         </div>
         <div className="project__grid">
           <div className="project__sidebar">

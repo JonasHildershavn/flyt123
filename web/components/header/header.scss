@@ -1,5 +1,22 @@
 .header {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+
+  &__logo {
+    font-size: 30px;
+  }
+
+  &__right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    text-decoration: underline;
+    font-size: 25px;
+  }
 
   &__container {
     display: flex;
@@ -7,8 +24,9 @@
     align-items: center;
   }
   &__main-link {
-    background-color: transparent !important;
-    font-size: 32px !important;
+    font-size: 32px;
+    text-transform: uppercase;
+    cursor: pointer;
     color: $color--deep-black;
   }
 
@@ -20,7 +38,7 @@
     position: relative;
     background: $color--purple;
     border-radius: 50%;
-    padding: 9px 9px 8px 8px;
+    padding: 3px 3px 1px 1px;
     width: 30px;
     height: 30px;
     text-align: center;
@@ -34,7 +52,7 @@
         background: $color--purple;
         opacity: 0;
         border-radius: 50%;
-        padding: 10px 10px 7px 7px;
+        padding: 3px 3px 1px 1px;
         left: 0;
         top: 0;
         width: 30px;

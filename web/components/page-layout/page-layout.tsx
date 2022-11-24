@@ -15,7 +15,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => (
       <title>{title}</title>
     </Helmet>
     <Header />
-    <div className="page-layout__content">{children}</div>
+    <main className="page-layout__content">{children}</main>
     <Footer />
   </div>
 );

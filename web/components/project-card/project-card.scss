@@ -1,20 +1,35 @@
 .project-card {
-  background-color: $color--melon;
   position: relative;
-  padding: 20px;
-  box-shadow: 0px 0px 10px $color--clay;
+  padding: 30px 25px;
   color: $color--black;
+  transition: border-radius 100ms ease-in-out;
 
-  &--white {
-    background-color: white;
+  &:hover {
+    border-radius: 40px;
+  }
+
+  &--muddish {
+    background-color: $color--muddish-lighter;
+  }
+
+  &--blue {
+    background-color: $color--violet-lighter;
+  }
+
+  &--lime {
+    background-color: $color--light-lime;
+  }
+
+  &--liked {
+    background-color: $color--muddish;
   }
 
   &__title-spacer {
     padding-right: 20px;
   }
   &__title {
-    overflow-wrap: break-word;
-    font-weight: $font-weight--bold;
+    font-weight: $font-weight--normal;
+    font-size: 32px;
   }
 
   &__tags {
@@ -22,7 +37,7 @@
   }
   &__like-button {
     position: absolute;
-    top: 5px;
-    right: 2px;
+    top: 10px;
+    right: 8px;
   }
 }

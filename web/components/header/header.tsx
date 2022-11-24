@@ -31,12 +31,12 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <Container className="header__container" theme="wide">
-        <Link className="header__main-link" href="/">
-          Flyt
+        <Link href="/">
+          <a className="header__main-link">Flyt</a>
         </Link>
         <div className="header__like-wrapper">
           <LinkButton
-            className=""
+            className="header__available-button"
             href="ledig-tid/1"
             text="Meld inn ledig tid"
             theme="transparent"
