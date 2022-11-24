@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const Logo: React.FC = () => {
+const MousemoveLogo: React.FC = () => {
     const floatingDiv = useRef<null | HTMLDivElement>(null)
     let mouseX = 0
     let mouseXL = 0
@@ -95,40 +95,11 @@ const Logo: React.FC = () => {
             const widthY = letterY.current.getBoundingClientRect().width
             const isNegative = lastEndX != null && lastEndX > endX
 
-            mouseXL += isNegative ? ((endX - mouseXL - widthL) / 40) : ((endX - mouseXL - widthL) / 80)// + lLeft
-            mouseXY += isNegative ? ((endX - mouseXY) / 80) : ((endX - mouseXY) / 40) // + yLeft
+            mouseXL += isNegative ? ((endX - mouseXL - widthL) / 40) : ((endX - mouseXL - widthL) / 80)
+            mouseXY += isNegative ? ((endX - mouseXY) / 80) : ((endX - mouseXY) / 40)
 
-            // mouseXL += endX > mouseXL ? ((endX - mouseXL - widthL) / 50) : ((endX - mouseXL - widthL) / 70)// + lLeft
-            // mouseXY += endX < mouseXY ? ((endX - mouseXY) / 70) : ((endX - mouseXY) / 50) // + yLeft
-
-            //mouseXL += endX < mouseXL ? (endX - mouseXL) / 30 : (endX - mouseXL) / 100
-            //mouseXY += endX < mouseXY ? (endX - mouseXY) / 100 : (endX - mouseXY) / 30
-          
-          //mouseX += (endX - mouseX) / 15;
-            
-            
-
-            //const relativeLeft = (containerWidth * mouseXL)
-
-
-            //   if (mouseXL < 0.03) mouseXL = 0
-            //   if (mouseXY < 0.03) mouseXY = 0
-            //const leftL = (mouseX / width) * (widthL / width)
-            //const leftY = (mouseX / width) * (widthY / width)
-
-
-            //   const leftL = mouseXL * widthL
-            //   const leftY = mouseXY * widthY
-
-            let leftL = mouseXL - lLeft//mouseXL - lLeft - widthL 
-            let leftY = mouseXY - yLeft//mouseXY - yLeft
-            
-            // leftL = Math.max(leftL, minL)
-            // leftL = Math.min(leftL, maxL)
-
-            // leftY = Math.max(leftY, minY)
-            // leftY = Math.min(leftY, maxY)
-            
+            let leftL = mouseXL - lLeft
+            let leftY = mouseXY - yLeft
             letterL.current.style.transform = `translateX(${leftL}px)`;
             letterY.current.style.transform = `translateX(${leftY}px)`;
           }
@@ -142,29 +113,14 @@ const Logo: React.FC = () => {
         const div = e.target;
         if (floatingDiv.current != null) {
             const x = e.pageX;
-            //const containerRect = floatingDiv.current.getBoundingClientRect()
-            //const relativeLeft = x - containerRect.left;
-            // setLeft(relativeLeft * 100);
-            // console.log("left:", relativeLeft + "%")
-
-            //endX = relativeLeft / width//relativeLeft
-            
             endX = x
             endX = Math.max(min, endX)
             endX = Math.min(max, endX)
-            //setMouseX(relativeLeft)
-            //mouseX = relativeLeft
         }
     }
     return (
         <Link href="/">
             <a className="logo">
-                {/* <span className="f">F</span>
-                <div ref={floatingDiv} className="logo__floating-container">
-                    <div ref={letterL} className="l">L</div>
-                    <div ref={letterY} className="y">Y</div>
-                </div>
-                <span className="t">T</span> */}
                 <div className="f">F</div>
                 <div ref={floatingDiv} className="logo__floating-container">
                     <div ref={letterL} className="l">L</div>
@@ -176,4 +132,4 @@ const Logo: React.FC = () => {
     );
 } 
 
-export default Logo;
+export default MousemoveLogo;
