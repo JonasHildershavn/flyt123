@@ -12,7 +12,7 @@ const ProjectPage = ({
   slug: string;
 }) => {
   return (
-    <PageLayout title={project.title}>
+    <PageLayout title={project?.title ?? ""}>
       <Project {...project} />
     </PageLayout>
   );
