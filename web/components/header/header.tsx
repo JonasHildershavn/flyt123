@@ -38,7 +38,7 @@ const Header: React.FC = () => {
           <LinkButton
             className="header__available-button"
             href="ledig-tid/1"
-            text="Meld inn ledig tid"
+            text="Mine interesser"
             theme="transparent"
           />
           <span

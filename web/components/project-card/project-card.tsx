@@ -22,6 +22,7 @@ const themes: { [key: string]: string } = {
   muddish: "muddish",
   blue: "blue",
   lime: "lime",
+  black: "black",
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({

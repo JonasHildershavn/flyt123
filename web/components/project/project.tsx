@@ -59,7 +59,7 @@ const Project: React.FC<SanityProject> = ({
             {collabtools && collabtools.length > 0 && (
               <div className="project__resources">
                 <div>
-                  <Heading level={2} className="project__tags-header">
+                  <Heading level={2} className="project__resources-header">
                     Samarbeidsverktøy:
                   </Heading>
                   <CollabtoolList collabtools={collabtools} />

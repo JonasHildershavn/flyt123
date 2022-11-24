@@ -7,6 +7,7 @@
   text-align: center;
   min-width: 25px;
   text-transform: uppercase;
+  color: $color--black;
 
   &--development {
     background-color: $color--blue;
@@ -22,5 +23,12 @@
   }
   &--other {
     background-color: $color--pear;
+  }
+
+  &--small-margin {
+    margin: 4px;
+  }
+  &--big-margin {
+    margin: 6px;
   }
 }
