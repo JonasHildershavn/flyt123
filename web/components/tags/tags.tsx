@@ -57,10 +57,7 @@ const Tags: React.FC<TagsProps> = ({
               />
             ))
           : tags.map(({ tag, category }) => (
-              <>
-                {console.log(tag, category)}
-                <Tag key={category} category={category} text={tag} />
-              </>
+              <Tag key={category} category={category} text={tag} />
             )))}
     </div>
   );
