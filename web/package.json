@@ -17,7 +17,7 @@
     "@mui/material": "^5.10.9",
     "@mui/x-data-grid": "^5.17.6",
     "@mui/x-date-pickers": "^5.0.7",
-    "@sanity/block-content-to-react": "^3.0.0",
+    "@portabletext/react": "^2.0.0",
     "@sanity/client": "^3.4.1",
     "@types/react-helmet": "^6.1.5",
     "axios": "^1.1.3",
