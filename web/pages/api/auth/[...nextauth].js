@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
-import AzureADProvider from "next-auth/providers/github";
+import AzureADProvider from "next-auth/providers/azure-ad";
 
 export const authOptions = {
-  // Configure one or more authentication providers
+  // Configure one or more authentication providerss
   providers: [
     AzureADProvider({
       clientId: process.env.AZURE_AD_CLIENT_ID,
@@ -12,4 +12,5 @@ export const authOptions = {
     // ...add more providers here
   ],
 };
+
 export default NextAuth(authOptions);
