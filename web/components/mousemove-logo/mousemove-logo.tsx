@@ -78,25 +78,25 @@ const MousemoveLogo: React.FC = () => {
             && floatingDiv.current != null) {
         
           if (endX == null) {
-            mouseXL = ((lLeft - mouseXL) / 50)
-            mouseXY = ((yLeft - mouseXY) / 50) 
-            mouseXL += mouseXY
-            mouseXY += mouseXY
-            const leftL = mouseXL
-            const leftY = mouseXY
+            const moveL = ((lLeft - mouseXL) / 50)
+            const moveY = ((yLeft - mouseXY) / 50)
+            mouseXL += moveL
+            mouseXY += moveY
+            const leftL = mouseXL - lLeft
+            const leftY = mouseXY - yLeft
             letterL.current.style.transform = `translateX(${leftL}px)`;
             letterY.current.style.transform = `translateX(${leftY}px)`;
-            mouseXL += lLeft
-            mouseXY += yLeft
           } else {
 
             const containerWidth = floatingDiv.current.getBoundingClientRect().width
             const widthL = letterL.current.getBoundingClientRect().width
             const widthY = letterY.current.getBoundingClientRect().width
             const isNegative = lastEndX != null && lastEndX > endX
+            const fastRatio = 20000 / containerWidth
+            const slowRatio = 50000 / containerWidth
 
-            mouseXL += isNegative ? ((endX - mouseXL - widthL) / 40) : ((endX - mouseXL - widthL) / 80)
-            mouseXY += isNegative ? ((endX - mouseXY) / 80) : ((endX - mouseXY) / 40)
+            mouseXL += isNegative ? ((endX - mouseXL - widthL) / fastRatio) : ((endX - mouseXL - widthL) / slowRatio)
+            mouseXY += isNegative ? ((endX - mouseXY) / slowRatio) : ((endX - mouseXY) / fastRatio)
 
             let leftL = mouseXL - lLeft
             let leftY = mouseXY - yLeft
@@ -120,9 +120,9 @@ const MousemoveLogo: React.FC = () => {
     }
     return (
         <Link href="/">
-            <a className="logo">
+            <a className="mousemove-logo">
                 <div className="f">F</div>
-                <div ref={floatingDiv} className="logo__floating-container">
+                <div ref={floatingDiv} className="mousemove-logo__floating-container">
                     <div ref={letterL} className="l">L</div>
                     <div ref={letterY} className="y">Y</div>
                 </div>
