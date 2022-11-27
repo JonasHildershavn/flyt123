@@ -8,6 +8,8 @@ import Hero from "../components/hero/hero";
 import { SanityProject } from "../models/sanity-project";
 import CtaAvailableBanner from "../components/cta-available-banner/cta-available-banner";
 import TaskOverview from "../components/task-overview/task-overview";
+import { useEffect, useState } from "react";
+import { AzureVacant } from "../models/azure-vacant";
 
 interface Props {
   uncompleted: SanityProject[];
@@ -15,6 +17,28 @@ interface Props {
 }
 
 const Index: NextPage<Props> = ({ uncompleted, completed }) => {
+  const getVacant = async () => {
+    const vacantMail = "navn@email.com";
+    const resp = await fetch("/api/vacant/" + vacantMail);
+    const json = await resp.json();
+
+    setExistingVacant(json);
+  };
+
+  const [existingVacant, setExistingVacant] = useState<AzureVacant>();
+
+  useEffect(() => {
+    getVacant();
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "likes",
+      JSON.stringify(existingVacant?.prefProject.split(", "))
+    );
+    window.dispatchEvent(new Event("storage"));
+  }, [existingVacant]);
+
   return (
     <PageLayout title="Flyt">
       <Hero />

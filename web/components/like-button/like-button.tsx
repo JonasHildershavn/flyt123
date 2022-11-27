@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
 
 import Star from "../../assets/star.svg";
@@ -18,35 +18,87 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 }) => {
   const [isAdded, setIsAdded] = useState(false);
 
-  useEffect(() => {
+  const updateIsAdded = useCallback(() => {
     setIsAdded(
-      (localStorage.getItem("likes") !== null
-        ? JSON.parse(String(localStorage.getItem("likes")))
+      (sessionStorage.getItem("removeLikes")
+        ? JSON.parse(String(sessionStorage.getItem("removeLikes")))
         : []
       ).includes(target)
+        ? false
+        : (sessionStorage.getItem("addLikes")
+            ? JSON.parse(String(sessionStorage.getItem("addLikes")))
+            : []
+          ).includes(target)
+        ? true
+        : (sessionStorage.getItem("likes") &&
+          sessionStorage.getItem("likes") !== "undefined"
+            ? JSON.parse(String(sessionStorage.getItem("likes")))
+            : []
+          ).includes(target)
     );
   }, [target]);
 
+  useEffect(() => {
+    updateIsAdded();
+    window.addEventListener("storage", () => {
+      updateIsAdded();
+    });
+  }, [updateIsAdded]);
+
+  useEffect(() => {
+    like(isAdded);
+  }, [isAdded, like]);
+
   const handleOnClick = (target: string) => {
-    const currentItems: Array<string> =
-      localStorage.getItem("likes") !== null
-        ? JSON.parse(String(localStorage.getItem("likes")))
+    const currentItemsToRemove: Array<string> =
+      sessionStorage.getItem("removeLikes") !== null
+        ? JSON.parse(String(sessionStorage.getItem("removeLikes")))
         : [];
 
-    if (!isAdded) {
-      currentItems.push(target);
-
-      localStorage.setItem("likes", JSON.stringify(currentItems));
-      setIsAdded(true);
-      like(true);
-    } else {
-      localStorage.setItem(
-        "likes",
-        JSON.stringify(currentItems.filter((item: string) => item !== target))
+    if (currentItemsToRemove.includes(target)) {
+      sessionStorage.setItem(
+        "removeLikes",
+        JSON.stringify(
+          currentItemsToRemove.filter((item: string) => item !== target)
+        )
       );
-      setIsAdded(false);
-      like(false);
+      setIsAdded(true);
+    } else {
+      const currentItemsToAdd: Array<string> =
+        sessionStorage.getItem("addLikes") !== null
+          ? JSON.parse(String(sessionStorage.getItem("addLikes")))
+          : [];
+      if (currentItemsToAdd.includes(target)) {
+        sessionStorage.setItem(
+          "removeLikes",
+          JSON.stringify(
+            currentItemsToAdd.filter((item: string) => item !== target)
+          )
+        );
+        setIsAdded(false);
+      } else {
+        const currentItems: Array<string> =
+          sessionStorage.getItem("likes") !== null
+            ? JSON.parse(String(sessionStorage.getItem("likes")))
+            : [];
+
+        if (!isAdded) {
+          currentItems.push(target);
+
+          sessionStorage.setItem("likes", JSON.stringify(currentItems));
+          setIsAdded(true);
+        } else {
+          sessionStorage.setItem(
+            "likes",
+            JSON.stringify(
+              currentItems.filter((item: string) => item !== target)
+            )
+          );
+          setIsAdded(false);
+        }
+      }
     }
+
     window.dispatchEvent(new Event("storage"));
   };
   return (

@@ -10,16 +10,11 @@ const Header: React.FC = () => {
   const [anim, setAnim] = useState(false);
 
   useEffect(() => {
-    const currentItems: Array<string> =
-      localStorage.getItem("likes") !== null
-        ? JSON.parse(String(localStorage.getItem("likes")))
-        : [];
-    setNumLikes(currentItems.length);
-
     window.addEventListener("storage", () => {
       const currentItems: Array<string> =
-        localStorage.getItem("likes") !== null
-          ? JSON.parse(String(localStorage.getItem("likes")))
+        sessionStorage.getItem("likes") !== null &&
+        sessionStorage.getItem("likes") !== "undefined"
+          ? JSON.parse(String(sessionStorage.getItem("likes")))
           : [];
       setNumLikes(currentItems.length);
 
