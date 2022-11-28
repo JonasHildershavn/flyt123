@@ -20,7 +20,7 @@ const CtaAvailableBanner: React.FC<CtaAvailableBannerProps> = ({}) => {
           <LinkButton
             className="cta-available-banner__button"
             text="Meld ledig tid"
-            href="/ledig-tid/1"
+            href="/mine-interesser/"
           />
         </div>
       </Container>
