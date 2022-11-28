@@ -53,11 +53,10 @@ npm run dev
 ```
 
 4. Legg til lokale variabler
-   Oppret fil ved navnet .env.local i mappen "web". Den skal inneholde:
+   Opprett fil ved navnet .env.local i mappen "web". Den skal inneholde:
 
 ```
 Azure_StorageAccount_AccessKey=NØKKEL_FRA_AZURE_PORTAL
-BASE_URL=http://localhost:3000
 ```
 
 Azure storage account key henter du i https://portal.azure.com/ > kxo-flyt > flytstorageaccount > access keys > key1 > Key

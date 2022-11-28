@@ -17,15 +17,20 @@ const AdminPage : NextPage = () => {
         setVacants(json)
     }
 
-    const [vacants, setVacants] = useState<AzureVacant[]>([])
+    const [vacants, setVacants] = useState<AzureVacant[]>()
 
     return (
         <PageLayout title="Adminpanel">
             <Container className="" theme="wide">
                 <Heading level={1}>
-                    Admin
+                    Adminpanel
                 </Heading>
-                <VacantTable vacants={vacants}/>
+                <p>Her ser du oversikt over tilgjengelige ressurser. Ta kontakt med dem på Slack eller e-post for å avtale nærmere, og minn dem på å oppdatere kapasiteten sin!</p>
+                { vacants || vacants !== undefined ? 
+                    <VacantTable vacants={vacants}/>
+                : 
+                    <div>Laster data...</div>
+                }
             </Container>
         </PageLayout>
     )

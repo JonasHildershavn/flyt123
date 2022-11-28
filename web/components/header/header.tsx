@@ -1,9 +1,9 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
-import Link from "next/link";
 
 const Header: React.FC = () => {
   const [numLikes, setNumLikes] = useState(0);
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
         <div className="header__like-wrapper">
           <LinkButton
             className="header__available-button"
-            href="ledig-tid/1"
+            href="/mine-interesser/"
             text="Meld inn ledig tid"
             theme="transparent"
           />

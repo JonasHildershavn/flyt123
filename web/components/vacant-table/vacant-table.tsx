@@ -1,8 +1,10 @@
 import { 
     DataGrid, 
     GridColDef, 
+    GridRenderCellParams, 
     GridToolbarContainer, 
-    GridToolbarExport 
+    GridToolbarExport,
+    nbNO
 } from '@mui/x-data-grid';
 import { AzureVacant } from '../../models/azure-vacant';
 
@@ -16,20 +18,56 @@ const VacantTable: React.FC<VacantTableProps> = ({
 }) => {
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Navn', width: 120},
-        { field: 'rowKey', headerName: 'Email', width: 180 },
-        { field: 'role', headerName: 'Stilling', width: 120 },
-        { field: 'prefActivity', headerName: 'Vil gjøre', width: 120 },
-        { field: 'prefProject', headerName: 'Prosjektinteresse', width: 120 },
-        { field: 'motivation', headerName: 'Motivasjon', width: 120 },
-        { field: 'capacity', headerName: 'Kapasitet', type: 'number', width: 100 },
-        { field: 'availableTill', headerName: 'Ledig til', width: 120 },
-        { field: 'timestamp', headerName: 'Oppdatert', width: 120 },
+        { field: 'personalia', headerName: 'Navn', 
+            renderCell: (e: GridRenderCellParams<string>) => (
+            <div>
+                {e.value && (e.value.split(",").map((x: string) => (
+                    <li key={x}>{x}</li>
+                )))}
+            </div>
+        ), flex: 1 },
+        { field: 'prefProject', headerName: 'Prosjektinteresse', 
+            renderCell: (e: GridRenderCellParams<string>) => (
+            <div>
+                {e.value && (e.value.split(",").map((x: string) => (
+                    <li key={x}>{x}</li>
+                )))}
+            </div>
+        ), flex: 1 },
+        { field: 'prefCategory', headerName: 'Rolle(r)',
+            renderCell: (e: GridRenderCellParams<string>) => (
+            <div>
+                {e.value && (e.value.split(",").map((x: string) => (
+                    <li key={x}>{x}</li>
+                )))}
+            </div>
+        ), flex: 1 },
+        { field: 'capacity', headerName: 'Kapasitet', flex: 1 },
+        { field: 'prefActivity', headerName: 'Vil gjøre',
+            renderCell: (e: GridRenderCellParams<string>) => (
+            <div>
+                {e.value && (e.value.split(",").map((x: string) => (
+                    <li key={x}>{x}</li>
+                )))}
+            </div>
+        ), flex: 1 },
+        { field: 'otherInfo', headerName: 'Tilleggsinfo', flex: 1 },
+        { field: 'timestamp', headerName: 'Oppdatert',
+            renderCell: (e: GridRenderCellParams<string>) => (
+            <div>
+                {e.value && Intl.DateTimeFormat('no').format(Date.parse(e.value))}
+            </div>
+        ), flex: 1 },
     ];
 
     let filteredVacants = vacants.filter(function(item) { 
         return item.showInAdmin == true;  
     });
+
+    filteredVacants.forEach(v => {
+        v['personalia'] = v.name + ',' + v.rowKey
+    });
+    console.log(filteredVacants[0])
 
     const rows = filteredVacants;
     
@@ -40,16 +78,16 @@ const VacantTable: React.FC<VacantTableProps> = ({
                 rows={rows}
                 columns={columns}
                 getRowId={(row) => row.rowKey}
-                // pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                getRowHeight={() => 'auto'}
+                localeText={nbNO.components.MuiDataGrid.defaultProps.localeText}
                 components={{Toolbar: CustomToolbar,
                 }}
                 sx={{
                     border: 'none',
                     borderRadius: '0',
                 }}
-                 initialState={{
+                initialState={{
                     sorting: {
                     sortModel: [{ field: 'capacity', sort: 'desc' }],
                     },
