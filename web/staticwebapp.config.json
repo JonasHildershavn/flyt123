@@ -7,13 +7,13 @@
             ]
         },
         {
-            "route": "/project/*",
+            "route": "/prosjekt/*",
             "allowedRoles": [
                 "authenticated"
             ]
         },
         {
-            "route": "/ledig-tid/*",
+            "route": "/mine-interesser/*",
             "allowedRoles": [
                 "authenticated"
             ]

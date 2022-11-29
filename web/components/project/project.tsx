@@ -1,5 +1,5 @@
-//import BlockContent from "@sanity/block-content-to-react";
 import { SanityProject } from "../../models/sanity-project";
+import { PortableText } from "@portabletext/react";
 
 import Heading from "../heading/heading";
 import ContactPersons from "../contact-persons/contact-persons";
@@ -43,7 +43,7 @@ const Project: React.FC<SanityProject> = ({
           <div className="project__content">
             {description && (
               <div className="project__description">
-                {/* <BlockContent blocks={description} /> */}
+                <PortableText value={description} />
               </div>
             )}
 

@@ -57,7 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         [`project-card--${themes[theme]}`]: themes[theme],
         "project-card--liked": isLiked,
       })}
-      href={`/project/${slug}`}
+      href={`/prosjekt/${slug}`}
     >
       <div className="project-card__title-spacer">
         <Heading level={3} className="project-card__title">
