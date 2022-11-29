@@ -42,17 +42,13 @@ const Index: NextPage<Props> = ({ uncompleted, completed }) => {
   return (
     <PageLayout title="Flyt">
       <Hero />
-      <ProjectOverview
-        title="Internprosjekter"
-        projects={uncompleted}
-        cardTheme="muddish"
-      />
+      <ProjectOverview title="Internprosjekter" projects={uncompleted} />
       <TaskOverview title="Annet" />
       <CtaAvailableBanner />
       <ProjectOverview
         title="Tidligere internprosjekter"
         projects={completed}
-        cardTheme="lime"
+        cardTheme="black"
         likable={false}
       />
     </PageLayout>

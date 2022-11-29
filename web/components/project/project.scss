@@ -6,13 +6,17 @@
 
   &__title {
     font-size: 44px;
-    margin: 0 20px 10px 0;
+    margin: 0 20px 40px 0;
 
     overflow-wrap: anywhere;
 
     @include break-at($break-point--small) {
       font-size: 70px;
     }
+  }
+
+  &__like-button {
+    margin-bottom: 40px;
   }
 
   &__grid {
@@ -25,9 +29,9 @@
       "content";
 
     @include break-at($break-point--small) {
-      -ms-grid-columns: 4fr 6fr;
-      grid-template-columns: 4fr 6fr;
-      grid-template-areas: "sidebar  content";
+      -ms-grid-columns: 6fr 4fr;
+      grid-template-columns: 6fr 4fr;
+      grid-template-areas: "content  sidebar";
     }
 
     padding-bottom: 50px;
@@ -55,19 +59,16 @@
     padding: 5px;
   }
 
-  &__description {
-    margin: 0;
-    padding-bottom: 30px;
-  }
-
-  &__tags-wrapper {
-    padding-bottom: 30px;
-  }
-  &__tags {
-    padding: 10px 0;
-  }
-
+  &__description,
+  &__tags-wrapper,
   &__resources {
+    margin: 0;
+    padding-bottom: 65px;
+  }
+
+  &__resources-header,
+  &__tags-header {
+    margin: 0;
     padding-bottom: 30px;
   }
 }

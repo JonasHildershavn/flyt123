@@ -1,15 +1,14 @@
 .project-card {
+  $block: &;
+
   position: relative;
   padding: 30px 25px;
   color: $color--black;
   transition: border-radius 100ms ease-in-out;
+  background-color: $color--light-grey;
 
   &:hover {
     border-radius: 40px;
-  }
-
-  &--muddish {
-    background-color: $color--muddish-lighter;
   }
 
   &--blue {
@@ -19,9 +18,20 @@
   &--lime {
     background-color: $color--light-lime;
   }
+  &--black {
+    background-color: $color--black;
+    color: $color--white;
+    #{$block}__title {
+      color: $color--white;
+    }
+  }
 
   &--liked {
-    background-color: $color--muddish;
+    background-color: $color--black;
+    color: $color--white;
+    #{$block}__title {
+      color: $color--white;
+    }
   }
 
   &__title-spacer {
