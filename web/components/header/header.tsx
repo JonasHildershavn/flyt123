@@ -10,14 +10,33 @@ const Header: React.FC = () => {
   const [anim, setAnim] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("storage", () => {
+    const getLikes = () => {
       const currentItems: Array<string> =
         sessionStorage.getItem("likes") !== null &&
         sessionStorage.getItem("likes") !== "undefined"
           ? JSON.parse(String(sessionStorage.getItem("likes")))
           : [];
-      setNumLikes(currentItems.length);
+      const currentItemsToAdd: Array<string> =
+        sessionStorage.getItem("addLikes") !== null &&
+        sessionStorage.getItem("addLikes") !== "undefined"
+          ? JSON.parse(String(sessionStorage.getItem("addLikes")))
+          : [];
+      const currentItemsToRemove: Array<string> =
+        sessionStorage.getItem("removeLikes") !== null &&
+        sessionStorage.getItem("removeLikes") !== "undefined"
+          ? JSON.parse(String(sessionStorage.getItem("removeLikes")))
+          : [];
 
+      setNumLikes(
+        currentItems.length +
+          currentItemsToAdd.length -
+          currentItemsToRemove.length
+      );
+    };
+
+    getLikes();
+    window.addEventListener("storage", () => {
+      getLikes();
       setAnim(true);
       setTimeout(() => setAnim(false), 500);
     });

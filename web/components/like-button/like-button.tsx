@@ -54,6 +54,10 @@ const LikeButton: React.FC<LikeButtonProps> = ({
       sessionStorage.getItem("removeLikes") !== null
         ? JSON.parse(String(sessionStorage.getItem("removeLikes")))
         : [];
+    const currentItemsToAdd: Array<string> =
+      sessionStorage.getItem("addLikes") !== null
+        ? JSON.parse(String(sessionStorage.getItem("addLikes")))
+        : [];
 
     if (currentItemsToRemove.includes(target)) {
       sessionStorage.setItem(
@@ -64,35 +68,24 @@ const LikeButton: React.FC<LikeButtonProps> = ({
       );
       setIsAdded(true);
     } else {
-      const currentItemsToAdd: Array<string> =
-        sessionStorage.getItem("addLikes") !== null
-          ? JSON.parse(String(sessionStorage.getItem("addLikes")))
-          : [];
       if (currentItemsToAdd.includes(target)) {
         sessionStorage.setItem(
-          "removeLikes",
+          "addLikes",
           JSON.stringify(
             currentItemsToAdd.filter((item: string) => item !== target)
           )
         );
         setIsAdded(false);
       } else {
-        const currentItems: Array<string> =
-          sessionStorage.getItem("likes") !== null
-            ? JSON.parse(String(sessionStorage.getItem("likes")))
-            : [];
-
         if (!isAdded) {
-          currentItems.push(target);
-
-          sessionStorage.setItem("likes", JSON.stringify(currentItems));
+          currentItemsToAdd.push(target);
+          sessionStorage.setItem("addLikes", JSON.stringify(currentItemsToAdd));
           setIsAdded(true);
         } else {
+          currentItemsToRemove.push(target);
           sessionStorage.setItem(
-            "likes",
-            JSON.stringify(
-              currentItems.filter((item: string) => item !== target)
-            )
+            "removeLikes",
+            JSON.stringify(currentItemsToRemove)
           );
           setIsAdded(false);
         }
