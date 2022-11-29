@@ -12,8 +12,8 @@ interface LikeButtonProps {
 
 const LikeButton: React.FC<LikeButtonProps> = ({
   target,
-  width = "40px",
-  height = "40px",
+  width = "50px",
+  height = "50px",
   like = () => {},
 }) => {
   const [isAdded, setIsAdded] = useState(false);

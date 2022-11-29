@@ -9,6 +9,6 @@
     </clipPath>
   </defs>
 
-  <use href="#star" stroke-width="10" stroke="#2b2b2b" fill="currentColor" clip-path="url(#innerStrokeStar)" />
+  <use href="#star" stroke-width="6" stroke="#2b2b2b" fill="currentColor" clip-path="url(#innerStrokeStar)" />
 
 </svg>

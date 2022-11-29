@@ -34,13 +34,17 @@ const Index: NextPage<Props> = ({ uncompleted, completed }) => {
   useEffect(() => {
     sessionStorage.setItem(
       "likes",
-      JSON.stringify(existingVacant?.prefProject.split(", "))
+      JSON.stringify(
+        !!existingVacant?.prefProject
+          ? existingVacant?.prefProject.split(",")
+          : []
+      )
     );
     window.dispatchEvent(new Event("storage"));
   }, [existingVacant]);
 
   return (
-    <PageLayout title="Flyt">
+    <PageLayout title="Flyt" isFrontPage={true}>
       <Hero />
       <ProjectOverview title="Internprosjekter" projects={uncompleted} />
       <TaskOverview title="Annet" />

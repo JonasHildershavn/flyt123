@@ -5,7 +5,11 @@ import cn from "classnames";
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  isFrontPage: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isFrontPage }) => {
   const [numLikes, setNumLikes] = useState(0);
   const [anim, setAnim] = useState(false);
 
@@ -52,7 +56,7 @@ const Header: React.FC = () => {
           <LinkButton
             className="header__available-button"
             href="/mine-interesser/"
-            text="Meld inn ledig tid"
+            text="Mine interesser"
             theme="transparent"
           />
           <span
@@ -66,6 +70,14 @@ const Header: React.FC = () => {
           </span>
         </div>
       </Container>
+      {!isFrontPage && (
+        <LinkButton
+          href="/"
+          theme="backButton"
+          text="Tilbake til forsiden"
+          className="header__back-button"
+        />
+      )}
     </header>
   );
 };

@@ -1,4 +1,6 @@
 .link-button {
+  $self: &;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,6 +10,11 @@
   border-radius: 25px / 50%;
   cursor: pointer;
 
+  &__text {
+    color: black;
+  }
+
+  //Themes:
   &--tag {
     font-size: 14px;
     text-transform: uppercase;
@@ -23,7 +30,15 @@
     }
   }
 
-  &__text {
-    color: black;
+  &--back-button {
+    width: fit-content;
+    background-color: transparent;
+    padding: 1px;
+
+    #{$self}__text {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
   }
 }

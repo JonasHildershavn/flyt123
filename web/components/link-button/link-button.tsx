@@ -1,6 +1,8 @@
 import cn from "classnames";
 import Link from "next/link";
 
+import Arrow from "../../assets/arrow.svg";
+
 interface LinkProps {
   href?: string;
   text: string;
@@ -12,6 +14,7 @@ interface LinkProps {
 const themes: { [key: string]: string } = {
   tag: "link-button--tag",
   transparent: "link-button--transparent",
+  backButton: "link-button--back-button",
 };
 
 const LinkButton: React.FC<LinkProps> = ({
@@ -37,11 +40,11 @@ const LinkButton: React.FC<LinkProps> = ({
     >
       {href ? (
         <Link href={href}>
-          <a className="link-button__text"  {...targetAttributes}>
+          <a className="link-button__text" {...targetAttributes}>
+            {theme === "backButton" && <Arrow />}
             {text}
           </a>
         </Link>
-        
       ) : (
         <span className="link-button__text">{text}</span>
       )}

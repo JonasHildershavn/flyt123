@@ -10,6 +10,7 @@ import Ghost_visible from "../../assets/ghost_visible.svg";
 import Ghost_invisible from "../../assets/ghost_invisible.svg";
 import Subcategories from "../../assets/subcategories.json";
 import LikeButton from "../like-button/like-button";
+import Heading from "../heading/heading";
 
 interface VacantFormProps {
   existingVacant: AzureVacant;
@@ -72,6 +73,29 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
     data.prefCategory = data.prefCategory.toString();
     data.prefActivity = data.prefActivity.toString();
 
+    const likedProjects = sessionStorage.getItem("likes")
+      ? JSON.parse(String(sessionStorage.getItem("likes")))
+      : [];
+    const projectsToLike = sessionStorage.getItem("addLikes")
+      ? JSON.parse(String(sessionStorage.getItem("addLikes")))
+      : [];
+    const projectsToUnLike = sessionStorage.getItem("removeLikes")
+      ? JSON.parse(String(sessionStorage.getItem("removeLikes")))
+      : [];
+
+    let finalProjects = !!projectsToLike
+      ? likedProjects.concat(projectsToLike)
+      : likedProjects;
+    finalProjects = finalProjects.filter(
+      (item: string) => !projectsToUnLike.includes(item)
+    );
+
+    sessionStorage.setItem("addLikes", JSON.stringify([]));
+    sessionStorage.setItem("removeLikes", JSON.stringify([]));
+    sessionStorage.setItem("likes", JSON.stringify(finalProjects));
+
+    data.prefProject = finalProjects.toString();
+
     const postData = async () => {
       const url = "/api/vacant/put";
       const response = await fetch(url, {
@@ -98,7 +122,7 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
       {hiddenMsg ? (
         <div className="vacant-form__hidden-mode vacant-form__hidden-mode__blue vacant-form__shared-row">
           <Ghost_invisible className="vacant-form__hidden-mode__ghost" />
-          <div className="vacant-form__hidden-mode__help-text vacant-form__shared-row">
+          <div className="vacant-form__hidden-mode__help-text">
             <p className="vacant-form__hidden-mode__help-text__header">
               Ikke lenger ledig tid?
             </p>
@@ -126,7 +150,7 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
       ) : (
         <div className="vacant-form__hidden-mode vacant-form__hidden-mode__grey vacant-form__shared-row">
           <Ghost_visible className="vacant-form__hidden-mode__ghost" />
-          <div className="vacant-form__hidden-mode__help-text vacant-form__shared-row">
+          <div className="vacant-form__hidden-mode__help-text">
             <p className="vacant-form__hidden-mode__help-text__header">Obs!</p>
             <p>
               Du er skjult for prosjektledere og administratorer! Om du gjør
@@ -150,9 +174,13 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
         </div>
       )}
 
-      <div className="vacant-form__pref-projects">
-        <p>Prosjekter du er interessert i</p>
-        <TextField variant="standard" {...register("prefProject")} />
+      <div className="vacant-form__section vacant-form__pref-projects">
+        <Heading level={2} className="vacant-form__section-title">
+          Prosjekter du er interessert i
+        </Heading>
+        <div className="vacant-form__pref-projects-houdini">
+          <TextField variant="standard" {...register("prefProject")} />
+        </div>
         {initPreferedProjects && !!initPreferedProjects.length && (
           <ul className="vacant-form__pref-projects-list">
             {initPreferedProjects.map((project, index) => (
@@ -168,11 +196,13 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
         )}
       </div>
 
-      <div className="vacant-form__pref-category">
-        <p>Jeg vil drive med: *</p>
+      <div className="vacant-form__section vacant-form__pref-category">
+        <Heading level={2} className="vacant-form__section-title">
+          Jeg vil drive med: *
+        </Heading>
         <div>
-          {categories.map((choice) => (
-            <label key={choice.no}>
+          {categories.map((choice, index) => (
+            <label key={choice.no + index}>
               <input
                 type="checkbox"
                 value={choice.no}
@@ -180,7 +210,7 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
                 {...register("prefCategory", { required: true })}
               />
               <Tag
-                className="vacant-form__pref-category__tag"
+                className="vacant-form__section vacant-form__pref-category__tag"
                 text={choice.no}
                 category={choice.en}
               />
@@ -193,8 +223,10 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
         </div>
       </div>
 
-      <div className="vacant-form__capacity">
-        <p>Jeg har ca. så mye tid i uka: *</p>
+      <div className="vacant-form__section vacant-form__capacity">
+        <Heading level={2} className="vacant-form__section-title">
+          Jeg har ca. så mye tid i uka: *
+        </Heading>
         <RadioGroup
           {...register("capacity", { required: true })}
           defaultValue={getValues().capacity}
@@ -224,7 +256,9 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
 
       <div className="vacant-form__shared-row">
         <div className="vacant-form__pref-activity">
-          <p>Jeg digger dette</p>
+          <Heading level={2} className="vacant-form__section-title">
+            Jeg digger dette
+          </Heading>
           <Autocomplete
             defaultValue={getValues().prefActivity}
             onChange={(_, value) =>
@@ -235,10 +269,10 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
             options={Object.keys(activityChoices)}
             freeSolo
             renderTags={(value: readonly string[], getTagProps) =>
-              value.map((option: string, _) => (
+              value.map((option: string, index) => (
                 <Tag
                   className="vacant-form__pref-activity__tag"
-                  key={option}
+                  key={option + index}
                   text={option}
                   category={
                     option in activityChoices
@@ -263,7 +297,9 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
         </div>
 
         <div className="vacant-form__other-info">
-          <p>Andre ting du vil legge til?</p>
+          <Heading level={2} className="vacant-form__section-title">
+            Andre ting du vil legge til?
+          </Heading>
           <TextareaAutosize
             className="vacant-form__other-info__input"
             placeholder="Jeg elsker å lage boller til møter <3"

@@ -7,14 +7,19 @@ import Footer from "../footer/footer";
 interface PageLayoutProps {
   children?: React.ReactNode;
   title?: string;
+  isFrontPage?: boolean;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => (
+const PageLayout: React.FC<PageLayoutProps> = ({
+  children,
+  title,
+  isFrontPage = false,
+}) => (
   <div className="page-layout">
     <Helmet>
       <title>{title}</title>
     </Helmet>
-    <Header />
+    <Header isFrontPage={isFrontPage} />
     <main className="page-layout__content">{children}</main>
     <Footer />
   </div>

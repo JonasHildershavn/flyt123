@@ -8,6 +8,7 @@ import Container from "../container/container";
 import CollabtoolList from "../collabtool-list/collabtool-list";
 import LikeButton from "../like-button/like-button";
 import Tags from "../tags/tags";
+import LinkButton from "../link-button/link-button";
 
 const Project: React.FC<SanityProject> = ({
   title = "Prosjekt",

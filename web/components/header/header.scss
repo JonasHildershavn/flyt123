@@ -1,5 +1,4 @@
 .header {
-  display: flex;
   justify-content: space-between;
   width: 100%;
 
@@ -59,6 +58,10 @@
         animation: pulse 500ms none;
       }
     }
+  }
+
+  &__back-button {
+    margin-left: 40px;
   }
 }
 
