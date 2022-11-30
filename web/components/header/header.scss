@@ -60,8 +60,10 @@
     }
   }
 
-  &__back-button {
-    margin-left: 40px;
+  &__back-button-wrapper {
+    margin: 0 auto;
+    width: calc(100% - 80px);
+    max-width: $width--wide;
   }
 }
 

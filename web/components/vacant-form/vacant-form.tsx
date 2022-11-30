@@ -1,16 +1,21 @@
-import { AzureVacant } from "../../models/azure-vacant";
-import { Controller, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+
+import { Controller, useForm } from "react-hook-form";
+
+import { AzureVacant } from "../../models/azure-vacant";
 import { CategoryText } from "../../models/sanity-project-tags";
+
 import { Autocomplete, RadioGroup, TextareaAutosize } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Tag from "../tag/tag";
 import SaveFeedback from "../save-feedback/save-feedback";
-import Ghost_visible from "../../assets/ghost_visible.svg";
-import Ghost_invisible from "../../assets/ghost_invisible.svg";
 import Subcategories from "../../assets/subcategories.json";
 import LikeButton from "../like-button/like-button";
 import Heading from "../heading/heading";
+import Link from "next/link";
+
+import Ghost_visible from "../../assets/ghost_visible.svg";
+import Ghost_invisible from "../../assets/ghost_invisible.svg";
 
 interface VacantFormProps {
   existingVacant: AzureVacant;
@@ -176,7 +181,7 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
 
       <div className="vacant-form__section vacant-form__pref-projects">
         <Heading level={2} className="vacant-form__section-title">
-          Prosjekter du er interessert i
+          Prosjekter du er interessert i:
         </Heading>
         <div className="vacant-form__pref-projects-houdini">
           <TextField variant="standard" {...register("prefProject")} />
@@ -189,7 +194,16 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
                 className="vacant-form__pref-projects-project"
               >
                 <LikeButton target={project} />
-                <p>{project}</p>
+                <Link
+                  href={
+                    "/prosjekt/" +
+                    project.toLocaleLowerCase().replace(/\s/g, "-")
+                  }
+                >
+                  <a className="vacant-form__pref-projects-project-name">
+                    {project}
+                  </a>
+                </Link>
               </div>
             ))}
           </ul>
@@ -257,7 +271,7 @@ const VacantForm: React.FC<VacantFormProps> = ({ existingVacant }) => {
       <div className="vacant-form__shared-row">
         <div className="vacant-form__pref-activity">
           <Heading level={2} className="vacant-form__section-title">
-            Jeg digger dette
+            Jeg digger dette:
           </Heading>
           <Autocomplete
             defaultValue={getValues().prefActivity}

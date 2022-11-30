@@ -20,8 +20,15 @@
   &__pref-projects-project {
     display: flex;
     align-items: center;
+    gap: 10px;
     margin: 0;
     padding: 0;
+  }
+  &__pref-projects-project-name {
+    color: $color--black;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__section {

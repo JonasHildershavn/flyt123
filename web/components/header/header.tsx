@@ -71,12 +71,9 @@ const Header: React.FC<HeaderProps> = ({ isFrontPage }) => {
         </div>
       </Container>
       {!isFrontPage && (
-        <LinkButton
-          href="/"
-          theme="backButton"
-          text="Tilbake til forsiden"
-          className="header__back-button"
-        />
+        <div className="header__back-button-wrapper">
+          <LinkButton href="/" theme="backButton" text="Tilbake til forsiden" />
+        </div>
       )}
     </header>
   );
