@@ -1,0 +1,17 @@
+.task-card {
+  position: relative;
+
+  padding: 50px;
+  border-radius: 40px;
+  background-color: $color--violet-lighter;
+
+  &--liked {
+    background-color: $color--violet;
+  }
+
+  &__like-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+}

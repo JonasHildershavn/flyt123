@@ -1,11 +1,15 @@
 .footer {
-  height: 9vh;
-  background-color: $color--forest;
-  font-family: "Knowit";
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: $color--black;
   bottom: 0;
-  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 80px);
+  }
+  &__link,
+  &__logo {
+    color: $color--white;
+  }
 }

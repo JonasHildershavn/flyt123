@@ -7,13 +7,13 @@
             ]
         },
         {
-            "route": "/project/*",
+            "route": "/prosjekt/*",
             "allowedRoles": [
                 "authenticated"
             ]
         },
         {
-            "route": "/ledig-tid/*",
+            "route": "/mine-interesser/*",
             "allowedRoles": [
                 "authenticated"
             ]
@@ -26,7 +26,7 @@
         },
         {
             "route": "/login",
-            "rewrite": "/.auth/login/aad"
+            "redirect": "/.auth/login/aad"
         },
         {
             "route": "/logout",
@@ -44,16 +44,19 @@
     "responseOverrides": {
         "401": {
             "statusCode": 302,
-            "redirect": "/login"
+            "redirect": "/.auth/login/aad"
         }
+    },
+    "platform": {
+        "apiRuntime": "node:16"
     },
     "auth": {
         "identityProviders": {
             "azureActiveDirectory": {
                 "registration": {
-                    "openIdIssuer": "https://login.microsoftonline.com/6735929c-9dbf-473b-9fc6-5fbdcd2c9fc4/v2.0",
-                    "clientIdSettingName": "AAD__ClientId",
-                    "clientSecretSettingName": "AAD__Secret"
+                    "openIdIssuer": "https://login.microsoftonline.com/f1594426-b944-40e2-ae72-d391b346705f/v2.0",
+                    "clientIdSettingName": "AZURE_CLIENT_ID",
+                    "clientSecretSettingName": "AZURE_CLIENT_SECRET"
                 }
             }
         }

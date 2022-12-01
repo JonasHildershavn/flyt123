@@ -1,37 +1,24 @@
+import { SanityContactPerson } from "../../models/sanity-contact-person";
 import Heading from "../heading/heading";
 
-interface ContributionsProps {
-  projectLeader: string;
-  techLead: string;
-  designLead: string;
+interface ContactPersonListProps {
+  contactPersons: SanityContactPerson[];
 }
-const ContactPersons: React.FC<ContributionsProps> = ({
-  projectLeader,
-  techLead,
-  designLead,
+const ContactPersons: React.FC<ContactPersonListProps> = ({
+  contactPersons,
 }) => (
   <div className="contact-persons">
-    <Heading headingLevel="h2">Kontaktpersoner:</Heading>
-    {projectLeader && (
+    <Heading level={2} className="contact-persons__title">
+      Kontaktpersoner:
+    </Heading>
+    {contactPersons && contactPersons.length > 0 && (
       <ul className="contact-persons__list">
-        {projectLeader && (
-          <li className="contact-persons__person">
-            <span className="contact-persons__pretext">Prosjektleder:</span>
-            <p className="contact-persons__name">{projectLeader}</p>
+        {contactPersons.map(({ employee, role }, index) => (
+          <li key={"contactPerson" + index} className="contact-persons__person">
+            <span className="contact-persons__role">{role}</span>
+            <p className="contact-persons__name">{employee.name}</p>
           </li>
-        )}
-        {techLead && (
-          <li className="contact-persons__person">
-            <span className="contact-persons__pretext">Tech lead:</span>
-            <p className="contact-persons__name">{techLead}</p>
-          </li>
-        )}
-        {designLead && (
-          <li className="contact-persons__person">
-            <span className="contact-persons__pretext">Design lead:</span>
-            <p className="contact-persons__name">{designLead}</p>
-          </li>
-        )}
+        ))}
       </ul>
     )}
   </div>

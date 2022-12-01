@@ -1,8 +1,9 @@
-.projects {
-  margin-top: 2rem;
+.project-overview {
   width: 100%;
 
   &__title {
+    font-size: 32px;
+    font-weight: $font-weight--normal;
     margin-bottom: 2rem;
   }
 
@@ -10,15 +11,17 @@
     display: grid;
     max-width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 30px;
+
+    padding: 20px 0;
 
     @include break-at($break-point--small) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
-    @include break-at($break-point--medium-plus) {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 30px;
-    }
+  }
+
+  &--green {
+    background-color: $color--mint;
   }
 }

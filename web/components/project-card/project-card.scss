@@ -1,10 +1,53 @@
 .project-card {
-  color: inherit;
-  text-decoration: inherit;
-  background-color: $color--melon;
-  padding: 20px;
+  $block: &;
 
+  position: relative;
+  padding: 30px 25px;
+  color: $color--black;
+  transition: border-radius 100ms ease-in-out;
+  background-color: $color--light-grey;
+
+  &:hover {
+    border-radius: 40px;
+  }
+
+  &--blue {
+    background-color: $color--violet-lighter;
+  }
+
+  &--lime {
+    background-color: $color--light-lime;
+  }
+  &--black {
+    background-color: $color--black;
+    color: $color--white;
+    #{$block}__title {
+      color: $color--white;
+    }
+  }
+
+  &--liked {
+    background-color: $color--black;
+    color: $color--white;
+    #{$block}__title {
+      color: $color--white;
+    }
+  }
+
+  &__title-spacer {
+    padding-right: 20px;
+  }
   &__title {
-    overflow-wrap: break-word;
+    font-weight: $font-weight--normal;
+    font-size: 32px;
+  }
+
+  &__tags {
+    display: flex;
+  }
+  &__like-button {
+    position: absolute;
+    top: 10px;
+    right: 8px;
   }
 }

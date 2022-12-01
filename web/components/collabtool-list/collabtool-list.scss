@@ -1,0 +1,9 @@
+.collabtool-list {
+  @include list-style-reset();
+  display: flex;
+  padding: 0;
+
+  &__item {
+    margin-right: 5px;
+  }
+}

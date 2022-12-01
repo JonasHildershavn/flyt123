@@ -7,28 +7,21 @@ interface StatusProps {
 }
 
 const Status: React.FC<StatusProps> = ({ status = "Oppstartsfase" }) => {
-  const statusOptions = ["Oppstartsfase", "Pågående", "Avsluttende fase"];
+  const statusOptions = ["Oppstart", "Pågående", "Vedlikehold"];
   return (
     <div className="status">
-      <Heading headingLevel="h2">Status</Heading>
+      <Heading level={2} className="status__title">
+        Status
+      </Heading>
       <ul className="status__list">
         {statusOptions.map((option, index) => (
           <li
             key={option}
-            className={cn(
-              "status__item",
-              {
-                "status__item--active": status === option,
-              },
-              {
-                "status__item--future": index > statusOptions.indexOf(status),
-              }
-            )}
+            className={cn("status__item", {
+              "status__item--active": status === option,
+            })}
           >
-            <p>
-              {option}
-              {status === option && ", her er vi nå"}
-            </p>
+            <p>{option}</p>
           </li>
         ))}
       </ul>

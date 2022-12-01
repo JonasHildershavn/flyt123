@@ -1,0 +1,34 @@
+.tag {
+  display: inline-block;
+  font-size: 14px;
+  padding: 12px;
+  margin-right: 5px;
+  border-radius: 25px / 50%;
+  text-align: center;
+  min-width: 25px;
+  text-transform: uppercase;
+  color: $color--black;
+
+  &--development {
+    background-color: $color--blue;
+  }
+  &--design {
+    background-color: $color--lime;
+  }
+  &--content {
+    background-color: $color--coral;
+  }
+  &--administration {
+    background-color: $color--pink;
+  }
+  &--other {
+    background-color: $color--pear;
+  }
+
+  &--small-margin {
+    margin: 4px;
+  }
+  &--big-margin {
+    margin: 6px;
+  }
+}

@@ -1,55 +1,74 @@
 .project {
-  &__onboarding {
-    display: grid;
-    gap: 10px;
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 10fr 10fr;
-    grid-template-areas:
-      "status status"
-      "intro  intro"
-      "info   info ";
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 44px;
+    margin: 0 20px 40px 0;
+
+    overflow-wrap: anywhere;
 
     @include break-at($break-point--small) {
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 10fr 10fr 7fr;
-      grid-template-areas:
-        "intro  intro status"
-        "info   info  status";
+      font-size: 70px;
     }
   }
 
-  &__description {
+  &__like-button {
+    margin-bottom: 40px;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 10px;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "content";
+
+    @include break-at($break-point--small) {
+      -ms-grid-columns: 6fr 4fr;
+      grid-template-columns: 6fr 4fr;
+      grid-template-areas: "content  sidebar";
+    }
+
+    padding-bottom: 50px;
+  }
+
+  &__sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-area: intro;
-
-    background-color: $color--mint;
-    padding: 10px;
-  }
-  &__short-info {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 2;
-    grid-area: info;
+    -ms-grid-column-span: 1;
+    grid-area: sidebar;
 
     display: flex;
-    width: 100%;
+  }
+  &__sidebar-col {
+    width: 50%;
+    padding: 5px;
   }
 
-  &__resources {
-    width: 100%;
-    background-color: $color--mint;
-    padding: 10px;
-  }
-
-  &__status {
+  &__content {
     -ms-grid-row: 1;
-    -ms-grid-column: 3;
+    -ms-grid-column: 2;
     -ms-grid-column-span: 1;
-    grid-area: status;
+    grid-area: content;
 
-    background-color: $color--mint;
-    padding: 10px;
+    padding: 5px;
+  }
+
+  &__description,
+  &__tags-wrapper,
+  &__resources {
+    margin: 0;
+    padding-bottom: 65px;
+  }
+
+  &__resources-header,
+  &__tags-header {
+    margin: 0;
+    padding-bottom: 30px;
   }
 }

@@ -1,0 +1,10 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  &--right {
+    justify-content: flex-end;
+  }
+  &--left {
+    justify-content: flex-start;
+  }
+}
