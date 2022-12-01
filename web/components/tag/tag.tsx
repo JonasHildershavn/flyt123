@@ -4,7 +4,7 @@ interface TagProps {
   text: string;
   category: string;
   children?: React.ReactNode;
-  margin: "small-margin" | "big-margin";
+  margin?: "small-margin" | "big-margin";
   className?: string;
 }
 
