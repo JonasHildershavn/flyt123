@@ -3,6 +3,9 @@ const globImporter = require('node-sass-glob-importer');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // images: {
+  //   unoptimized: true
+  // },
   sassOptions: {
     importer: globImporter()
   },
@@ -13,8 +16,7 @@ const nextConfig = {
     });
 
     return config;
-  }
-
+  },
 }
 
 module.exports = nextConfig

@@ -1,8 +1,58 @@
 .vacant-table {
-    height: 400px;
+    height: 800px;
 
     &__grid {
-        // background-color: $color--mint;
+        text-align: top !important;
+
+        .MuiDataGrid-cell {
+            padding-top: 12px !important;
+            padding-bottom: 12px !important;
+            background-color: inherit !important;
+
+            &:focus {
+                outline: none !important;
+            }
+
+            & > * {
+                margin-bottom: auto;
+            }
+            
+        }
+
+        .MuiDataGrid-columnHeaders {
+        }
+
+        .MuiDataGrid-columnSeparator {
+            visibility: hidden;
+        }
+        
+        .MuiDataGrid-row{
+            &:nth-child(even) {
+                background-color: unset !important;
+                
+                &:hover {
+                    background-color: unset !important;
+                }
+                }
+
+            &:nth-child(odd) {
+                background-color: $color--violet-lighter !important;
+        
+                &:hover {
+                    background-color: $color--violet-lighter !important;
+                }
+            }
+
+        }
+
+        li {
+            list-style-type: none;
+        }  
     }
 
+        
+       
+        
 }
+
+

@@ -7,6 +7,7 @@
   text-align: center;
   min-width: 25px;
   text-transform: uppercase;
+  color: $color--black;
 
   &--development {
     background-color: $color--blue;
@@ -15,12 +16,19 @@
     background-color: $color--lime;
   }
   &--content {
-    background-color: $color--pear;
+    background-color: $color--coral;
   }
   &--administration {
     background-color: $color--pink;
   }
   &--other {
     background-color: $color--pear;
+  }
+
+  &--small-margin {
+    margin: 4px;
+  }
+  &--big-margin {
+    margin: 6px;
   }
 }

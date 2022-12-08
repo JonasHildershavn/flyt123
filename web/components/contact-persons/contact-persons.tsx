@@ -15,8 +15,8 @@ const ContactPersons: React.FC<ContactPersonListProps> = ({
       <ul className="contact-persons__list">
         {contactPersons.map(({ employee, role }, index) => (
           <li key={"contactPerson" + index} className="contact-persons__person">
+            <span className="contact-persons__role">{role}</span>
             <p className="contact-persons__name">{employee.name}</p>
-            <span className="contact-persons__role">({role})</span>
           </li>
         ))}
       </ul>

@@ -45,7 +45,12 @@ const Tags: React.FC<TagsProps> = ({
   }, [tags]);
 
   return (
-    <div className={cn("tags", { [themes[theme]]: themes[theme] })}>
+    <div
+      className={cn("tags", {
+        [themes[theme]]: themes[theme],
+        "tags--margin": onlyTopLevel,
+      })}
+    >
       {tags &&
         tags.length > 0 &&
         (onlyTopLevel
@@ -54,10 +59,16 @@ const Tags: React.FC<TagsProps> = ({
                 key={category}
                 category={category}
                 text={CategoryText[category]}
+                margin="small-margin"
               />
             ))
           : tags.map(({ tag, category }) => (
-              <Tag key={category} category={category} text={tag} />
+              <Tag
+                key={category}
+                category={category}
+                text={tag}
+                margin="big-margin"
+              />
             )))}
     </div>
   );

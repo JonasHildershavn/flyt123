@@ -1,10 +1,10 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import cn from "classnames";
 import { signOut } from "next-auth/react";
 
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
-import Link from "next/link";
 
 const Header: React.FC = () => {
   const [numLikes, setNumLikes] = useState(0);
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
           <button onClick={() => signOut()}>Logg ut</button>
           <LinkButton
             className="header__available-button"
-            href="ledig-tid/1"
+            href="/mine-interesser/"
             text="Meld inn ledig tid"
             theme="transparent"
           />
