@@ -1,16 +1,17 @@
 import "../styles/site.scss";
-import type { AppProps } from "next/app";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
+import { ProtectedComponent } from "../components/ProtectedComponent";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: any) {
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       <Head>
         <link rel="shortcut icon" href="/flyt_logo.ico" />
       </Head>
-      <Component {...pageProps} />
-    </>
+      <ProtectedComponent>
+        <Component {...pageProps} />
+      </ProtectedComponent>
+    </SessionProvider>
   );
 }
-
-export default MyApp;

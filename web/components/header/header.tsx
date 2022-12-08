@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import cn from "classnames";
+import { signOut } from "next-auth/react";
 
 import Container from "../container/container";
 import LinkButton from "../link-button/link-button";
@@ -35,6 +36,7 @@ const Header: React.FC = () => {
           <a className="header__main-link">Flyt</a>
         </Link>
         <div className="header__like-wrapper">
+          <button onClick={() => signOut()}>Logg ut</button>
           <LinkButton
             className="header__available-button"
             href="/mine-interesser/"
